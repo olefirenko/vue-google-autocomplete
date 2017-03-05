@@ -73,7 +73,7 @@
                     returnData['longitude'] = place.geometry.location.lng();
 
                     // return returnData object and PlaceResult object
-                    this.$emit('placeChanged', returnData, this.autocomplete.getPlace());
+                    this.$emit('placechanged', returnData, this.autocomplete.getPlace());
                 }
            });
         },
