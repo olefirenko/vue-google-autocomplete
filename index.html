@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css" />
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe1exctmeJjIb4guyT6newSpyJ7kA3aLc&libraries=places"></script>
+</head>
+<body>
+<section class="hero is-medium is-primary is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title is-2">Vue Google Autocomplete</h1>
+            <h2 class="subtitle">A Vue.js autosuggest component for the Google Maps Places API</h2>
+        </div>
+    </div>
+</section>
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container" id="app">
+            <h3 class="title is-4">Start typing an address and below you will see found result</h3>
+            <p class="control">
+                <vue-google-autocomplete 
+                    id="map" 
+                    classname="input"
+                    placeholder="Start typing"
+                    v-on:placechanged="getAddressData"
+                >
+                </vue-google-autocomplete>
+            </p>
+
+            <div class="message is-success" v-show="address">
+                <div class="message-body">{{ address }}</div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="content">
+            <p>
+                <a href="https://github.com/olefirenko/vue-google-autocomplete">View project on GitHub</a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="app.js"></script>
+
+</body>
+</html>
