@@ -57,7 +57,7 @@ In your template you can use this syntax:
     id="map" 
     className="form-control"
     placeholder="Start typing"
-    v-on:placeChanged="getFromData"
+    v-on:placechanged="getFromData"
 >
 </vue-google-autocomplete>
 ```
@@ -84,7 +84,7 @@ The input field will get this placeholder text.
 
 ### Example
 
-Please note that you need to provide what method will listen (`v-on:placeChanged`) to an event when the address data is obtained. 
+Please note that you need to provide what method will listen (`v-on:placechanged`) to an event when the address data is obtained. 
 
 ```js
 <template>
@@ -95,7 +95,7 @@ Please note that you need to provide what method will listen (`v-on:placeChanged
             id="map" 
             className="form-control"
             placeholder="Please type your address"
-            v-on:placeChanged="getAddressData"
+            v-on:placechanged="getAddressData"
         >
         </vue-google-autocomplete>
     </div>
