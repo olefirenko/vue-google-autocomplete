@@ -1,6 +1,6 @@
 <template>
     <input 
-        :class="className" 
+        :class="classname" 
         :id="id" 
         :placeholder="placeholder" 
         @focus = "geolocate()"
@@ -17,7 +17,7 @@
             required: true
           },
 
-          className: String,
+          classname: String,
 
           placeholder: {
             type: String,
