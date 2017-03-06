@@ -20,7 +20,8 @@
     "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules",
     "watch": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules",
     "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
-    "production": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "production": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "deploy:example": "gh-pages -d example/dist"
   },
   "author": "Dmitriy Olefyrenko <dmitriy.olefirenko@gmail.com>",
   "license": "MIT",

@@ -2,6 +2,10 @@
 
 A Vue.js autosuggest component for the Google Maps Places API.
 
+## Demo
+
+Live demo: [olefirenko.github.io/vue-google-autocomplete](https://olefirenko.github.io/vue-google-autocomplete/)
+
 ## Benefits
 
 I have tried to use different Vue Google Autocomplete components, but did not find any that would solve my needs. So below I would like to mention what you can get from this exact component:
@@ -55,7 +59,7 @@ In your template you can use this syntax:
 ```
 <vue-google-autocomplete 
     id="map" 
-    className="form-control"
+    classname="form-control"
     placeholder="Start typing"
     v-on:placechanged="getFromData"
 >
@@ -69,7 +73,7 @@ Type: `String`
 
 `required` ID for the input container.
 
-#### className
+#### classname
 Type: `String`
 
 Class to the input container.
@@ -93,7 +97,7 @@ Please note that you need to provide what method will listen (`v-on:placechanged
 
         <vue-google-autocomplete 
             id="map" 
-            className="form-control"
+            classname="form-control"
             placeholder="Please type your address"
             v-on:placechanged="getAddressData"
         >
