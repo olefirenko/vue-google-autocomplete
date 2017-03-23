@@ -85,7 +85,7 @@ Default: `Start typing`
 The input field will get this placeholder text.
 
 
-#### enable-geolocate
+#### enable-geolocation
 Type: `Boolean`
 Default: `false`
 
