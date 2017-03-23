@@ -85,11 +85,11 @@ Default: `Start typing`
 The input field will get this placeholder text.
 
 
-#### disableGeoLocate
+#### enable-geolocate
 Type: `Boolean`
 Default: `false`
 
-The autocomplete is biased towards the user current location. This requires the user to enable geolocation, unfortunately. Set to `true` if you want to disable geolocation.
+Bias the search towards user current location.
 
 
 

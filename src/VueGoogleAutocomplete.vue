@@ -24,7 +24,7 @@
             default: 'Start typing'
           },
 
-          disableGeolocate: {
+          enableGeolocate: {
             type: Boolean,
             default: false
           }
@@ -87,7 +87,7 @@
             // Bias the autocomplete object to the user's geographical location,
             // as supplied by the browser's 'navigator.geolocation' object.
             geolocate() {
-                if (!this.disableGeolocate) {
+                if (this.enableGeolocate) {
                     if (navigator.geolocation) {
                       navigator.geolocation.getCurrentPosition(position => {
                         let geolocation = {
@@ -106,4 +106,5 @@
         }
     }
 </script>
+
 
