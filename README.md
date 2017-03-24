@@ -85,6 +85,13 @@ Default: `Start typing`
 The input field will get this placeholder text.
 
 
+#### enable-geolocation
+Type: `Boolean`
+Default: `false`
+
+Bias the search towards user current location.
+
+
 
 ### Example
 
