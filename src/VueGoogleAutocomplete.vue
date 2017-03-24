@@ -27,6 +27,11 @@
           types: {
             type: Array,
             default: ['address']
+          },
+
+          enableGeolocation: {
+            type: Boolean,
+            default: false
           }
         },
 
@@ -87,18 +92,20 @@
             // Bias the autocomplete object to the user's geographical location,
             // as supplied by the browser's 'navigator.geolocation' object.
             geolocate() {
-                if (navigator.geolocation) {
-                  navigator.geolocation.getCurrentPosition(position => {
-                    let geolocation = {
-                      lat: position.coords.latitude,
-                      lng: position.coords.longitude
-                    };
-                    let circle = new google.maps.Circle({
-                      center: geolocation,
-                      radius: position.coords.accuracy
-                    });
-                    this.autocomplete.setBounds(circle.getBounds());
-                  });
+                if (this.enableGeolocation) {
+                    if (navigator.geolocation) {
+                      navigator.geolocation.getCurrentPosition(position => {
+                        let geolocation = {
+                          lat: position.coords.latitude,
+                          lng: position.coords.longitude
+                        };
+                        let circle = new google.maps.Circle({
+                          center: geolocation,
+                          radius: position.coords.accuracy
+                        });
+                        this.autocomplete.setBounds(circle.getBounds());
+                      });
+                    }
                 }
             }
         }
