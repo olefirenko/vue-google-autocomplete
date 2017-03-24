@@ -1,8 +1,8 @@
 <template>
-    <input 
-        :class="classname" 
-        :id="id" 
-        :placeholder="placeholder" 
+    <input
+        :class="classname"
+        :id="id"
+        :placeholder="placeholder"
         @focus = "geolocate()"
     />
 </template>
@@ -22,6 +22,11 @@
           placeholder: {
             type: String,
             default: 'Start typing'
+          },
+
+          types: {
+            type: Array,
+            default: ['address']
           },
 
           enableGeolocation: {
@@ -45,7 +50,7 @@
         mounted: function() {
            this.autocomplete = new google.maps.places.Autocomplete(
                 document.getElementById(this.id),
-                {types: ['address']}
+                { types: this.types }
             );
 
            this.autocomplete.addListener('place_changed', () => {
@@ -106,5 +111,3 @@
         }
     }
 </script>
-
-
