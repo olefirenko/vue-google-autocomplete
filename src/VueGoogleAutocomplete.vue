@@ -25,8 +25,8 @@
           },
 
           types: {
-            type: Array,
-            default: ['address']
+            type: String,
+            default: 'address'
           },
 
           enableGeolocation: {
@@ -50,7 +50,7 @@
         mounted: function() {
            this.autocomplete = new google.maps.places.Autocomplete(
                 document.getElementById(this.id),
-                { types: this.types }
+                { types: [this.types] }
             );
 
            this.autocomplete.addListener('place_changed', () => {

@@ -57,8 +57,8 @@ import VueGoogleAutocomplete from 'vue-google-autocomplete'
 
 In your template you can use this syntax:
 ```
-<vue-google-autocomplete 
-    id="map" 
+<vue-google-autocomplete
+    id="map"
     classname="form-control"
     placeholder="Start typing"
     v-on:placechanged="getFromData"
@@ -84,6 +84,12 @@ Default: `Start typing`
 
 The input field will get this placeholder text.
 
+#### types
+Type: `String`
+Default: `address`
+
+Types supported in place autocomplete requests. [More info] (https://developers.google.com/places/supported_types#table3)
+
 
 #### enable-geolocation
 Type: `Boolean`
@@ -95,15 +101,15 @@ Bias the search towards user current location.
 
 ### Example
 
-Please note that you need to provide what method will listen (`v-on:placechanged`) to an event when the address data is obtained. 
+Please note that you need to provide what method will listen (`v-on:placechanged`) to an event when the address data is obtained.
 
 ```js
 <template>
     <div>
         <h2>Your Address</h2>
 
-        <vue-google-autocomplete 
-            id="map" 
+        <vue-google-autocomplete
+            id="map"
             classname="form-control"
             placeholder="Please type your address"
             v-on:placechanged="getAddressData"
@@ -120,7 +126,7 @@ Please note that you need to provide what method will listen (`v-on:placechanged
 
         data: function () {
             return {
-              address: '' 
+              address: ''
             }
         },
 
