@@ -1,6 +1,6 @@
 {
   "name": "vue-google-autocomplete",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "Vue component to Google Places Autocomplete",
   "main": "src/VueGoogleAutocomplete.vue",
   "homepage": "https://github.com/olefirenko/vue-google-autocomplete",
@@ -21,14 +21,31 @@
     "watch": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules",
     "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
     "production": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "deploy:example": "gh-pages -d example/dist"
+    "deploy:example": "gh-pages -d example/dist",
+    "test": "NODE_PATH=test ava --verbose"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "ava": {
+    "require": [
+      "babel-register",
+      "./test/helpers/setup.js"
+    ]
   },
   "author": "Dmitriy Olefyrenko <dmitriy.olefirenko@gmail.com>",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
+    "ava": "^0.18.2",
+    "babel-register": "^6.24.0",
+    "browser-env": "^2.0.25",
+    "cross-env": "^3.2.4",
     "gh-pages": "^0.12.0",
     "laravel-mix": "^0.8.8",
     "vue": "^2.2.1",
-    "webpack": "^2.2.1"
+    "vue-node": "^1.0.2",
+    "webpack": "^2.3.2"
   }
 }
