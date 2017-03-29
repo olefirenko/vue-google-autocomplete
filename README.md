@@ -1,6 +1,6 @@
 # Vue Google Autocomplete
 
-A Vue.js autosuggest component for the Google Maps Places API.
+A Vue.js (2.x) autosuggest component for the Google Maps Places API.
 
 ## Demo
 
