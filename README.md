@@ -88,7 +88,13 @@ The input field will get this placeholder text.
 Type: `String`
 Default: `address`
 
-Types supported in place autocomplete requests. [More info] (https://developers.google.com/places/supported_types#table3)
+Types supported in place autocomplete requests. [More info](https://developers.google.com/places/supported_types#table3)
+
+#### country
+Type: `String`
+Default: null
+
+Option to restrict the autocomplete search to a particular country. Countries must be passed as as a two-character, ISO 3166-1 Alpha-2 compatible country code (i.e. "br", "sg", "fr").
 
 
 #### enable-geolocation
@@ -113,6 +119,7 @@ Please note that you need to provide what method will listen (`v-on:placechanged
             classname="form-control"
             placeholder="Please type your address"
             v-on:placechanged="getAddressData"
+            country="sg"
         >
         </vue-google-autocomplete>
     </div>

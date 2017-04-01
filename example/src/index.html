@@ -20,11 +20,12 @@
         <div class="container" id="app">
             <h3 class="title is-4">Start typing an address and below you will see found result</h3>
             <p class="control">
-                <vue-google-autocomplete 
-                    id="map" 
+                <vue-google-autocomplete
+                    id="map"
                     classname="input"
                     placeholder="Start typing"
                     v-on:placechanged="getAddressData"
+                    country="sg"
                 >
                 </vue-google-autocomplete>
             </p>

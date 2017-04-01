@@ -29,6 +29,11 @@
             default: 'address'
           },
 
+          country: {
+            type: String,
+            default: null
+          },
+
           enableGeolocation: {
             type: Boolean,
             default: false
@@ -48,12 +53,22 @@
         },
 
         mounted: function() {
-           this.autocomplete = new google.maps.places.Autocomplete(
+          const options = {
+            types: [this.types]
+          };
+
+          if (this.country) {
+            options.componentRestrictions = {
+              country: this.country
+            };
+          }
+
+          this.autocomplete = new google.maps.places.Autocomplete(
                 document.getElementById(this.id),
-                { types: [this.types] }
+                options
             );
 
-           this.autocomplete.addListener('place_changed', () => {
+          this.autocomplete.addListener('place_changed', () => {
 
                 let place = this.autocomplete.getPlace();
 
