@@ -14,6 +14,7 @@ I have tried to use different Vue Google Autocomplete components, but did not fi
 * Getting geolocation data (latitude, longitude) for found address object along with other address data (country, city, state, street, house number, zip code). So no need to do additional geocode request on backend side.
 * No external dependencies
 * You can get access to underlying [PlaceResult object](https://developers.google.com/maps/documentation/javascript/reference#PlaceResult) to get more details about found location.
+* You can limit results to specific country or use users geolocation data
 
 ## Installation
 
@@ -94,7 +95,7 @@ Types supported in place autocomplete requests. [More info](https://developers.g
 Type: `String`
 Default: null
 
-Option to restrict the autocomplete search to a particular country. Countries must be passed as as a two-character, ISO 3166-1 Alpha-2 compatible country code (i.e. "br", "sg", "fr").
+Option to restrict the autocomplete search to a particular country. Countries must be passed as a two-character, ISO 3166-1 Alpha-2 compatible country code (i.e. "br", "sg", "fr").
 
 
 #### enable-geolocation
@@ -138,7 +139,12 @@ Please note that you need to provide what method will listen (`v-on:placechanged
         },
 
         methods: {
-            getAddressData: function (addressData) {
+            /**
+            * When the location found
+            * @param {Object} addressData Data of the found location
+            * @param {Object} placeResultData PlaceResult object
+            */
+            getAddressData: function (addressData, placeResultData) {
                 this.address = addressData;
             }
         }
