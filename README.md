@@ -63,6 +63,7 @@ In your template you can use this syntax:
     classname="form-control"
     placeholder="Start typing"
     v-on:placechanged="getFromData"
+    v-on:focus="onFocus"
 >
 </vue-google-autocomplete>
 ```

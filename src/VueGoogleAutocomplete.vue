@@ -3,7 +3,7 @@
         :class="classname"
         :id="id"
         :placeholder="placeholder"
-        @focus = "geolocate()"
+        @focus = "onFocus()"
     />
 </template>
 
@@ -104,6 +104,10 @@
         },
 
         methods: {
+            onFocus() {
+              this.geolocate()
+              this.$emit('focus')
+            },
             // Bias the autocomplete object to the user's geographical location,
             // as supplied by the browser's 'navigator.geolocation' object.
             geolocate() {
