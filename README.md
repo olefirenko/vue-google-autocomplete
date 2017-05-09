@@ -62,8 +62,7 @@ In your template you can use this syntax:
     id="map"
     classname="form-control"
     placeholder="Start typing"
-    v-on:placechanged="getFromData"
-    v-on:focus="onFocus"
+    v-on:placechanged="getAddressData"
 >
 </vue-google-autocomplete>
 ```
@@ -98,14 +97,34 @@ Default: null
 
 Option to restrict the autocomplete search to a particular country. Countries must be passed as a two-character, ISO 3166-1 Alpha-2 compatible country code (i.e. "br", "sg", "fr").
 
-
 #### enable-geolocation
 Type: `Boolean`
 Default: `false`
 
 Bias the search towards user current location.
 
+### Events
+The component emits next events, which you can listen in your application:
 
+#### placechanged
+Gets triggered when the address data got obtained. This data is available on the returned objects:
+* `street_number`, `route`, `locality`, `administrative_area_level_1`, `country`, `postal_code`, `latitude`, `longitude`.
+* `place` - [PlaceResult object](https://developers.google.com/maps/documentation/javascript/reference#PlaceResult) is available as second parameter.
+
+#### no-results-found
+Gets triggered when a user entered the name of a Place that was not suggested and pressed the Enter key, or the Place Details request failed.
+
+#### focus
+Gets triggered when the autocomplete input field receives focus.
+
+#### blur
+Gets triggered when the autocomplete input field loses focus.
+
+#### change
+Gets triggered when the autocomplete input got changed
+
+#### keypress
+Gets triggered when a key gets pressed
 
 ### Example
 

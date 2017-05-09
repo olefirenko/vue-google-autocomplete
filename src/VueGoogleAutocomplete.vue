@@ -3,7 +3,11 @@
         :class="classname"
         :id="id"
         :placeholder="placeholder"
-        @focus = "onFocus()"
+        v-model="autocompleteText"
+        @focus="onFocus()"
+        @blur="onBlur()"
+        @change="onChange"
+        @keypress="onKeyPress"
     />
 </template>
 
@@ -48,7 +52,13 @@
                  * @type {Autocomplete}
                  * @link https://developers.google.com/maps/documentation/javascript/reference#Autocomplete
                  */
-                autocomplete: null
+                autocomplete: null,
+
+                /**
+                 * Autocomplete input text
+                 * @type {String}
+                 */
+                autocompleteText: '',
             }
         },
 
@@ -71,6 +81,13 @@
           this.autocomplete.addListener('place_changed', () => {
 
                 let place = this.autocomplete.getPlace();
+
+                if (!place.geometry) {
+                  // User entered the name of a Place that was not suggested and
+                  // pressed the Enter key, or the Place Details request failed.
+                  this.$emit('no-results-found', place);
+                  return;
+                }
 
                 let addressComponents = {
                     street_number: 'short_name',
@@ -98,16 +115,42 @@
                     returnData['longitude'] = place.geometry.location.lng();
 
                     // return returnData object and PlaceResult object
-                    this.$emit('placechanged', returnData, this.autocomplete.getPlace());
+                    this.$emit('placechanged', returnData, place);
                 }
            });
         },
 
         methods: {
+            /**
+             * When the input gets focus
+             */
             onFocus() {
-              this.geolocate()
-              this.$emit('focus')
+              this.geolocate();
+              this.$emit('focus');
             },
+
+            /**
+             * When the input loses focus
+             */
+            onBlur() {
+              this.$emit('blur');
+            },
+
+            /**
+             * When the input got changed
+             */
+            onChange() {
+              this.$emit('change', this.autocompleteText);
+            },
+
+            /**
+             * When a key gets pressed
+             * @param  {Event} event A keypress event
+             */
+            onKeyPress(event) {
+              this.$emit('keypress', event);
+            },
+
             // Bias the autocomplete object to the user's geographical location,
             // as supplied by the browser's 'navigator.geolocation' object.
             geolocate() {
