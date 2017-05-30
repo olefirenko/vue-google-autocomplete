@@ -1,5 +1,6 @@
 <template>
     <input
+        type="text"
         :class="classname"
         :id="id"
         :placeholder="placeholder"
