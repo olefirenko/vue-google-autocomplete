@@ -1,5 +1,6 @@
 <template>
     <input
+        ref="autocomplete"
         type="text"
         :class="classname"
         :id="id"
@@ -150,6 +151,35 @@
              */
             onKeyPress(event) {
               this.$emit('keypress', event);
+            },
+
+            /**
+             * Clear the input
+             */
+            clear() {
+              this.autocompleteText = ''
+            },
+
+            /**
+             * Focus the input
+             */
+            focus() {
+              this.$refs.autocomplete.focus()
+            },
+
+            /**
+             * Blur the input
+             */
+            blur() {
+              this.$refs.autocomplete.blur()
+            },
+
+            /**
+             * Update the value of the input
+             * @param  {String} value
+             */
+            update (value) {
+              this.autocompleteText = value
             },
 
             // Bias the autocomplete object to the user's geographical location,

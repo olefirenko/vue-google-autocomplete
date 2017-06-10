@@ -126,6 +126,27 @@ Gets triggered when the autocomplete input got changed
 #### keypress
 Gets triggered when a key gets pressed
 
+### Exposed component functions
+
+These functions are accessible by setting "ref" on the component ([Refs documentation](https://vuejs.org/v2/guide/components.html#Child-Component-Refs)). See example below how to use these functions.
+
+#### clear()
+
+Call to clear the value of the user input.
+
+#### focus()
+
+Call focus to focus on the element
+
+#### blur()
+
+Call blur to blur (unfocus) the element
+
+#### update(value)
+
+Call to update the user input with a new value
+
+
 ### Example
 
 Please note that you need to provide what method will listen (`v-on:placechanged`) to an event when the address data is obtained.
@@ -136,6 +157,7 @@ Please note that you need to provide what method will listen (`v-on:placechanged
         <h2>Your Address</h2>
 
         <vue-google-autocomplete
+            ref="address"
             id="map"
             classname="form-control"
             placeholder="Please type your address"
@@ -156,6 +178,12 @@ Please note that you need to provide what method will listen (`v-on:placechanged
             return {
               address: ''
             }
+        },
+
+        mounted() {
+            // To demonstrate functionality of exposed component functions
+            // Here we make focus on the user input
+            this.$refs.address.focus();
         },
 
         methods: {
