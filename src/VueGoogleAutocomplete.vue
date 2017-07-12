@@ -112,7 +112,7 @@
                             returnData[addressType] = val;
                       }
                     }
-
+                    returnData['place_id'] = place.place_id;
                     returnData['latitude'] = place.geometry.location.lat();
                     returnData['longitude'] = place.geometry.location.lng();
 
