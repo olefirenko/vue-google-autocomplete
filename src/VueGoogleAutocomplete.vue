@@ -117,7 +117,7 @@
                     returnData['longitude'] = place.geometry.location.lng();
 
                     // return returnData object and PlaceResult object
-                    this.$emit('placechanged', returnData, place);
+                    this.$emit('placechanged', returnData, place, this.id);
                 }
            });
         },
