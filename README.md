@@ -57,7 +57,7 @@ import VueGoogleAutocomplete from 'vue-google-autocomplete'
 ```
 
 In your template you can use this syntax:
-```
+```html
 <vue-google-autocomplete
     id="map"
     classname="form-control"
@@ -151,7 +151,7 @@ Call to update the user input with a new value
 
 Please note that you need to provide what method will listen (`v-on:placechanged`) to an event when the address data is obtained.
 
-```js
+```html
 <template>
     <div>
         <h2>Your Address</h2>

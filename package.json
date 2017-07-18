@@ -24,11 +24,6 @@
     "deploy:example": "gh-pages -d example/dist",
     "test": "NODE_PATH=test ava --verbose"
   },
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
-  },
   "ava": {
     "require": [
       "babel-register",
