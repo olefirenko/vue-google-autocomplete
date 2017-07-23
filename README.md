@@ -92,10 +92,10 @@ Default: `address`
 Types supported in place autocomplete requests. [More info](https://developers.google.com/places/supported_types#table3)
 
 #### country
-Type: `String`
+Type: `String`|`Array`
 Default: null
 
-Option to restrict the autocomplete search to a particular country. Countries must be passed as a two-character, ISO 3166-1 Alpha-2 compatible country code (i.e. "br", "sg", "fr").
+Option to restrict the autocomplete search to a particular country. Countries must be passed as a two-character, ISO 3166-1 Alpha-2 compatible country code (i.e. "br", "sg", "fr"). You can provide a single one, or an array of up to 5 country code strings.
 
 #### enable-geolocation
 Type: `Boolean`
