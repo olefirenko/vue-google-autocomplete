@@ -65,10 +65,12 @@
         },
 
         mounted: function() {
-          const options = {
-            types: [this.types]
-          };
+          const options = {};
 
+          if (this.types) {
+            options.types = [this.types];
+          }
+          
           if (this.country) {
             options.componentRestrictions = {
               country: this.country
