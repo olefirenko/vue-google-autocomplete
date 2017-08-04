@@ -1,10 +1,13 @@
 import Vue from 'vue';
-import VueGoogleAutocomplete from './../../src/VueGoogleAutocomplete.vue';
+import Vuetify from 'vuetify';
+import VuetifyGoogleAutocomplete from './../../src/VuetifyGoogleAutocomplete.vue';
+
+Vue.use(Vuetify);
 
 const app = new Vue({
     el: '#app',
 
-    components: { VueGoogleAutocomplete },
+    components: { VuetifyGoogleAutocomplete },
 
     data: {
         address: ''
@@ -12,7 +15,8 @@ const app = new Vue({
 
     methods: {
         /**
-        * When the location found
+        * Callback method when the location is found.
+        *
         * @param {Object} addressData Data of the found location
         * @param {Object} placeResultData PlaceResult object
         */
