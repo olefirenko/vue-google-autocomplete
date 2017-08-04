@@ -10,7 +10,7 @@ const app = new Vue({
     components: { VuetifyGoogleAutocomplete },
 
     data: {
-        address: ''
+        address: '',
     },
 
     methods: {

@@ -1,52 +1,84 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css" />
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe1exctmeJjIb4guyT6newSpyJ7kA3aLc&libraries=places"></script>
-</head>
+  <head>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyJUwEpWPLTDZrX9TVeq5m8vGQScqyZCA&libraries=places"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css">
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet" type="text/css">
+    <script src="https://use.fontawesome.com/7e9dc1e680.js"></script>
+  </head>
 <body>
-<section class="hero is-medium is-primary is-bold">
-    <div class="hero-body">
-        <div class="container">
-            <h1 class="title is-2">Vue Google Autocomplete</h1>
-            <h2 class="subtitle">A Vue.js autosuggest component for the Google Maps Places API</h2>
-        </div>
-    </div>
-</section>
-
-<section class="hero">
-    <div class="hero-body">
-        <div class="container" id="app">
-            <h3 class="title is-4">Start typing an address and below you will see found result</h3>
-            <p class="control">
-                <vue-google-autocomplete
+  <v-app id="app" standalone>
+    <main>
+      <v-card class="grey lighten-2" flat>
+        <v-container fluid>
+          <v-layout row>
+            <v-flex xs8>
+              <v-card flat height="300px">
+                <v-container>
+                  <vuetify-google-autocomplete
                     id="map"
                     classname="input"
                     placeholder="Start typing"
                     v-on:placechanged="getAddressData"
-                    country="sg"
-                >
-                </vue-google-autocomplete>
-            </p>
-
-            <div class="message is-success" v-show="address">
-                <div class="message-body">{{ address }}</div>
-            </div>
-        </div>
-    </div>
-</section>
-<footer class="footer">
-    <div class="container">
-        <div class="content">
-            <p>
-                <a href="https://github.com/olefirenko/vue-google-autocomplete">View project on GitHub</a>
-            </p>
-        </div>
-    </div>
-</footer>
-
-<script src="../dist/app.js"></script>
-
+                  >
+                  </vuetify-google-autocomplete>
+                </v-container>
+                <v-container>
+                  <v-layout row>
+                    <v-flex xs2>Result</v-flex>
+                      <v-flex xs10>
+                        <div class="message-body">{{ address }}</div>
+                      </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card>
+            </v-flex>
+            <v-flex xs4>
+              <v-card flat>
+                <v-toolbar flat dense class="white">
+                  <v-toolbar-title class="body-2">Code</v-toolbar-title>
+                </v-toolbar>
+                <v-list dense class="grey lighten-5">
+                  <v-list-tile>
+                    <v-list-tile-title>
+                      View on GitHub
+                      <v-icon>fa-github</v-icon>
+                    </v-list-tile-title>
+                  </v-list-tile>
+                </v-list>
+              </v-card>
+              <br>
+              <v-card flat>
+                <v-toolbar flat dense class="white">
+                  <v-toolbar-title class="body-2">Customization</v-toolbar-title>
+                </v-toolbar>
+                <v-list dense class="grey lighten-5">
+                  <v-list-tile>
+                    <v-list-tile-title>
+                      Heading 1
+                      <v-icon>arrow_drop_down</v-icon>
+                    </v-list-tile-title>
+                  </v-list-tile>
+                  <v-list-tile>
+                    <v-list-tile-title>
+                      Roboto
+                      <v-icon>arrow_drop_down</v-icon>
+                    </v-list-tile-title>
+                  </v-list-tile>
+                  <li>
+                    <v-btn-toggle
+                    :items="items"
+                    v-model="toggle"
+                    ></v-btn-toggle>
+                  </li>
+                </v-list>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-card>
+    </main>
+  </v-app>
+  <script src="../dist/app.js"></script>
 </body>
 </html>
