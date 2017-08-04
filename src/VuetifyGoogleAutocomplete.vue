@@ -1,21 +1,24 @@
 <template>
-    <input
-        ref="autocomplete"
-        type="text"
-        :class="classname"
-        :id="id"
-        :placeholder="placeholder"
-        v-model="autocompleteText"
-        @focus="onFocus()"
-        @blur="onBlur()"
-        @change="onChange"
-        @keypress="onKeyPress"
-    />
+    <v-text-field
+      :name="id"
+      :label="placeholder"
+      append-icon="search"
+      ref="autocomplete"
+      type="text"
+      :class="classname"
+      :id="id"
+      :placeholder="placeholder"
+      v-model="autocompleteText"
+      @focus="onFocus()"
+      @blur="onBlur()"
+      @change="onChange"
+      @keypress="onKeyPress"
+    /></v-text-field>
 </template>
 
 <script>
     export default {
-        name: 'VueGoogleAutocomplete',
+        name: 'VuetifyGoogleAutocomplete',
 
         props: {
           id: {
