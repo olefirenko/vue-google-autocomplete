@@ -1,18 +1,19 @@
 {
-  "name": "vue-google-autocomplete",
-  "version": "1.0.11",
-  "description": "Vue component to Google Places Autocomplete",
-  "main": "src/VueGoogleAutocomplete.vue",
-  "homepage": "https://github.com/olefirenko/vue-google-autocomplete",
+  "name": "vuetify-google-autocomplete",
+  "version": "1.0.0",
+  "description": "Vuetify ready Vue.jS component to Google Places Autocomplete",
+  "main": "src/VuetifyGoogleAutocomplete.vue",
+  "homepage": "https://github.com/MadimetjaShika/vuetify-google-autocomplete",
   "repository": {
     "type": "git",
-    "url": "https://github.com/olefirenko/vue-google-autocomplete.git"
+    "url": "https://github.com/MadimetjaShika/vuetify-google-autocomplete.git"
   },
   "peerDependencies": {
     "vue": ">=2"
   },
   "keywords": [
     "vue",
+    "vuetify",
     "google",
     "autocomplete"
   ],
@@ -31,6 +32,9 @@
     ]
   },
   "author": "Dmitriy Olefyrenko <dmitriy.olefirenko@gmail.com>",
+  "contributors": [
+    "Madi Shika <mmjshika@gmail.com>"
+  ],
   "license": "MIT",
   "devDependencies": {
     "ava": "^0.18.2",
@@ -41,6 +45,7 @@
     "laravel-mix": "^0.8.8",
     "vue": "^2.2.1",
     "vue-node": "^1.0.2",
+    "vuetify": "^0.14.8",
     "webpack": "^2.3.2"
   }
 }
