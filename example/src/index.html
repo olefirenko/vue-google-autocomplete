@@ -13,7 +13,8 @@
         <v-layout row>
             <v-flex xs12 style="min-height: 200px; background-image: linear-gradient(141deg,#009e6c 0,#00d1b2 71%,#00e7eb 100%);">
                 <v-container>
-                    <h4>Vuetify Google Autocomplete</h4>
+                    <h1 style="color: #fff;font-size: 2.75rem;font-weight: 300;line-height: 1.125;">Vuetify Google Autocomplete</h1>
+                    <h2 style="color: rgba(255,255,255,.9);margin-top: -1.25rem;font-size: 1.25rem; font-weight: 300; line-height: 1.25;">A Vuetify ready Vue.js autosuggest component for the Google Maps Places API. Based on <a href="#">Vue Google Component</a>.</h2>
                 </v-container>
             </v-flex>
         </v-layout>
@@ -22,10 +23,11 @@
             <v-flex xs8>
               <v-card flat height="300px">
                 <v-container>
+                  <p>Start typing an address to see result returned from Google.</p>
                   <vuetify-google-autocomplete
                     id="map"
                     classname="input"
-                    placeholder="Start typing"
+                    placeholder="Search Address"
                     v-on:placechanged="getAddressData"
                   >
                   </vuetify-google-autocomplete>
@@ -50,6 +52,12 @@
                     <v-list-tile-title>
                       View on GitHub
                       <v-icon>fa-github</v-icon>
+                    </v-list-tile-title>
+                  </v-list-tile>
+                  <v-list-tile>
+                    <v-list-tile-title>
+                      View on npm
+                      <v-icon>fa-code</v-icon>
                     </v-list-tile-title>
                   </v-list-tile>
                 </v-list>
