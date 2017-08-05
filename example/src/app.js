@@ -10,7 +10,28 @@ const app = new Vue({
     components: { VuetifyGoogleAutocomplete },
 
     data: {
-        address: 'N/A',
+        vueGoogleAutocompleteLink: 'https://github.com/olefirenko/vue-google-autocomplete',
+        gitHubLink: 'https://github.com/MadimetjaShika/vuetify-google-autocomplete',
+        npmLink: 'https://www.npmjs.com/package/vuetify-google-autocomplete',
+        address: {},
+        placeholderText: 'Search Address',
+        types: 'address',
+        typesOptions: [
+            'geocode',
+            'address',
+            'establishment',
+            'regions',
+            'cities',
+        ],
+        country: [],
+        countryOptions: [
+            'br',
+            'sg',
+            'fr',
+            'za',
+            'mx'
+        ],
+        enableGeolocation: false,
     },
 
     methods: {
