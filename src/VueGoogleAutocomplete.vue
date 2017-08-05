@@ -64,6 +64,12 @@
             }
         },
 
+        watch: {
+            autocompleteText: function (newVal, oldVal) {
+	            this.$emit('inputChange', { newVal, oldVal });
+            }
+        },
+
         mounted: function() {
           const options = {};
 

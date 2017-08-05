@@ -125,8 +125,11 @@ Gets triggered when the autocomplete input field receives focus.
 #### blur
 Gets triggered when the autocomplete input field loses focus.
 
+#### inputChange
+Gets triggered every time autocomplete input got changed
+
 #### change
-Gets triggered when the autocomplete input got changed
+Gets triggered when the autocomplete results got changed
 
 #### keypress
 Gets triggered when a key gets pressed
@@ -204,4 +207,3 @@ Please note that you need to provide what method will listen (`v-on:placechanged
     }
 </script>
 ```
-
