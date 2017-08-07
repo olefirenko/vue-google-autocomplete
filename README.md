@@ -202,3 +202,38 @@ Please note that you need to provide what method will listen (`v-on:placechanged
     }
 </script>
 ```
+
+## Contributing
+
+Lets make this an awesome vuetify component! Collaborations and contributions are welcome!
+
+[code of conduct]: https://thoughtbot.com/open-source-code-of-conduct
+
+### Contribution Guidlines
+
+Have a read through the [Contributor Code of Conduct](https://github.com/MadimetjaShika/vuetify-google-autocomplete/blob/master/CODE_OF_CONDUCT.md). Pretty standard, nothing hectic.
+
+Fork, then clone the repo:
+
+    git clone git@github.com:your-username/vuetify-google-autocomplete.git
+
+Install dependencies with **npm**
+
+    npm install 
+    
+   or **yarn**
+    
+    yarn
+
+
+Make your changes and ensure tests are written for your changes. Ensure that your changes pass all the tests:
+
+    npm run test
+    
+If relevant, please ensure that you update the README and demo/example accordingly.
+
+Push to your fork and [submit a pull request](https://github.com/MadimetjaShika/vuetify-google-autocomplete/compare/).
+
+If all is well, your changes will be merged timeously!
+
+Feel free to also post issues for bug fixes or enhancements or anything.
