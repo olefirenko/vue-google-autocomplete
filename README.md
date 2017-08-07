@@ -80,6 +80,12 @@ Default: `Start typing`
 
 The input field will get this placeholder text.
 
+#### disabled
+Type: `Boolean`
+Default: `false`
+
+Sets the input as either disabled or not.
+
 #### types
 Type: `String`
 Default: `address`

@@ -8,11 +8,11 @@ Vue.use(Vuetify);
 
 window.google = global.google = googleStub();
 
-test('that it has a mounted hook', t => {
+test('test that it has a mounted hook', t => {
     t.is(typeof VuetifyGoogleAutocomplete.mounted, 'function');
 });
 
-test('that it renders a parent div tag', t => {
+test('test that it renders a parent div tag', t => {
     let Constructor = Vue.extend(VuetifyGoogleAutocomplete);
 
     let vm = new Constructor({ propsData: {
@@ -23,7 +23,7 @@ test('that it renders a parent div tag', t => {
     t.is(vm.$el._prevClass, 'input-group input-group--dirty input-group--append-icon input-group--placeholder input-group--text-field');
 });
 
-test('that it renders a label as child to parent div tag', t => {
+test('test that it renders a label as child to parent div tag', t => {
     let Constructor = Vue.extend(VuetifyGoogleAutocomplete);
 
     let vm = new Constructor({ propsData: {
@@ -33,7 +33,7 @@ test('that it renders a label as child to parent div tag', t => {
     t.is(vm.$el.children[0].nodeName, 'LABEL');
 });
 
-test('that it renders an input tag as grandchild to parent div tag', t => {
+test('test that it renders an input tag as grandchild to parent div tag', t => {
     let Constructor = Vue.extend(VuetifyGoogleAutocomplete);
 
     let vm = new Constructor({ propsData: {
@@ -44,7 +44,7 @@ test('that it renders an input tag as grandchild to parent div tag', t => {
     t.is(vm.$el.children[1].children[0].type, 'text');
 });
 
-test('that the input tag has the correct props', t => {
+test('test that the input tag has the correct props', t => {
     let Constructor = Vue.extend(VuetifyGoogleAutocomplete);
 
     let vm = new Constructor({ propsData: {
@@ -58,4 +58,27 @@ test('that the input tag has the correct props', t => {
     t.is(vm.$el.children[1].children[0].id, 'map');
     t.is(vm.$el.className, 'input-group input-group--dirty input-group--append-icon input-group--placeholder input-group--text-field form-control');
     t.is(vm.$el.children[1].children[0].placeholder, 'Start typing');
+});
+
+test('test that the input is disabled if disabled prop is given as true', t => {
+    let Constructor = Vue.extend(VuetifyGoogleAutocomplete);
+
+    let vm = new Constructor({ propsData: {
+        'name': 'map',
+        'id': 'map',
+        'disabled': true
+    }}).$mount();
+
+    t.is(vm.$el.children[1].children[0].disabled, true);
+});
+
+test('test that the input is not disabled if disabled prop is not given', t => {
+    let Constructor = Vue.extend(VuetifyGoogleAutocomplete);
+
+    let vm = new Constructor({ propsData: {
+        'name': 'map',
+        'id': 'map',
+    }}).$mount();
+
+    t.is(vm.$el.children[1].children[0].disabled, false);
 });
