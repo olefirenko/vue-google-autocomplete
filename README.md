@@ -10,7 +10,7 @@ Huge thanks and credit goes to [@olefirenko](https://github.com/olefirenko) and 
 
 ## Demo
 
-Live demo: [madimetjashika.github.io/vuetify-google-autocomplete](https://madimetjashika.github.io/vuetify-google-autocomplete/)
+Live Interactive demo: [madimetjashika.github.io/vuetify-google-autocomplete](https://madimetjashika.github.io/vuetify-google-autocomplete/)
 
 ## Installation
 

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuetify from 'vuetify';
 import VueClipboards from 'vue-clipboards';
 import VuetifyGoogleAutocomplete from './../../src/VuetifyGoogleAutocomplete.vue';
+import countryCodeList from './countrycode.json';
 
 Vue.use(Vuetify);
 Vue.use(VueClipboards);
@@ -20,6 +21,10 @@ const app = new Vue({
       visible: '',
       context: '',
     },
+    errorAlert: {
+        message: '',
+        visible: false,
+    },
     address: {},
     disabled: false,
     id: 'map',
@@ -37,20 +42,27 @@ const app = new Vue({
       'cities',
     ],
     country: [],
-    countryOptions: [
-      'br',
-      'sg',
-      'fr',
-      'za',
-      'mx'
-    ],
+    countryOptions: countryCodeList,
     enableGeolocation: false,
   },
 
   computed: {
+    countryValidationRules: function(){
+      if(this.country.length > 5){
+        this.disabled = true;
+        this.errorAlert.visible = true;
+        this.errorAlert.message = 'Please select a max of 5 countries.'
+        return 'Please select max of 5 countries.';
+      }else{
+        this.disabled = false;
+        this.errorAlert.visible = false;
+        return true;
+      }
+    },
+
     outputHtml: function(){
       return `<vuetify-google-autocomplete
-  id="${this.id}"
+  :id="${this.id}"
   :append-icon="${this.appendIcon}"
   :prepend-icon="${this.prependIcon}"
   :classname="${this.classname}"
@@ -58,8 +70,8 @@ const app = new Vue({
   :disabled="${this.disabled}"
   :enable-geolocation="${this.enableGeolocation}"
   :types="${this.types}"
-  :country="${this.country}"
-  :placechanged="${this.callbackFunction}">
+  :country="[${this.country}]"
+  v-on:placechanged="${this.callbackFunction}">
 </vuetify-google-autocomplete>`;
     },
 
@@ -122,5 +134,5 @@ ${this.outputJsCallback}`;
       this.snackbar.context = 'error';
       this.snackbar.visible = true;
     },
-  }
+  },
 });
