@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Vuetify Google Autocomplete</title>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyJUwEpWPLTDZrX9TVeq5m8vGQScqyZCA&libraries=places"></script>
   <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css">
   <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet" type="text/css">
@@ -26,11 +27,14 @@
                   <p>Start typing an address to see the result returned from Google.</p>
                   <vuetify-google-autocomplete
                     id="map"
-                    classname="input"
+                    :append-icon="appendIcon"
+                    :prepend-icon="prependIcon"
+                    :classname="classname"
                     :placeholder="placeholderText"
+                    :disabled="disabled"
+                    :enable-geolocation="enableGeolocation"
                     :types="types"
                     :country="country"
-                    :enable-geolocation="enableGeolocation"
                     v-on:placechanged="getAddressData"
                   >
                   </vuetify-google-autocomplete>
@@ -44,18 +48,46 @@
                   </v-layout>
                 </v-container>
               </v-card>
+              <br>
+              <v-card flat height="300px">
+                <v-toolbar flat dense class="grey lighten-1">
+                  <v-toolbar-title class="body-2" style="color: white;">Generated HTML</v-toolbar-title>
+                  <v-spacer></v-spacer>
+                  <v-btn v-clipboard="outputHtml" @success="handleCodeCopySuccess('HTML')" @error="handleCodeCopyError('HTML')" icon>
+                    <v-icon>content_copy</v-icon>
+                  </v-btn>
+                </v-toolbar>
+                <v-container>
+                  <pre><code style="width: 100%;">{{ outputHtml }}</code></pre>
+                </v-container>
+              </v-card>
+              <br>
+              <v-card flat>
+                <v-toolbar flat dense class="grey lighten-1">
+                  <v-toolbar-title class="body-2" style="color: white;">Generated JS</v-toolbar-title>
+                  <v-spacer></v-spacer>
+                  <v-btn v-clipboard="outputJs" @success="handleCodeCopySuccess('JS')" @error="handleCodeCopyError('JS')" icon>
+                    <v-icon>content_copy</v-icon>
+                  </v-btn>
+                </v-toolbar>
+                <v-container>
+                  <pre><code style="width: 100%;">{{ outputJsData }}</code></pre>
+                  <br>
+                  <pre><code style="width: 100%;">{{ outputJsCallback }}</code></pre>
+                </v-container>
+              </v-card>
             </v-flex>
             <v-flex xs4>
               <v-card flat>
-                <v-toolbar flat dense class="black">
-                  <v-toolbar-title class="body-2" style="color: white;">Code</v-toolbar-title>
+                <v-toolbar flat dense class="grey lighten-1">
+                  <v-toolbar-title class="body-2" style="color: white;">Code Repositories</v-toolbar-title>
                 </v-toolbar>
                 <v-list dense class="grey lighten-5">
                   <v-list-tile>
                     <v-list-tile-title>
                       <a :href="gitHubLink" style="text-decoration: none; color: black;">
                         View on GitHub
-                        <v-icon>fa-github</v-icon>
+                        <v-icon class="black--text">fa-github</v-icon>
                       </a>
                     </v-list-tile-title>
                   </v-list-tile>
@@ -63,7 +95,7 @@
                     <v-list-tile-title>
                       <a :href="npmLink" style="text-decoration: none; color: black;">
                         View on npm
-                        <v-icon>fa-code</v-icon>
+                        <img class="icon icons8-NPM" width="40" height="40" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAA6ElEQVRoQ+2Yaw7CIBCEl+vo/Y+i16kxMVETmgGGLW3y9S/dgXkshZa4+FMuvv6AwGoHcQAHTAWIkCmgXY4DtoQmAA6YAtrlOGBLaAKUR8RmYiwth8BS+SPiz4Hb1pamZ/n2fmbNnji/80Pg9A7U4qIiNKvmHSGFJSOkAGoOzKqBQIsCOPDZK/f6SsUxpQdq+/dI47ckAAKzvgNTIjRyrlFNPILZU2OfRiHQI3fl3aErZc8l6B65f8AhoBJwSgfUoo8cH4rQkQtUc0FAKZQ9jgPZCit8HFAKZY/jQLbCCh8HlELZ45d34AVLqehFzhuaFgAAAABJRU5ErkJggg==">
                       </a>
                     </v-list-tile-title>
                   </v-list-tile>
@@ -72,16 +104,22 @@
               <br>
               <v-card>
                 <v-card-row class="orange darken-1">
-                  <v-toolbar flat dense class="black">
-                    <v-toolbar-title class="body-2" style="color: white;">Customization</v-toolbar-title>
+                  <v-toolbar flat dense class="grey lighten-1">
+                    <v-toolbar-title class="body-2" style="color: white;">Properties</v-toolbar-title>
                   </v-toolbar>
                 </v-card-row>
                 <v-card-text>
                   <v-card-row>
-                    <v-text-field label="Placeholder Text" v-model="placeholderText"></v-text-field>    
+                    <v-text-field label="id" v-model="id"></v-text-field>
+                    <v-text-field label="append-icon" v-model="appendIcon"></v-text-field>
+                    <v-text-field label="prepend-icon" v-model="prependIcon"></v-text-field>
+                    <v-text-field label="classname" v-model="classname"></v-text-field>
+                    <v-text-field label="Placeholder Text" v-model="placeholderText"></v-text-field>
+                    <v-switch label="Disabled" v-model="disabled" color="secondary" hide-details></v-switch>  
                     <v-switch label="Enable Geolocation" v-model="enableGeolocation" color="secondary" hide-details></v-switch>
                     <v-select label="Types" v-bind:items="typesOptions" v-model="types" hint="Choose types" persistent-hint></v-select>
                     <v-select label="Countries" v-bind:items="countryOptions" v-model="country" multiple max-height="400" hint="Choose countries to limit search to" persistent-hint></v-select>
+                    <v-text-field label="Callback Function" v-model="callbackFunction"></v-text-field>
                   </v-card-row>
                 </v-card-text>
               </v-card>
@@ -89,6 +127,17 @@
           </v-layout>
         </v-container>
       </v-card>
+      <v-snackbar
+        :timeout="4000"
+        :success="snackbar.context === 'success'"
+        :info="snackbar.context === 'info'"
+        :warning="snackbar.context === 'warning'"
+        :error="snackbar.context === 'error'"
+        :primary="snackbar.context === 'primary'"
+        :secondary="snackbar.context === 'secondary'"
+        v-model="snackbar.visible"
+        >{{ snackbar.text }}<v-btn dark flat @click.native="snackbar.visible = false">Close</v-btn>
+      </v-snackbar>
     </main>
   </v-app>
   <script src="../dist/app.js"></script>

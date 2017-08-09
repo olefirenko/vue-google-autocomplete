@@ -2,11 +2,12 @@
     <v-text-field
       :name="id"
       :label="placeholder"
-      append-icon="search"
       ref="autocomplete"
       type="text"
       :class="classname"
       :id="id"
+      :append-icon="appendIcon"
+      :prepend-icon="prependIcon"
       :placeholder="placeholder"
       :disabled="disabled"
       v-model="autocompleteText"
@@ -24,34 +25,44 @@
         props: {
           id: {
             type: String,
-            required: true
+            required: true,
           },
 
           classname: String,
 
+          appendIcon: {
+            type: String,
+            default: null,
+          },
+
+          prependIcon: {
+            type: String,
+            default: null,
+          },
+
           placeholder: {
             type: String,
-            default: 'Start typing'
+            default: 'Search Address',
           },
 
           disabled: {
             type: Boolean,
-            default: false
+            default: false,
           },
 
           types: {
             type: String,
-            default: 'address'
+            default: 'address',
           },
 
           country: {
             type: [String, Array],
-            default: null
+            default: null,
           },
 
           enableGeolocation: {
             type: Boolean,
-            default: false
+            default: false,
           }
         },
 

@@ -2,6 +2,8 @@
 
 A Vuetify ready Vue.js (2.x) autosuggest component for the Google Maps Places API.
 
+**Latest Version: 1.0.3**
+
 ## Thanks
 
 Huge thanks and credit goes to [@olefirenko](https://github.com/olefirenko) and contributors for creating [Vue Google Autocomplete](https://github.com/olefirenko/vue-google-autocomplete) upon which this Vuetify ready version was built.
@@ -55,6 +57,8 @@ In your template you can use this syntax:
 ```html
 <vuetify-google-autocomplete
     id="map"
+    append-icon="search"
+    disabled="true"
     classname="form-control"
     placeholder="Start typing"
     v-on:placechanged="getAddressData"
@@ -69,6 +73,18 @@ Type: `String`
 
 `required` ID for the input container.
 
+#### append-icon
+Type: `String`
+Default: `null`
+
+The icon to append to the end of the input field.
+
+#### prepend-icon
+Type: `String`
+Default: `null`
+
+The icon to prepend at the beginning of the input field.
+
 #### classname
 Type: `String`
 
@@ -76,9 +92,9 @@ Class to the input container.
 
 #### placeholder
 Type: `String`
-Default: `Start typing`
+Default: `Search Address`
 
-The input field will get this placeholder text.
+The input field will get this placeholder text. Note that the input field will also get a label  with the same text.
 
 #### disabled
 Type: `Boolean`
