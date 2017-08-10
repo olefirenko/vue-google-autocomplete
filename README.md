@@ -2,7 +2,7 @@
 
 A Vuetify ready Vue.js (2.x) autosuggest component for the Google Maps Places API.
 
-**Latest Version: 1.0.3**
+**Latest Version: 1.0.4**
 
 ## Thanks
 
