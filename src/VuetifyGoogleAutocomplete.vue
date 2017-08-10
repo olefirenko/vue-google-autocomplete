@@ -1,5 +1,7 @@
 <template>
     <v-text-field
+      hide-details
+      single-line
       :name="id"
       :label="placeholder"
       ref="autocomplete"
