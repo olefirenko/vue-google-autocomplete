@@ -12,7 +12,7 @@ test('test that it has a mounted hook', t => {
     t.is(typeof VuetifyGoogleAutocomplete.mounted, 'function');
 });
 
-test('test that it renders a parent div tag', t => {
+test('test that it renders a parent div tag with correct classes', t => {
     let Constructor = Vue.extend(VuetifyGoogleAutocomplete);
 
     let vm = new Constructor({ propsData: {
@@ -20,7 +20,7 @@ test('test that it renders a parent div tag', t => {
     }}).$mount();
 
     t.is(vm.$el.nodeName, 'DIV');
-    t.is(vm.$el._prevClass, 'input-group input-group--dirty input-group--append-icon input-group--placeholder input-group--text-field');
+    t.is(vm.$el._prevClass, 'input-group input-group--dirty input-group--hide-details input-group--placeholder input-group--text-field input-group--single-line');
 });
 
 test('test that it renders a label as child to parent div tag', t => {
@@ -56,7 +56,7 @@ test('test that the input tag has the correct props', t => {
 
     t.is(vm.$el.children[1].children[0].name, 'map');
     t.is(vm.$el.children[1].children[0].id, 'map');
-    t.is(vm.$el.className, 'input-group input-group--dirty input-group--append-icon input-group--placeholder input-group--text-field form-control');
+    t.is(vm.$el.className, 'input-group input-group--dirty input-group--hide-details input-group--placeholder input-group--text-field input-group--single-line form-control');
     t.is(vm.$el.children[1].children[0].placeholder, 'Start typing');
 });
 
