@@ -1,52 +1,146 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css" />
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe1exctmeJjIb4guyT6newSpyJ7kA3aLc&libraries=places"></script>
+  <title>Vuetify Google Autocomplete</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyJUwEpWPLTDZrX9TVeq5m8vGQScqyZCA&libraries=places"></script>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css">
+  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet" type="text/css">
+  <script src="https://use.fontawesome.com/7e9dc1e680.js"></script>
 </head>
 <body>
-<section class="hero is-medium is-primary is-bold">
-    <div class="hero-body">
-        <div class="container">
-            <h1 class="title is-2">Vue Google Autocomplete</h1>
-            <h2 class="subtitle">A Vue.js autosuggest component for the Google Maps Places API</h2>
-        </div>
-    </div>
-</section>
-
-<section class="hero">
-    <div class="hero-body">
-        <div class="container" id="app">
-            <h3 class="title is-4">Start typing an address and below you will see found result</h3>
-            <p class="control">
-                <vue-google-autocomplete
-                    id="map"
-                    classname="input"
-                    placeholder="Start typing"
+  <v-app id="app" standalone>
+    <main>
+      <v-card class="grey lighten-2" flat>
+        <v-layout row>
+            <v-flex xs12 style="min-height: 200px; background-image: linear-gradient(141deg,#009e6c 0,#00d1b2 71%,#00e7eb 100%);">
+                <v-container>
+                    <h1 style="color: #fff;font-size: 2.75rem;font-weight: 300;line-height: 1.125;">Vuetify Google Autocomplete</h1>
+                    <h2 style="color: rgba(255,255,255,.9);margin-top: -1.25rem;font-size: 1.25rem; font-weight: 300; line-height: 1.25;">A Vuetify ready Vue.js autosuggest component for the Google Maps Places API. Based on <a :href="vueGoogleAutocompleteLink">Vue Google Autocomplete</a>.</h2>
+                </v-container>
+            </v-flex>
+        </v-layout>
+        <v-container fluid>
+          <v-layout row>
+            <v-flex xs8>
+              <v-card flat height="314px">
+                <v-container>
+                  <v-alert error v-model="errorAlert.visible">{{ errorAlert.message }}</v-alert>
+                  <p>Start typing an address to see the result returned from Google.</p>
+                  <vuetify-google-autocomplete
+                    :id="id"
+                    :append-icon="appendIcon"
+                    :prepend-icon="prependIcon"
+                    :classname="classname"
+                    :placeholder="placeholderText"
+                    :disabled="disabled"
+                    :enable-geolocation="enableGeolocation"
+                    :types="types"
+                    :country="country"
                     v-on:placechanged="getAddressData"
-                    country="sg"
-                >
-                </vue-google-autocomplete>
-            </p>
-
-            <div class="message is-success" v-show="address">
-                <div class="message-body">{{ address }}</div>
-            </div>
-        </div>
-    </div>
-</section>
-<footer class="footer">
-    <div class="container">
-        <div class="content">
-            <p>
-                <a href="https://github.com/olefirenko/vue-google-autocomplete">View project on GitHub</a>
-            </p>
-        </div>
-    </div>
-</footer>
-
-<script src="../dist/app.js"></script>
-
+                  >
+                  </vuetify-google-autocomplete>
+                </v-container>
+                <v-container>
+                  <v-layout row>
+                    <v-flex xs2>Result:</v-flex>
+                      <v-flex xs10>
+                        <div class="message-body">{{ address }}</div>
+                      </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card>
+              <br>
+              <v-card flat height="300px">
+                <v-toolbar flat dense class="grey lighten-1">
+                  <v-toolbar-title class="body-2" style="color: white;">Generated HTML</v-toolbar-title>
+                  <v-spacer></v-spacer>
+                  <v-btn v-tooltip:bottom="{ html: 'Copy HTML' }" v-clipboard="outputHtml" @success="handleCodeCopySuccess('HTML')" @error="handleCodeCopyError('HTML')" icon>
+                    <v-icon>content_copy</v-icon>
+                  </v-btn>
+                </v-toolbar>
+                <v-container>
+                  <pre><code style="width: 100%;">{{ outputHtml }}</code></pre>
+                </v-container>
+              </v-card>
+              <br>
+              <v-card flat>
+                <v-toolbar flat dense class="grey lighten-1">
+                  <v-toolbar-title class="body-2" style="color: white;">Generated JS</v-toolbar-title>
+                  <v-spacer></v-spacer>
+                  <v-btn v-tooltip:bottom="{ html: 'Copy JS' }" v-clipboard="outputJs" @success="handleCodeCopySuccess('JS')" @error="handleCodeCopyError('JS')" icon>
+                    <v-icon>content_copy</v-icon>
+                  </v-btn>
+                </v-toolbar>
+                <v-container>
+                  <pre><code style="width: 100%;">{{ outputJsData }}</code></pre>
+                  <br>
+                  <pre><code style="width: 100%;">{{ outputJsCallback }}</code></pre>
+                </v-container>
+              </v-card>
+            </v-flex>
+            <v-flex xs4>
+              <v-card flat>
+                <v-toolbar flat dense class="grey lighten-1">
+                  <v-toolbar-title class="body-2" style="color: white;">Code Repositories</v-toolbar-title>
+                </v-toolbar>
+                <v-list dense class="grey lighten-5">
+                  <v-list-tile>
+                    <v-list-tile-title>
+                      <a :href="gitHubLink" style="text-decoration: none; color: black;">
+                        View on GitHub
+                        <v-icon class="black--text">fa-github</v-icon>
+                      </a>
+                    </v-list-tile-title>
+                  </v-list-tile>
+                  <v-list-tile>
+                    <v-list-tile-title>
+                      <a :href="npmLink" style="text-decoration: none; color: black;">
+                        View on npm
+                        <img class="icon icons8-NPM" width="40" height="40" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAA6ElEQVRoQ+2Yaw7CIBCEl+vo/Y+i16kxMVETmgGGLW3y9S/dgXkshZa4+FMuvv6AwGoHcQAHTAWIkCmgXY4DtoQmAA6YAtrlOGBLaAKUR8RmYiwth8BS+SPiz4Hb1pamZ/n2fmbNnji/80Pg9A7U4qIiNKvmHSGFJSOkAGoOzKqBQIsCOPDZK/f6SsUxpQdq+/dI47ckAAKzvgNTIjRyrlFNPILZU2OfRiHQI3fl3aErZc8l6B65f8AhoBJwSgfUoo8cH4rQkQtUc0FAKZQ9jgPZCit8HFAKZY/jQLbCCh8HlELZ45d34AVLqehFzhuaFgAAAABJRU5ErkJggg==">
+                      </a>
+                    </v-list-tile-title>
+                  </v-list-tile>
+                </v-list>
+              </v-card>
+              <br>
+              <v-card>
+                <v-card-row class="orange darken-1">
+                  <v-toolbar flat dense class="grey lighten-1">
+                    <v-toolbar-title class="body-2" style="color: white;">Properties</v-toolbar-title>
+                  </v-toolbar>
+                </v-card-row>
+                <v-card-text>
+                  <v-card-row>
+                    <v-text-field label="id" v-model="id"></v-text-field>
+                    <v-text-field label="append-icon" v-model="appendIcon"></v-text-field>
+                    <v-text-field label="prepend-icon" v-model="prependIcon"></v-text-field>
+                    <v-text-field label="classname" v-model="classname"></v-text-field>
+                    <v-text-field label="Placeholder Text" v-model="placeholderText"></v-text-field>
+                    <v-switch label="Disabled" v-model="disabled" color="secondary" hide-details></v-switch>  
+                    <v-switch label="Enable Geolocation" v-model="enableGeolocation" color="secondary" hide-details></v-switch>
+                    <v-select label="Types" v-bind:items="typesOptions" v-model="types" hint="Choose types" persistent-hint></v-select>
+                    <v-select label="Countries" v-bind:items="countryOptions" item-text="Name" item-value="Code" v-model="country" multiple max-height="400" hint="Choose countries to limit search to" :rules="[countryValidationRules]" persistent-hint></v-select>
+                    <v-text-field label="Callback Function" v-model="callbackFunction"></v-text-field>
+                  </v-card-row>
+                </v-card-text>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-card>
+      <v-snackbar
+        :timeout="4000"
+        :success="snackbar.context === 'success'"
+        :info="snackbar.context === 'info'"
+        :warning="snackbar.context === 'warning'"
+        :error="snackbar.context === 'error'"
+        :primary="snackbar.context === 'primary'"
+        :secondary="snackbar.context === 'secondary'"
+        v-model="snackbar.visible"
+        >{{ snackbar.text }}<v-btn dark flat @click.native="snackbar.visible = false">Close</v-btn>
+      </v-snackbar>
+    </main>
+  </v-app>
+  <script src="../dist/app.js"></script>
 </body>
 </html>

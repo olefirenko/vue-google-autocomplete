@@ -1,48 +1,70 @@
 <template>
-    <input
-        ref="autocomplete"
-        type="text"
-        :class="classname"
-        :id="id"
-        :placeholder="placeholder"
-        v-model="autocompleteText"
-        @focus="onFocus()"
-        @blur="onBlur()"
-        @change="onChange"
-        @keypress="onKeyPress"
-    />
+    <v-text-field
+      hide-details
+      single-line
+      :name="id"
+      :label="placeholder"
+      ref="autocomplete"
+      type="text"
+      :class="classname"
+      :id="id"
+      :append-icon="appendIcon"
+      :prepend-icon="prependIcon"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      v-model="autocompleteText"
+      @focus="onFocus()"
+      @blur="onBlur()"
+      @change="onChange"
+      @keypress="onKeyPress"
+    /></v-text-field>
 </template>
 
 <script>
     export default {
-        name: 'VueGoogleAutocomplete',
+        name: 'VuetifyGoogleAutocomplete',
 
         props: {
           id: {
             type: String,
-            required: true
+            required: true,
           },
 
           classname: String,
 
+          appendIcon: {
+            type: String,
+            default: null,
+          },
+
+          prependIcon: {
+            type: String,
+            default: null,
+          },
+
           placeholder: {
             type: String,
-            default: 'Start typing'
+            default: 'Search Address',
+          },
+
+          disabled: {
+            type: Boolean,
+            default: false,
           },
 
           types: {
             type: String,
-            default: 'address'
+            default: 'address',
           },
 
           country: {
             type: [String, Array],
-            default: null
+            default: null,
           },
 
           enableGeolocation: {
             type: Boolean,
-            default: false
+            default: false,
           }
         },
 
