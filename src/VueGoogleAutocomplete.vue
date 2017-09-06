@@ -126,6 +126,10 @@
 
                     // return returnData object and PlaceResult object
                     this.$emit('placechanged', returnData, place, this.id);
+
+                    // update autocompleteText then emit change event
+                    this.autocompleteText = document.getElementById(this.id).value
+                    this.onChange()
                 }
            });
         },
