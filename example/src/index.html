@@ -19,9 +19,9 @@
                 </v-container>
             </v-flex>
         </v-layout>
-        <v-container fluid>
-          <v-layout row>
-            <v-flex xs8>
+        <v-container grid-list-md>
+          <v-layout row wrap>
+            <v-flex xs6>
               <v-card flat height="314px">
                 <v-container>
                   <v-alert error v-model="errorAlert.visible">{{ errorAlert.message }}</v-alert>
@@ -59,7 +59,7 @@
                   </v-btn>
                 </v-toolbar>
                 <v-container>
-                  <pre><code style="width: 100%;">{{ outputHtml }}</code></pre>
+                  <pre><code style="width: 100%; overflow: auto;">{{ outputHtml }}</code></pre>
                 </v-container>
               </v-card>
               <br>
@@ -72,58 +72,51 @@
                   </v-btn>
                 </v-toolbar>
                 <v-container>
-                  <pre><code style="width: 100%;">{{ outputJsData }}</code></pre>
+                  <pre><code style="width: 100%; overflow: auto;">{{ outputJsData }}</code></pre>
                   <br>
-                  <pre><code style="width: 100%;">{{ outputJsCallback }}</code></pre>
+                  <pre><code style="width: 100%; overflow: auto;">{{ outputJsCallback }}</code></pre>
                 </v-container>
               </v-card>
             </v-flex>
-            <v-flex xs4>
+            <v-flex xs6>
               <v-card flat>
                 <v-toolbar flat dense class="grey lighten-1">
                   <v-toolbar-title class="body-2" style="color: white;">Code Repositories</v-toolbar-title>
                 </v-toolbar>
-                <v-list dense class="grey lighten-5">
-                  <v-list-tile>
-                    <v-list-tile-title>
-                      <a :href="gitHubLink" style="text-decoration: none; color: black;">
-                        View on GitHub
-                        <v-icon class="black--text">fa-github</v-icon>
-                      </a>
-                    </v-list-tile-title>
-                  </v-list-tile>
-                  <v-list-tile>
-                    <v-list-tile-title>
-                      <a :href="npmLink" style="text-decoration: none; color: black;">
-                        View on npm
-                        <img class="icon icons8-NPM" width="40" height="40" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAA6ElEQVRoQ+2Yaw7CIBCEl+vo/Y+i16kxMVETmgGGLW3y9S/dgXkshZa4+FMuvv6AwGoHcQAHTAWIkCmgXY4DtoQmAA6YAtrlOGBLaAKUR8RmYiwth8BS+SPiz4Hb1pamZ/n2fmbNnji/80Pg9A7U4qIiNKvmHSGFJSOkAGoOzKqBQIsCOPDZK/f6SsUxpQdq+/dI47ckAAKzvgNTIjRyrlFNPILZU2OfRiHQI3fl3aErZc8l6B65f8AhoBJwSgfUoo8cH4rQkQtUc0FAKZQ9jgPZCit8HFAKZY/jQLbCCh8HlELZ45d34AVLqehFzhuaFgAAAABJRU5ErkJggg==">
-                      </a>
-                    </v-list-tile-title>
-                  </v-list-tile>
+                <v-list two-line>
+                  <template v-for="repo in repos">
+                    <v-divider v-if="repo.divider" v-bind:inset="repo.inset"></v-divider>
+                    <v-list-tile avatar v-else v-bind:key="repo.title" :href="repo.link">
+                      <v-list-tile-avatar>
+                        <v-icon v-if="repo.isIcon" large>{{ repo.icon }}</v-icon>
+                        <img v-else v-bind:src="repo.icon" class="icon icons8-NPM" width="40" height="40"></v-list-tile-avatar>
+                      </v-list-tile-avatar>
+                      <v-list-tile-content>
+                        <v-list-tile-title v-html="repo.title"></v-list-tile-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                  </template>
                 </v-list>
               </v-card>
               <br>
               <v-card>
-                <v-card-row class="orange darken-1">
-                  <v-toolbar flat dense class="grey lighten-1">
-                    <v-toolbar-title class="body-2" style="color: white;">Properties</v-toolbar-title>
-                  </v-toolbar>
-                </v-card-row>
+                <v-toolbar flat dense class="grey lighten-1">
+                  <v-toolbar-title class="body-2" style="color: white;">Properties</v-toolbar-title>
+                </v-toolbar>
                 <v-card-text>
-                  <v-card-row>
-                    <v-text-field label="id" v-model="id"></v-text-field>
-                    <v-text-field label="append-icon" v-model="appendIcon"></v-text-field>
-                    <v-text-field label="prepend-icon" v-model="prependIcon"></v-text-field>
-                    <v-text-field label="classname" v-model="classname"></v-text-field>
-                    <v-text-field label="Placeholder Text" v-model="placeholderText"></v-text-field>
-                    <v-switch label="Disabled" v-model="disabled" color="secondary" hide-details></v-switch>  
-                    <v-switch label="Enable Geolocation" v-model="enableGeolocation" color="secondary" hide-details></v-switch>
-                    <v-select label="Types" v-bind:items="typesOptions" v-model="types" hint="Choose types" persistent-hint></v-select>
-                    <v-select label="Countries" v-bind:items="countryOptions" item-text="Name" item-value="Code" v-model="country" multiple max-height="400" hint="Choose countries to limit search to" :rules="[countryValidationRules]" persistent-hint></v-select>
-                    <v-text-field label="Callback Function" v-model="callbackFunction"></v-text-field>
-                  </v-card-row>
+                  <v-text-field label="id" v-model="id"></v-text-field>
+                  <v-text-field label="append-icon" v-model="appendIcon"></v-text-field>
+                  <v-text-field label="prepend-icon" v-model="prependIcon"></v-text-field>
+                  <v-text-field label="classname" v-model="classname"></v-text-field>
+                  <v-text-field label="Placeholder Text" v-model="placeholderText"></v-text-field>
+                  <v-switch label="Disabled" v-model="disabled" color="secondary" hide-details></v-switch>  
+                  <v-switch label="Enable Geolocation" v-model="enableGeolocation" color="secondary" hide-details></v-switch>
+                  <v-select label="Types" v-bind:items="typesOptions" v-model="types" hint="Choose types" persistent-hint></v-select>
+                  <v-select label="Countries" v-bind:items="countryOptions" item-text="Name" item-value="Code" v-model="country" multiple max-height="400" hint="Choose countries to limit search to" :rules="[countryValidationRules]" persistent-hint></v-select>
+                  <v-text-field label="Callback Function" v-model="callbackFunction"></v-text-field>
                 </v-card-text>
               </v-card>
+
             </v-flex>
           </v-layout>
         </v-container>
