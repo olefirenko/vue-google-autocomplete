@@ -111,13 +111,13 @@ Types supported in place autocomplete requests. [More info](https://developers.g
 #### country
 Type: `String`|`Array`
 Default: null
-Note: this is a dynamic property. You must pass it as `:country=""` to your component, otherwise it won't work. For example:
-```html
-<vue-google-autocomplete :country="['au', 'nz']"></vue-google-autocomplete>
-```
-will restrict the countries to Australia and New Zealand.
 
 Option to restrict the autocomplete search to a particular country. Countries must be passed as a two-character, ISO 3166-1 Alpha-2 compatible country code (i.e. "br", "sg", "fr"). You can provide a single one, or an array of up to 5 country code strings.
+Note: this is a dynamic property. You must pass it as `:country=""` to your component, otherwise it won't work. For example:
+```html
+<vuetify-google-autocomplete :country="['au', 'nz']"></vuetify-google-autocomplete>
+```
+will restrict the countries to Australia and New Zealand.
 
 #### enable-geolocation
 Type: `Boolean`
