@@ -1,6 +1,6 @@
 {
   "name": "vuetify-google-autocomplete",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A Vuetify ready Vue.jS component to Google Places Autocomplete",
   "main": "src/VuetifyGoogleAutocomplete.vue",
   "homepage": "https://github.com/MadimetjaShika/vuetify-google-autocomplete",
