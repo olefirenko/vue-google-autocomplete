@@ -15,8 +15,9 @@ const app = new Vue({
         * When the location found
         * @param {Object} addressData Data of the found location
         * @param {Object} placeResultData PlaceResult object
+        * @param {String} id Input container ID
         */
-        getAddressData: function (addressData, placeResultData) {
+      getAddressData: function (addressData, placeResultData, id) {
             this.address = addressData;
         }
     }
