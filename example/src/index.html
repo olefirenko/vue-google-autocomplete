@@ -10,7 +10,7 @@
 <body>
   <v-app id="app" standalone>
     <main>
-      <v-card class="grey lighten-2" flat>
+      <v-card class="grey lighten-2" style="width: 100%" flat>
         <v-layout row>
             <v-flex xs12 style="min-height: 200px; background-image: linear-gradient(141deg,#009e6c 0,#00d1b2 71%,#00e7eb 100%);">
                 <v-container>
@@ -29,13 +29,16 @@
                   <vuetify-google-autocomplete
                     :id="id"
                     :append-icon="appendIcon"
-                    :prepend-icon="prependIcon"
                     :classname="classname"
-                    :placeholder="placeholderText"
+                    :clearable="clearable"
+                    :country="country"
                     :disabled="disabled"
                     :enable-geolocation="enableGeolocation"
+                    :label="labelText"
+                    :placeholder="placeholderText"
+                    :prepend-icon="prependIcon"
+                    :required="required"
                     :types="types"
-                    :country="country"
                     v-on:placechanged="getAddressData"
                   >
                   </vuetify-google-autocomplete>
@@ -50,13 +53,16 @@
                 </v-container>
               </v-card>
               <br>
-              <v-card flat height="300px">
+              <v-card flat height="335px">
                 <v-toolbar flat dense class="grey lighten-1">
                   <v-toolbar-title class="body-2" style="color: white;">Generated HTML</v-toolbar-title>
                   <v-spacer></v-spacer>
-                  <v-btn v-tooltip:bottom="{ html: 'Copy HTML' }" v-clipboard="outputHtml" @success="handleCodeCopySuccess('HTML')" @error="handleCodeCopyError('HTML')" icon>
-                    <v-icon>content_copy</v-icon>
-                  </v-btn>
+                  <v-tooltip top>
+                    <v-btn slot="activator" v-clipboard="outputHtml" @success="handleCodeCopySuccess('HTML')" @error="handleCodeCopyError('HTML')" icon>
+                      <v-icon>content_copy</v-icon>
+                    </v-btn>
+                    <span>Copy HTML</span>
+                  </v-tooltip>
                 </v-toolbar>
                 <v-container>
                   <pre><code style="width: 100%; overflow: auto;">{{ outputHtml }}</code></pre>
@@ -67,9 +73,12 @@
                 <v-toolbar flat dense class="grey lighten-1">
                   <v-toolbar-title class="body-2" style="color: white;">Generated JS</v-toolbar-title>
                   <v-spacer></v-spacer>
-                  <v-btn v-tooltip:bottom="{ html: 'Copy JS' }" v-clipboard="outputJs" @success="handleCodeCopySuccess('JS')" @error="handleCodeCopyError('JS')" icon>
-                    <v-icon>content_copy</v-icon>
-                  </v-btn>
+                  <v-tooltip top>
+                    <v-btn slot="activator" v-clipboard="outputJs" @success="handleCodeCopySuccess('JS')" @error="handleCodeCopyError('JS')" icon>
+                      <v-icon>content_copy</v-icon>
+                    </v-btn>
+                    <span>Copy JS</span>
+                  </v-tooltip>
                 </v-toolbar>
                 <v-container>
                   <pre><code style="width: 100%; overflow: auto;">{{ outputJsData }}</code></pre>
@@ -108,9 +117,12 @@
                   <v-text-field label="append-icon" v-model="appendIcon"></v-text-field>
                   <v-text-field label="prepend-icon" v-model="prependIcon"></v-text-field>
                   <v-text-field label="classname" v-model="classname"></v-text-field>
+                  <v-text-field label="Label Text" v-model="labelText"></v-text-field>
                   <v-text-field label="Placeholder Text" v-model="placeholderText"></v-text-field>
+                  <v-switch label="Clearable" v-model="clearable" color="secondary" hide-details></v-switch>
                   <v-switch label="Disabled" v-model="disabled" color="secondary" hide-details></v-switch>  
                   <v-switch label="Enable Geolocation" v-model="enableGeolocation" color="secondary" hide-details></v-switch>
+                  <v-switch label="Required" v-model="required" color="secondary" hide-details></v-switch>
                   <v-select label="Types" v-bind:items="typesOptions" v-model="types" hint="Choose types" persistent-hint></v-select>
                   <v-select label="Countries" v-bind:items="countryOptions" item-text="Name" item-value="Code" v-model="country" multiple max-height="400" hint="Choose countries to limit search to" :rules="[countryValidationRules]" persistent-hint></v-select>
                   <v-text-field label="Callback Function" v-model="callbackFunction"></v-text-field>

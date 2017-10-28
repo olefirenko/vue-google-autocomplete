@@ -9,9 +9,7 @@ Vue.use(VueClipboards);
 
 const app = new Vue({
   el: '#app',
-
   components: { VuetifyGoogleAutocomplete },
-
   data: {
     vueGoogleAutocompleteLink: 'https://github.com/olefirenko/vue-google-autocomplete',
     gitHubLink: 'https://github.com/MadimetjaShika/vuetify-google-autocomplete',
@@ -26,13 +24,19 @@ const app = new Vue({
         visible: false,
     },
     address: {},
-    disabled: false,
-    id: 'map',
     appendIcon: 'search',
-    prependIcon: '',
     callbackFunction: 'getAddressData',
     classname: '',
-    placeholderText: 'Search Address',
+    clearable: true,
+    country: [],
+    countryOptions: countryCodeList,
+    disabled: false,
+    enableGeolocation: false,
+    id: 'map',
+    prependIcon: '',
+    labelText: 'Search Address',
+    placeholderText: '',
+    required: true,
     types: 'address',
     typesOptions: [
       'geocode',
@@ -41,9 +45,6 @@ const app = new Vue({
       'regions',
       'cities',
     ],
-    country: [],
-    countryOptions: countryCodeList,
-    enableGeolocation: false,
     repos: [
       {
         isIcon: true,
@@ -63,7 +64,6 @@ const app = new Vue({
       },
     ]
   },
-
   computed: {
     countryValidationRules: function(){
       if(this.country.length > 5){
@@ -82,13 +82,16 @@ const app = new Vue({
       return `<vuetify-google-autocomplete
   :id="${this.id}"
   :append-icon="${this.appendIcon}"
-  :prepend-icon="${this.prependIcon}"
+  :clearable="${this.clearable}"
   :classname="${this.classname}"
-  :placeholder="${this.placeholderText}"
+  :country="[${this.country}]"
   :disabled="${this.disabled}"
   :enable-geolocation="${this.enableGeolocation}"
+  :label="${this.labelText}"
+  :placeholder="${this.placeholderText}"
+  :prepend-icon="${this.prependIcon}"
+  :required="${this.required}"
   :types="${this.types}"
-  :country="[${this.country}]"
   v-on:placechanged="${this.callbackFunction}">
 </vuetify-google-autocomplete>`;
     },
@@ -97,15 +100,19 @@ const app = new Vue({
       return `data() {
   return {
     address: ${JSON.stringify(this.address)},
-    disabled: ${this.disabled},
-    id: '${this.id}',
     appendIcon: '${this.appendIcon}',
-    prependIcon: '${this.prependIcon}',
     classname: '${this.classname}',
-    placeholderText: '${this.placeholderText}',
-    types: '${this.types}',
+    clearable: '${this.clearable}',
     country: [${this.country}],
+    disabled: ${this.disabled},
     enableGeolocation: ${this.enableGeolocation},
+    id: '${this.id}',
+    labelText: '${this.labelText}',
+    prependIcon: '${this.prependIcon}',
+    placeholderText: '${this.placeholderText}',
+    required: '${this.required}',
+    types: '${this.types}',
+    
   }
 }`
     },
@@ -130,6 +137,7 @@ ${this.outputJsCallback}`;
     *
     * @param {Object} addressData Data of the found location
     * @param {Object} placeResultData PlaceResult object
+    * @param {String} id Input container ID
     */
     getAddressData: function (addressData, placeResultData) {
       this.address = addressData;
