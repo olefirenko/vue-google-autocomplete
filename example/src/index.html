@@ -29,14 +29,16 @@
                   <vuetify-google-autocomplete
                     :id="id"
                     :append-icon="appendIcon"
-                    :prepend-icon="prependIcon"
                     :classname="classname"
-                    :label="labelText"
-                    :placeholder="placeholderText"
+                    :clearable="clearable"
+                    :country="country"
                     :disabled="disabled"
                     :enable-geolocation="enableGeolocation"
+                    :label="labelText"
+                    :placeholder="placeholderText"
+                    :prepend-icon="prependIcon"
+                    :required="required"
                     :types="types"
-                    :country="country"
                     v-on:placechanged="getAddressData"
                   >
                   </vuetify-google-autocomplete>
@@ -51,7 +53,7 @@
                 </v-container>
               </v-card>
               <br>
-              <v-card flat height="300px">
+              <v-card flat height="335px">
                 <v-toolbar flat dense class="grey lighten-1">
                   <v-toolbar-title class="body-2" style="color: white;">Generated HTML</v-toolbar-title>
                   <v-spacer></v-spacer>
@@ -117,8 +119,10 @@
                   <v-text-field label="classname" v-model="classname"></v-text-field>
                   <v-text-field label="Label Text" v-model="labelText"></v-text-field>
                   <v-text-field label="Placeholder Text" v-model="placeholderText"></v-text-field>
+                  <v-switch label="Clearable" v-model="clearable" color="secondary" hide-details></v-switch>
                   <v-switch label="Disabled" v-model="disabled" color="secondary" hide-details></v-switch>  
                   <v-switch label="Enable Geolocation" v-model="enableGeolocation" color="secondary" hide-details></v-switch>
+                  <v-switch label="Required" v-model="required" color="secondary" hide-details></v-switch>
                   <v-select label="Types" v-bind:items="typesOptions" v-model="types" hint="Choose types" persistent-hint></v-select>
                   <v-select label="Countries" v-bind:items="countryOptions" item-text="Name" item-value="Code" v-model="country" multiple max-height="400" hint="Choose countries to limit search to" :rules="[countryValidationRules]" persistent-hint></v-select>
                   <v-text-field label="Callback Function" v-model="callbackFunction"></v-text-field>
