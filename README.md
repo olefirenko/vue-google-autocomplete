@@ -66,6 +66,8 @@ In your template you can use this syntax:
 
 ### Properties
 
+> NB: This componenent implements the same props as those specified for [Vuetify Text Fields](https://vuetifyjs.com/components/text-fields) as at v0.16.9, **some** of which are listed below. Please see [Vuetify Text Fields](https://vuetifyjs.com/components/text-fields) for a complete list of props.
+
 #### id
 Type: `String`
 
