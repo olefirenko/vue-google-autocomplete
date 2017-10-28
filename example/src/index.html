@@ -31,6 +31,7 @@
                     :append-icon="appendIcon"
                     :prepend-icon="prependIcon"
                     :classname="classname"
+                    :label="labelText"
                     :placeholder="placeholderText"
                     :disabled="disabled"
                     :enable-geolocation="enableGeolocation"
@@ -54,9 +55,12 @@
                 <v-toolbar flat dense class="grey lighten-1">
                   <v-toolbar-title class="body-2" style="color: white;">Generated HTML</v-toolbar-title>
                   <v-spacer></v-spacer>
-                  <v-btn v-tooltip:bottom="{ html: 'Copy HTML' }" v-clipboard="outputHtml" @success="handleCodeCopySuccess('HTML')" @error="handleCodeCopyError('HTML')" icon>
-                    <v-icon>content_copy</v-icon>
-                  </v-btn>
+                  <v-tooltip top>
+                    <v-btn slot="activator" v-clipboard="outputHtml" @success="handleCodeCopySuccess('HTML')" @error="handleCodeCopyError('HTML')" icon>
+                      <v-icon>content_copy</v-icon>
+                    </v-btn>
+                    <span>Copy HTML</span>
+                  </v-tooltip>
                 </v-toolbar>
                 <v-container>
                   <pre><code style="width: 100%; overflow: auto;">{{ outputHtml }}</code></pre>
@@ -67,9 +71,12 @@
                 <v-toolbar flat dense class="grey lighten-1">
                   <v-toolbar-title class="body-2" style="color: white;">Generated JS</v-toolbar-title>
                   <v-spacer></v-spacer>
-                  <v-btn v-tooltip:bottom="{ html: 'Copy JS' }" v-clipboard="outputJs" @success="handleCodeCopySuccess('JS')" @error="handleCodeCopyError('JS')" icon>
-                    <v-icon>content_copy</v-icon>
-                  </v-btn>
+                  <v-tooltip top>
+                    <v-btn slot="activator" v-clipboard="outputJs" @success="handleCodeCopySuccess('JS')" @error="handleCodeCopyError('JS')" icon>
+                      <v-icon>content_copy</v-icon>
+                    </v-btn>
+                    <span>Copy JS</span>
+                  </v-tooltip>
                 </v-toolbar>
                 <v-container>
                   <pre><code style="width: 100%; overflow: auto;">{{ outputJsData }}</code></pre>
@@ -108,6 +115,7 @@
                   <v-text-field label="append-icon" v-model="appendIcon"></v-text-field>
                   <v-text-field label="prepend-icon" v-model="prependIcon"></v-text-field>
                   <v-text-field label="classname" v-model="classname"></v-text-field>
+                  <v-text-field label="Label Text" v-model="labelText"></v-text-field>
                   <v-text-field label="Placeholder Text" v-model="placeholderText"></v-text-field>
                   <v-switch label="Disabled" v-model="disabled" color="secondary" hide-details></v-switch>  
                   <v-switch label="Enable Geolocation" v-model="enableGeolocation" color="secondary" hide-details></v-switch>

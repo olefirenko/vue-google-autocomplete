@@ -46,7 +46,7 @@
     "vue": "^2.2.1",
     "vue-clipboards": "^1.1.0",
     "vue-node": "^1.0.2",
-    "vuetify": "^0.14.8",
+    "vuetify": "^0.16.9",
     "webpack": "^2.3.2"
   }
 }

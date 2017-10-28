@@ -30,7 +30,8 @@ const app = new Vue({
     prependIcon: '',
     callbackFunction: 'getAddressData',
     classname: '',
-    placeholderText: 'Search Address',
+    labelText: 'Search Address',
+    placeholderText: '',
     types: 'address',
     typesOptions: [
       'geocode',
@@ -81,6 +82,7 @@ const app = new Vue({
   :append-icon="${this.appendIcon}"
   :prepend-icon="${this.prependIcon}"
   :classname="${this.classname}"
+  :label="${this.labelText}"
   :placeholder="${this.placeholderText}"
   :disabled="${this.disabled}"
   :enable-geolocation="${this.enableGeolocation}"
@@ -99,6 +101,7 @@ const app = new Vue({
     appendIcon: '${this.appendIcon}',
     prependIcon: '${this.prependIcon}',
     classname: '${this.classname}',
+    labelText: '${this.labelText}',
     placeholderText: '${this.placeholderText}',
     types: '${this.types}',
     country: [${this.country}],

@@ -1,9 +1,8 @@
 <template>
     <v-text-field
       hide-details
-      single-line
       :name="id"
-      :label="placeholder"
+      :label="label"
       ref="autocomplete"
       type="text"
       :class="classname"
@@ -42,9 +41,14 @@
             default: null,
           },
 
+          label: {
+            type: String,
+            default: '',
+          },
+
           placeholder: {
             type: String,
-            default: 'Search Address',
+            default: '',
           },
 
           disabled: {
@@ -106,9 +110,14 @@
           }
 
           this.autocomplete = new google.maps.places.Autocomplete(
-                document.getElementById(this.id),
-                options
-            );
+              document.getElementById(this.id),
+              options
+          );
+
+          // Override the default placeholder
+          // text set by Google with the 
+          // placeholder prop value.
+          document.getElementById(this.id).setAttribute('placeholder', this.placeholder);
 
           this.autocomplete.addListener('place_changed', () => {
 
