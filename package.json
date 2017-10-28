@@ -8,9 +8,6 @@
     "type": "git",
     "url": "https://github.com/MadimetjaShika/vuetify-google-autocomplete.git"
   },
-  "peerDependencies": {
-    "vue": ">=2"
-  },
   "keywords": [
     "vue",
     "vuetify",
@@ -36,6 +33,14 @@
     "Madi Shika <mmjshika@gmail.com>"
   ],
   "license": "MIT",
+  "peerDependencies": {
+    "vue": ">=2",
+    "vuetify": ">=0.16.9"
+  },
+  "dependencies": {
+    "vue": "^2.5.2",
+    "vuetify": "^0.16.9"
+  },
   "devDependencies": {
     "ava": "^0.18.2",
     "babel-register": "^6.24.0",
@@ -43,10 +48,8 @@
     "cross-env": "^3.2.4",
     "gh-pages": "^0.12.0",
     "laravel-mix": "^0.8.8",
-    "vue": "^2.2.1",
     "vue-clipboards": "^1.1.0",
     "vue-node": "^1.0.2",
-    "vuetify": "^0.16.9",
     "webpack": "^2.3.2"
   }
 }
