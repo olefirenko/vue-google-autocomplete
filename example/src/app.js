@@ -9,9 +9,7 @@ Vue.use(VueClipboards);
 
 const app = new Vue({
   el: '#app',
-
   components: { VuetifyGoogleAutocomplete },
-
   data: {
     vueGoogleAutocompleteLink: 'https://github.com/olefirenko/vue-google-autocomplete',
     gitHubLink: 'https://github.com/MadimetjaShika/vuetify-google-autocomplete',
@@ -63,7 +61,6 @@ const app = new Vue({
       },
     ]
   },
-
   computed: {
     countryValidationRules: function(){
       if(this.country.length > 5){
@@ -130,6 +127,7 @@ ${this.outputJsCallback}`;
     *
     * @param {Object} addressData Data of the found location
     * @param {Object} placeResultData PlaceResult object
+    * @param {String} id Input container ID
     */
     getAddressData: function (addressData, placeResultData) {
       this.address = addressData;
