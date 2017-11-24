@@ -18,32 +18,33 @@
         name: 'VueGoogleAutocomplete',
 
         props: {
-          id: {
-            type: String,
-            required: true
-          },
+            id: {
+                type: String,
+                required: true
+            },
 
-          classname: String,
+            classname: String,
 
-          placeholder: {
-            type: String,
-            default: 'Start typing'
-          },
+            placeholder: {
+                type: String,
+                default: 'Start typing'
+            },
+            
+	        // allows all results by default. user can specify if they want to filter types by address, establishmemt etc. 
+            types: {
+                type: String,
+                default: ''
+            },
 
-          types: {
-            type: String,
-            default: 'address'
-          },
+            country: {
+                type: [String, Array],
+                default: null
+            },
 
-          country: {
-            type: [String, Array],
-            default: null
-          },
-
-          enableGeolocation: {
-            type: Boolean,
-            default: false
-          }
+            enableGeolocation: {
+                type: Boolean,
+                default: false
+            }
         },
 
         data: function () {
@@ -71,32 +72,32 @@
         },
 
         mounted: function() {
-          const options = {};
+            const options = {};
 
-          if (this.types) {
-            options.types = [this.types];
-          }
+            if (this.types) {
+                options.types = [this.types];
+            }
 
-          if (this.country) {
-            options.componentRestrictions = {
-              country: this.country
-            };
-          }
+            if (this.country) {
+                options.componentRestrictions = {
+                    country: this.country
+                };
+            }
 
-          this.autocomplete = new google.maps.places.Autocomplete(
+            this.autocomplete = new google.maps.places.Autocomplete(
                 document.getElementById(this.id),
                 options
             );
 
-          this.autocomplete.addListener('place_changed', () => {
+            this.autocomplete.addListener('place_changed', () => {
 
                 let place = this.autocomplete.getPlace();
 
                 if (!place.geometry) {
-                  // User entered the name of a Place that was not suggested and
-                  // pressed the Enter key, or the Place Details request failed.
-                  this.$emit('no-results-found', place);
-                  return;
+                    // User entered the name of a Place that was not suggested and
+                    // pressed the Enter key, or the Place Details request failed.
+                    this.$emit('no-results-found', place);
+                    return;
                 }
 
                 let addressComponents = {
@@ -113,12 +114,12 @@
                 if (place.address_components !== undefined) {
                     // Get each component of the address from the place details
                     for (let i = 0; i < place.address_components.length; i++) {
-                      let addressType = place.address_components[i].types[0];
+                        let addressType = place.address_components[i].types[0];
 
-                      if (addressComponents[addressType]) {
-                        let val = place.address_components[i][addressComponents[addressType]];
+                        if (addressComponents[addressType]) {
+                            let val = place.address_components[i][addressComponents[addressType]];
                             returnData[addressType] = val;
-                      }
+                        }
                     }
 
                     returnData['latitude'] = place.geometry.location.lat();
@@ -139,22 +140,22 @@
              * When the input gets focus
              */
             onFocus() {
-              this.geolocate();
-              this.$emit('focus');
+                this.geolocate();
+                this.$emit('focus');
             },
 
             /**
              * When the input loses focus
              */
             onBlur() {
-              this.$emit('blur');
+                this.$emit('blur');
             },
 
             /**
              * When the input got changed
              */
             onChange() {
-              this.$emit('change', this.autocompleteText);
+                this.$emit('change', this.autocompleteText);
             },
 
             /**
@@ -162,28 +163,28 @@
              * @param  {Event} event A keypress event
              */
             onKeyPress(event) {
-              this.$emit('keypress', event);
+                this.$emit('keypress', event);
             },
 
             /**
              * Clear the input
              */
             clear() {
-              this.autocompleteText = ''
+                this.autocompleteText = ''
             },
 
             /**
              * Focus the input
              */
             focus() {
-              this.$refs.autocomplete.focus()
+                this.$refs.autocomplete.focus()
             },
 
             /**
              * Blur the input
              */
             blur() {
-              this.$refs.autocomplete.blur()
+                this.$refs.autocomplete.blur()
             },
 
             /**
@@ -191,7 +192,7 @@
              * @param  {String} value
              */
             update (value) {
-              this.autocompleteText = value
+                this.autocompleteText = value
             },
 
             // Bias the autocomplete object to the user's geographical location,
@@ -199,16 +200,16 @@
             geolocate() {
                 if (this.enableGeolocation) {
                     if (navigator.geolocation) {
-                      navigator.geolocation.getCurrentPosition(position => {
-                        let geolocation = {
-                          lat: position.coords.latitude,
-                          lng: position.coords.longitude
-                        };
-                        let circle = new google.maps.Circle({
-                          center: geolocation,
-                          radius: position.coords.accuracy
-                        });
-                        this.autocomplete.setBounds(circle.getBounds());
+                        navigator.geolocation.getCurrentPosition(position => {
+                          let geolocation = {
+                              lat: position.coords.latitude,
+                              lng: position.coords.longitude
+                          };
+                          let circle = new google.maps.Circle({
+                              center: geolocation,
+                              radius: position.coords.accuracy
+                          });
+                          this.autocomplete.setBounds(circle.getBounds());
                       });
                     }
                 }
