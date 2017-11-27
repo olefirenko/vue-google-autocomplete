@@ -115,6 +115,7 @@ The component emits next events, which you can listen in your application:
 Gets triggered when the address data got obtained. This data is available on the returned objects:
 * `street_number`, `route`, `locality`, `administrative_area_level_1`, `country`, `postal_code`, `latitude`, `longitude`.
 * `place` - [PlaceResult object](https://developers.google.com/maps/documentation/javascript/reference#PlaceResult) is available as second parameter.
+* `id` a String representing the ID of the autocomplete that triggered the event.
 
 #### no-results-found
 Gets triggered when a user entered the name of a Place that was not suggested and pressed the Enter key, or the Place Details request failed.
