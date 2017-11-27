@@ -66,7 +66,7 @@
 
         watch: {
             autocompleteText: function (newVal, oldVal) {
-	            this.$emit('inputChange', { newVal, oldVal });
+	            this.$emit('inputChange', { newVal, oldVal }, this.id);
             }
         },
 
