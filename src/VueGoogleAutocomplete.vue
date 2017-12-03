@@ -66,7 +66,7 @@
 
         watch: {
             autocompleteText: function (newVal, oldVal) {
-	            this.$emit('inputChange', { newVal, oldVal });
+	            this.$emit('inputChange', { newVal, oldVal }, this.id);
             }
         },
 
@@ -95,7 +95,7 @@
                 if (!place.geometry) {
                   // User entered the name of a Place that was not suggested and
                   // pressed the Enter key, or the Place Details request failed.
-                  this.$emit('no-results-found', place);
+                  this.$emit('no-results-found', place, this.id);
                   return;
                 }
 
