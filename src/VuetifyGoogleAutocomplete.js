@@ -375,7 +375,8 @@ export default {
             this.$emit('placechanged', returnData, place, this.id);
 
             // update autocompleteText then emit change event
-            this.autocompleteText = document.getElementById(this.id).value;
+            // this.autocompleteText = document.getElementById(this.id).value; // This breaks the v-text-field reactivity. Need to look into this...
+            this.$emit('input', document.getElementById(this.id).value || '');
             this.onChange();
           }
         });
@@ -452,9 +453,6 @@ export default {
         keypress: e => {
           this.onKeyPress(e.target.value);
         },
-        input: e => {
-          this.autocompleteText = e;
-        },
       },
     }, []);
   },
@@ -463,7 +461,7 @@ export default {
     * Emit the new autocomplete text whenever it changes.
     */
     autocompleteText: function (newVal) {
-      this.$emit('input', newVal);
+      this.$emit('input', newVal || '');
     },
 
     /**
