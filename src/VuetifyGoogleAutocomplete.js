@@ -203,6 +203,11 @@ export default {
        * @type {String}
        */
        autocompleteText: '',
+
+       /**
+       * Indicates if the Geolocate has already been set.
+       */
+       geolocateSet: false,
      }
    },
    methods: {
@@ -268,7 +273,7 @@ export default {
     // Bias the autocomplete object to the user's geographical location,
     // as supplied by the browser's 'navigator.geolocation' object.
     geolocate() {
-      if (this.enableGeolocation) {
+      if (this.enableGeolocation && !this.geolocateSet) {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(position => {
             let geolocation = {
@@ -280,6 +285,7 @@ export default {
               radius: position.coords.accuracy
             });
             this.autocomplete.setBounds(circle.getBounds());
+            this.geolocateSet = true;
           });
         }
       }
@@ -467,6 +473,17 @@ export default {
       if(newVal) {
         this.autocomplete.componentRestrictions.country = newVal;
       }
+    },
+
+    /**
+    * Watches for changes on the Geolocation option.
+    */
+    enableGeolocation: function(newVal) {
+      if(!newVal) {
+        this.geolocateSet = false;
+      }
+
+      this.enableGeolocation = newVal;
     },
 
     /**

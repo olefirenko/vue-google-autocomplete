@@ -93,7 +93,7 @@ const app = new Vue({
   :placeholder="${this.placeholderText}"
   :prepend-icon="${this.prependIcon}"
   :required="${this.required}"
-  :types="${this.types}"
+  :types="['${this.types}']"
   v-on:placechanged="${this.callbackFunction}">
 </vuetify-google-autocomplete>`;
     },
@@ -113,7 +113,7 @@ const app = new Vue({
     prependIcon: '${this.prependIcon}',
     placeholderText: '${this.placeholderText}',
     required: '${this.required}',
-    types: '${this.types}',
+    types: ['${this.types}'],
     
   }
 }`
