@@ -44,8 +44,8 @@ const app = new Vue({
       'geocode',
       'address',
       'establishment',
-      'regions',
-      'cities',
+      '(regions)',
+      '(cities)',
     ],
     repos: [
       {
@@ -162,5 +162,12 @@ ${this.outputJsCallback}`;
       this.snackbar.context = 'error';
       this.snackbar.visible = true;
     },
+
+    /**
+    * Handler when no results are found.
+    */
+    noResultsFound: function(output){
+      console.log('Not results found: ', output);
+    }
   },
 });

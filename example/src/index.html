@@ -42,6 +42,7 @@
                     :required="required"
                     :types="types"
                     v-on:placechanged="getAddressData"
+                    v-on:no-results-found="noResultsFound"
                   >
                   </vuetify-google-autocomplete>
                 </v-container>

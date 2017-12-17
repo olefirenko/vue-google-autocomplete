@@ -474,7 +474,7 @@ export default {
     */
     types: function(newVal) {
       if(newVal) {
-        this.autocomplete.types = [this.types];
+        this.autocomplete.setTypes([this.types])
       }
     },
   },
