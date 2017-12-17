@@ -11,6 +11,7 @@ const app = new Vue({
   el: '#app',
   components: { VuetifyGoogleAutocomplete },
   data: {
+    googleApiKey: 'AIzaSyDyJUwEpWPLTDZrX9TVeq5m8vGQScqyZCA',
     autocompleteModel: 'Some Default Location...',
     vueGoogleAutocompleteLink: 'https://github.com/olefirenko/vue-google-autocomplete',
     gitHubLink: 'https://github.com/MadimetjaShika/vuetify-google-autocomplete',

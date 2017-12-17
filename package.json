@@ -31,6 +31,7 @@
   "author": "Madi Shika <mmjshika@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "load-google-maps-api": "^1.0.1",
     "vue": "^2.5.2",
     "vuetify": "^0.17"
   },

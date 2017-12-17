@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Vuetify Google Autocomplete</title>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyJUwEpWPLTDZrX9TVeq5m8vGQScqyZCA&libraries=places"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyJUwEpWPLTDZrX9TVeq5m8vGQScqyZCA&libraries=places"></script> -->
   <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css">
   <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet" type="text/css">
   <script src="https://use.fontawesome.com/7e9dc1e680.js"></script>
@@ -27,6 +27,7 @@
                   <v-alert error v-model="errorAlert.visible">{{ errorAlert.message }}</v-alert>
                   <p>Start typing an address to see the result returned from Google.</p>
                   <vuetify-google-autocomplete
+                    :google-api-key="googleApiKey"
                     v-model="autocompleteModel"
                     :id="id"
                     :append-icon="appendIcon"

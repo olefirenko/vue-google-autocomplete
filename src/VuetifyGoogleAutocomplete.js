@@ -1,3 +1,6 @@
+import Vue from 'vue';
+import loadGoogleMapsAPI from 'load-google-maps-api';
+
 export default {
   name: 'vuetify-google-autocomplete',
   props: {
@@ -77,6 +80,15 @@ export default {
       type: String,
       required: true,
     },
+    googleApiKey: {
+      type: String,
+      required: true,
+    },
+    googleApiVersion: {
+      type: String,
+      default: '3',
+      required: false,
+    },
     label: {
       type: String,
       default: '',
@@ -84,6 +96,11 @@ export default {
     light: {
       type: Boolean,
       default: true,
+    },
+    loadGoogleApi: {
+      type: Boolean,
+      default: true,
+      required: false,
     },
     loading: {
       type: [Boolean, String],
@@ -266,7 +283,28 @@ export default {
           });
         }
       }
-    }
+    },
+
+    /**
+    * Initializes the Google Places Object.
+    */
+    initGoogleMaps(googleObj) {
+      if (!this.loadGoogleApi) {
+        googleObj(window.google.maps ? window.google.maps : window.google);
+      } else if (this.google) {
+        googleObj(Vue.google);
+      } else {
+        loadGoogleMapsAPI({
+          key: this.googleApiKey,
+          libraries: ['places'],
+          v: this.googleApiVersion,
+        }).then(google => {
+          Vue.google = google;
+          Vue.prototype.$google = google;
+          googleObj(google);
+        })
+      }
+    },
   },
   created() {
     // Set the default model if provided.
@@ -286,53 +324,55 @@ export default {
 
     if(document.getElementById(this.id)) {
 
-      this.autocomplete = new google.maps.places.Autocomplete(document.getElementById(this.id),options);
+      this.initGoogleMaps((google) => {
+        this.autocomplete = new google.places.Autocomplete(document.getElementById(this.id),options);
 
-      // Override the default placeholder text set by 
-      // Google with the placeholder prop value
-      document.getElementById(this.id).setAttribute('placeholder', this.placeholder);
+        // Override the default placeholder text set by 
+        // Google with the placeholder prop value
+        document.getElementById(this.id).setAttribute('placeholder', this.placeholder);
 
-      this.autocomplete.addListener('place_changed', () => {
-        let place = this.autocomplete.getPlace();
+        this.autocomplete.addListener('place_changed', () => {
+          let place = this.autocomplete.getPlace();
 
-        if(!place.geometry) {
-          // User entered the name of a Place that was not suggested and
-          // pressed the Enter key, or the Place Details request failed.
-          this.$emit('no-results-found', place);
-          return;
-        }
-
-        let addressComponents = {
-          street_number: 'short_name',
-          route: 'long_name',
-          locality: 'long_name',
-          administrative_area_level_1: 'short_name',
-          country: 'long_name',
-          postal_code: 'short_name'
-        };
-
-        let returnData = {};
-
-        if(place.address_components !== undefined) {
-          // Get each component of the address from the place details
-          for (let i = 0; i < place.address_components.length; i++) {
-            let addressType = place.address_components[i].types[0];
-            if (addressComponents[addressType]) {
-              let val = place.address_components[i][addressComponents[addressType]];
-              returnData[addressType] = val;
-            }
+          if(!place.geometry) {
+            // User entered the name of a Place that was not suggested and
+            // pressed the Enter key, or the Place Details request failed.
+            this.$emit('no-results-found', place);
+            return;
           }
 
-          returnData['latitude'] = place.geometry.location.lat();
-          returnData['longitude'] = place.geometry.location.lng();
+          let addressComponents = {
+            street_number: 'short_name',
+            route: 'long_name',
+            locality: 'long_name',
+            administrative_area_level_1: 'short_name',
+            country: 'long_name',
+            postal_code: 'short_name'
+          };
 
-          // return returnData object and PlaceResult object
-          this.$emit('placechanged', returnData, place, this.id);
+          let returnData = {};
 
-          // update autocompleteText then emit change event
-          this.autocompleteText = document.getElementById(this.id).value;
-          this.onChange();
-        }
+          if(place.address_components !== undefined) {
+            // Get each component of the address from the place details
+            for (let i = 0; i < place.address_components.length; i++) {
+              let addressType = place.address_components[i].types[0];
+              if (addressComponents[addressType]) {
+                let val = place.address_components[i][addressComponents[addressType]];
+                returnData[addressType] = val;
+              }
+            }
+
+            returnData['latitude'] = place.geometry.location.lat();
+            returnData['longitude'] = place.geometry.location.lng();
+
+            // return returnData object and PlaceResult object
+            this.$emit('placechanged', returnData, place, this.id);
+
+            // update autocompleteText then emit change event
+            this.autocompleteText = document.getElementById(this.id).value;
+            this.onChange();
+          }
+        });
       });
     }else {
       console.warn(`Vuetify Google Autocomplete: DOM element with ID '${this.id}' not found.`);
