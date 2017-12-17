@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import loadGoogleMapsAPI from 'load-google-maps-api';
+const Vue = require('vue');
+const loadGoogleMapsAPI = require('load-google-maps-api');
 
 export default {
   name: 'vuetify-google-autocomplete',
