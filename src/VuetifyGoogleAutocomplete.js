@@ -453,8 +453,29 @@ export default {
     }, []);
   },
   watch: {
+    /**
+    * Emit the new autocomplete text whenever it changes.
+    */
     autocompleteText: function (newVal) {
       this.$emit('input', newVal);
-    }
+    },
+
+    /**
+    * Update the SDK country option whenever it changes from the parent.
+    */
+    country: function(newVal) {
+      if(newVal) {
+        this.autocomplete.componentRestrictions.country = newVal;
+      }
+    },
+
+    /**
+    * Update the SDK types option whenever it changes from the parent.
+    */
+    types: function(newVal) {
+      if(newVal) {
+        this.autocomplete.types = [this.types];
+      }
+    },
   },
 }
