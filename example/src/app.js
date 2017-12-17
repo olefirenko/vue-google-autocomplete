@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import VueClipboards from 'vue-clipboards';
-import VuetifyGoogleAutocomplete from './../../src/VuetifyGoogleAutocomplete.vue';
+import VuetifyGoogleAutocomplete from './../../src/VuetifyGoogleAutocomplete.js';
 import countryCodeList from './countrycode.json';
 
 Vue.use(Vuetify);
@@ -11,6 +11,7 @@ const app = new Vue({
   el: '#app',
   components: { VuetifyGoogleAutocomplete },
   data: {
+    autocompleteModel: 'Some Default Location...',
     vueGoogleAutocompleteLink: 'https://github.com/olefirenko/vue-google-autocomplete',
     gitHubLink: 'https://github.com/MadimetjaShika/vuetify-google-autocomplete',
     npmLink: 'https://www.npmjs.com/package/vuetify-google-autocomplete',

@@ -166,12 +166,12 @@ export default {
       default: false,
     },
     value: {
-      type: Object,
-      default: {},
+      type: String,
+      default: '',
       required: true,
     },
   },
-  data: function () {
+  data: () => {
     return {
       /**
        * The Autocomplete object.
@@ -179,20 +179,20 @@ export default {
        * @type {Autocomplete}
        * @link https://developers.google.com/maps/documentation/javascript/reference#Autocomplete
        */
-      autocomplete: null,
+       autocomplete: null,
 
       /**
        * Autocomplete input text
        * @type {String}
        */
-      autocompleteText: '',
-    }
-  },
-  methods: {
+       autocompleteText: '',
+     }
+   },
+   methods: {
     /**
      * When the input gets focus
      */
-    onFocus() {
+     onFocus() {
       this.geolocate();
       this.$emit('focus');
     },
@@ -200,14 +200,14 @@ export default {
     /**
      * When the input loses focus
      */
-    onBlur() {
+     onBlur() {
       this.$emit('blur');
     },
 
     /**
      * When the input got changed
      */
-    onChange() {
+     onChange() {
       this.$emit('change', this.autocompleteText);
     },
 
@@ -215,28 +215,28 @@ export default {
      * When a key gets pressed
      * @param  {Event} event A keypress event
      */
-    onKeyPress(event) {
+     onKeyPress(event) {
       this.$emit('keypress', event);
     },
 
     /**
      * Clear the input
      */
-    clear() {
+     clear() {
       this.autocompleteText = ''
     },
 
     /**
      * Focus the input
      */
-    focus() {
+     focus() {
       this.$refs.autocomplete.focus()
     },
 
     /**
      * Blur the input
      */
-    blur() {
+     blur() {
       this.$refs.autocomplete.blur()
     },
 
@@ -244,7 +244,7 @@ export default {
      * Update the value of the input
      * @param  {String} value
      */
-    update (value) {
+     update (value) {
       this.autocompleteText = value
     },
 
@@ -268,51 +268,55 @@ export default {
       }
     }
   },
+  created() {
+    // Set the default model if provided.
+    this.autocompleteText = this.value ? this.value : '';
+  },
   mounted () {
     const options = {};
-    if (this.types) {
+    if(this.types) {
       options.types = [this.types];
     }
 
-    if (this.country) {
+    if(this.country) {
       options.componentRestrictions = {
-        country: this.country
+        country: this.country,
       };
     }
 
-    this.autocomplete = new google.maps.places.Autocomplete(document.getElementById(this.id),options);
+    if(document.getElementById(this.id)) {
 
-    // Override the default placeholder
-    // text set by Google with the 
-    // placeholder prop value.
-    document.getElementById(this.id).setAttribute('placeholder', this.placeholder);
+      this.autocomplete = new google.maps.places.Autocomplete(document.getElementById(this.id),options);
 
-    this.autocomplete.addListener('place_changed', () => {
-      let place = this.autocomplete.getPlace();
+      // Override the default placeholder text set by 
+      // Google with the placeholder prop value
+      document.getElementById(this.id).setAttribute('placeholder', this.placeholder);
 
-      if (!place.geometry) {
-        // User entered the name of a Place that was not suggested and
-        // pressed the Enter key, or the Place Details request failed.
-        this.$emit('no-results-found', place);
-        return;
-      }
+      this.autocomplete.addListener('place_changed', () => {
+        let place = this.autocomplete.getPlace();
 
-      let addressComponents = {
-        street_number: 'short_name',
-        route: 'long_name',
-        locality: 'long_name',
-        administrative_area_level_1: 'short_name',
-        country: 'long_name',
-        postal_code: 'short_name'
-      };
+        if(!place.geometry) {
+          // User entered the name of a Place that was not suggested and
+          // pressed the Enter key, or the Place Details request failed.
+          this.$emit('no-results-found', place);
+          return;
+        }
 
-      let returnData = {};
+        let addressComponents = {
+          street_number: 'short_name',
+          route: 'long_name',
+          locality: 'long_name',
+          administrative_area_level_1: 'short_name',
+          country: 'long_name',
+          postal_code: 'short_name'
+        };
 
-      if (place.address_components !== undefined) {
+        let returnData = {};
+
+        if(place.address_components !== undefined) {
           // Get each component of the address from the place details
           for (let i = 0; i < place.address_components.length; i++) {
             let addressType = place.address_components[i].types[0];
-
             if (addressComponents[addressType]) {
               let val = place.address_components[i][addressComponents[addressType]];
               returnData[addressType] = val;
@@ -326,61 +330,68 @@ export default {
           this.$emit('placechanged', returnData, place, this.id);
 
           // update autocompleteText then emit change event
-          this.autocompleteText = document.getElementById(this.id).value
-          this.onChange()
+          this.autocompleteText = document.getElementById(this.id).value;
+          this.onChange();
         }
       });
+    }else {
+      console.warn(`Vuetify Google Autocomplete: DOM element with ID '${this.id}' not found.`);
+    }
   },
-  render(h) {
-    return h('v-text-field', {
-      'append-icon': this.appendIcon
-      'auto-grow': this.autoGrow
-      'autofocus': this.autofocus
-      'box': this.box
-      'clearable': this.clearable
-      'color': this.color
-      'counter': this.counter
-      'class': this.classname
-      'dark': this.dark
-      'disabled': this.disabled
-      'dont-fill-mask-blanks': this.dontFillMaskBlanks
-      'error': this.error
-      'error-messages': this.errorMessages
-      'full-width': this.fullWidth
-      'hide-details': this.hideDetails
-      'hint': this.hint
-      'id': this.id
-      'label': this.label
-      'light': this.light
-      'loading': this.loading
-      'mask': this.mask
-      'multi-line': this.multiLine
-      'name': this.id
-      'persistent-hint': this.persistentHint
-      'placeholder': this.placeholder
-      'prefix': this.prefix
-      'prepend': this.prependIcon
-      'readonly': this.readonly
-      'required': this.required
-      'return-masked-value': this.returnMaskedValue
-      'rows': this.rows
-      'rules': this.rules
-      'ref': 'autocomplete',
-      'single-line': this.singleLine,
-      'solo': this.solo,
-      'suffix': this.suffix,
-      'tabindex': this.tabindex,
-      'solo': this.solo,
-      'textarea': this.textarea,
-      'toggle-keys': this.toggleKeys,
-      'type': 'text',
-      'validate-on-blur': this.validateOnBlur,
-      '@focus': this.onFocus(),
-      '@blur': this.onFocus(),
-      '@change': this.onChange(),
-      '@keypress': this.onKeyPress(),
+  render(createElement) {
+    return createElement('v-text-field', {
+      attrs: {
+        'id': this.id,
+        'name': this.id,
+      },
+      props: {
+        'append-icon': this.appendIcon,
+        'auto-grow': this.autoGrow,
+        'autofocus': this.autofocus,
+        'box': this.box,
+        'clearable': this.clearable,
+        'color': this.color,
+        'counter': this.counter,
+        'class': this.classname,
+        'dark': this.dark,
+        'disabled': this.disabled,
+        'dont-fill-mask-blanks': this.dontFillMaskBlanks,
+        'error': this.error,
+        'error-messages': this.errorMessages,
+        'full-width': this.fullWidth,
+        'hide-details': this.hideDetails,
+        'hint': this.hint,
+        'label': this.label,
+        'light': this.light,
+        'loading': this.loading,
+        'mask': this.mask,
+        'multi-line': this.multiLine,
+        'persistent-hint': this.persistentHint,
+        'placeholder': this.placeholder,
+        'prefix': this.prefix,
+        'prepend': this.prependIcon,
+        'readonly': this.readonly,
+        'required': this.required,
+        'return-masked-value': this.returnMaskedValue,
+        'rows': this.rows,
+        'rules': this.rules,
+        'ref': 'autocomplete',
+        'single-line': this.singleLine,
+        'solo': this.solo,
+        'suffix': this.suffix,
+        'tabindex': this.tabindex,
+        'solo': this.solo,
+        'textarea': this.textarea,
+        'toggle-keys': this.toggleKeys,
+        'type': 'text',
+        'validate-on-blur': this.validateOnBlur,
+        '@focus': this.onFocus(),
+        '@blur': this.onFocus(),
+        '@change': this.onChange(),
+        '@keypress': this.onKeyPress(),
+      },
       domProps: {
-        value: this.autocompleteText
+        value: this.autocompleteText,
       },
       on: {
         focus: e => {
@@ -396,14 +407,14 @@ export default {
           this.onKeyPress(e.target.value);
         },
         input: e => {
-          this.autocompleteText = e.target.value;
+          this.autocompleteText = e;
         },
       },
     }, []);
   },
   watch: {
-    autocompleteText: function (newVal, oldVal) {
-      this.$emit('input', { newVal, oldVal });
+    autocompleteText: function (newVal) {
+      this.$emit('input', newVal);
     }
   },
 }

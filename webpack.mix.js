@@ -12,6 +12,7 @@ let mix = require('laravel-mix');
  */
 
 mix.js('example/src/app.js', 'example/dist/');
+mix.copy('example/src/index.html', 'example/dist/');
 
 // Full API
 // mix.js(src, output);

@@ -27,6 +27,7 @@
                   <v-alert error v-model="errorAlert.visible">{{ errorAlert.message }}</v-alert>
                   <p>Start typing an address to see the result returned from Google.</p>
                   <vuetify-google-autocomplete
+                    v-model="autocompleteModel"
                     :id="id"
                     :append-icon="appendIcon"
                     :classname="classname"
@@ -146,6 +147,6 @@
       </v-snackbar>
     </main>
   </v-app>
-  <script src="../dist/app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

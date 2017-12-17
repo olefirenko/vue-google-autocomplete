@@ -28,18 +28,11 @@
       "./test/helpers/setup.js"
     ]
   },
-  "author": "Dmitriy Olefyrenko <dmitriy.olefirenko@gmail.com>",
-  "contributors": [
-    "Madi Shika <mmjshika@gmail.com>"
-  ],
+  "author": "Madi Shika <mmjshika@gmail.com>",
   "license": "MIT",
-  "peerDependencies": {
-    "vue": ">=2",
-    "vuetify": ">=0.16.9"
-  },
   "dependencies": {
     "vue": "^2.5.2",
-    "vuetify": "^0.16.9"
+    "vuetify": "^0.17"
   },
   "devDependencies": {
     "ava": "^0.18.2",
