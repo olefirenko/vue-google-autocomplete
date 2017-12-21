@@ -10,6 +10,7 @@
         @blur="onBlur()"
         @change="onChange"
         @keypress="onKeyPress"
+        @keyup="onKeyUp"
     />
 </template>
 
@@ -163,6 +164,14 @@
              */
             onKeyPress(event) {
               this.$emit('keypress', event);
+            },
+
+            /**
+             * When a keyup occurs
+             * @param  {Event} event A keyup event
+             */
+            onKeyPress(event) {
+              this.$emit('keyup', event);
             },
 
             /**
