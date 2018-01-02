@@ -67,6 +67,11 @@
         watch: {
             autocompleteText: function (newVal, oldVal) {
 	            this.$emit('inputChange', { newVal, oldVal }, this.id);
+            },
+            country: function(newVal, oldVal) {
+              this.autocomplete.setComponentRestrictions({
+                country: this.country
+              });
             }
         },
 
