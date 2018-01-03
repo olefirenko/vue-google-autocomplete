@@ -70,7 +70,7 @@
             },
             country: function(newVal, oldVal) {
               this.autocomplete.setComponentRestrictions({
-                country: this.country
+                country: this.country === null ? [] : this.country
               });
             }
         },
