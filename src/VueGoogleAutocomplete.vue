@@ -170,7 +170,7 @@
              * When a keyup occurs
              * @param  {Event} event A keyup event
              */
-            onKeyPress(event) {
+            onKeyUp(event) {
               this.$emit('keyup', event);
             },
 
