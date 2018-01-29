@@ -41,6 +41,11 @@
             default: null
           },
 
+          region: {
+            type: String,
+            default: null
+          },
+
           enableGeolocation: {
             type: Boolean,
             default: false
@@ -81,6 +86,10 @@
 
           if (this.types) {
             options.types = [this.types];
+          }
+
+          if (this.region) {
+            options.region = this.region;
           }
 
           if (this.country) {
