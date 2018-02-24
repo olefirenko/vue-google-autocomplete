@@ -1,17 +1,19 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import VueClipboards from 'vue-clipboards';
-import VuetifyGoogleAutocomplete from './../../src/VuetifyGoogleAutocomplete.js';
+import VuetifyGoogleAutocomplete from './../../dist/index';
 import countryCodeList from './countrycode.json';
+
+Vue.use(VuetifyGoogleAutocomplete, {
+  apiKey: 'AIzaSyDyJUwEpWPLTDZrX9TVeq5m8vGQScqyZCA',
+});
 
 Vue.use(Vuetify);
 Vue.use(VueClipboards);
 
 const app = new Vue({
   el: '#app',
-  components: { VuetifyGoogleAutocomplete },
   data: {
-    googleApiKey: 'AIzaSyDyJUwEpWPLTDZrX9TVeq5m8vGQScqyZCA',
     autocompleteModel: 'Some Default Location...',
     vueGoogleAutocompleteLink: 'https://github.com/olefirenko/vue-google-autocomplete',
     gitHubLink: 'https://github.com/MadimetjaShika/vuetify-google-autocomplete',
@@ -22,8 +24,8 @@ const app = new Vue({
       context: '',
     },
     errorAlert: {
-        message: '',
-        visible: false,
+      message: '',
+      visible: false,
     },
     address: {},
     appendIcon: 'search',

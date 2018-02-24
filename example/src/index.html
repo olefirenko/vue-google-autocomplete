@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>Vuetify Google Autocomplete</title>
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyJUwEpWPLTDZrX9TVeq5m8vGQScqyZCA&libraries=places"></script> -->
   <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css">
   <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet" type="text/css">
   <script src="https://use.fontawesome.com/7e9dc1e680.js"></script>
@@ -11,14 +10,16 @@
   <v-app id="app" standalone>
     <main>
       <v-card class="grey lighten-2" style="width: 100%" flat>
-        <v-layout row>
-            <v-flex xs12 style="min-height: 200px; background-image: linear-gradient(141deg,#009e6c 0,#00d1b2 71%,#00e7eb 100%);">
-                <v-container>
-                    <h1 style="color: #fff;font-size: 2.75rem;font-weight: 300;line-height: 1.125;">Vuetify Google Autocomplete</h1>
-                    <h2 style="margin-top: 10px; color: rgba(255,255,255,.9);margin-top: -1.25rem;font-size: 1.25rem; font-weight: 300; line-height: 1.25;">A Vuetify ready Vue.js autosuggest component for the Google Maps Places API. Based on <a :href="vueGoogleAutocompleteLink">Vue Google Autocomplete</a>.</h2>
-                </v-container>
+        <v-container grid-list-md text-xs-center style="min-height: 200px; background-image: linear-gradient(141deg,#009e6c 0,#00d1b2 71%,#00e7eb 100%);">
+          <v-layout row wrap>
+            <v-flex xs12>
+              <h1 style="color: #fff;font-size: 2.75rem;font-weight: 300;">Vuetify Google Autocomplete</h1>
             </v-flex>
-        </v-layout>
+            <v-flex xs12>
+              <h2 style="color: rgba(255,255,255,.9); font-weight: 300;">A Vuetify ready Vue.js autosuggest component for the Google Maps Places API. Inspired by <a :href="vueGoogleAutocompleteLink">Vue Google Autocomplete</a>.</h2>
+            </v-flex>
+          </v-layout>
+        </v-container>
         <v-container grid-list-md>
           <v-layout row wrap>
             <v-flex xs6>
@@ -27,7 +28,6 @@
                   <v-alert error v-model="errorAlert.visible">{{ errorAlert.message }}</v-alert>
                   <p>Start typing an address to see the result returned from Google.</p>
                   <vuetify-google-autocomplete
-                    :google-api-key="googleApiKey"
                     v-model="autocompleteModel"
                     :id="id"
                     :append-icon="appendIcon"

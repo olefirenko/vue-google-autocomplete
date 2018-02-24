@@ -1,8 +1,8 @@
 {
   "name": "vuetify-google-autocomplete",
-  "version": "v2.0.0-alpha.1",
+  "version": "2.0.0-Alpha.2",
   "description": "A Vuetify ready Vue.jS component to Google Places Autocomplete",
-  "main": "src/index.js",
+  "main": "./dist/index.js",
   "homepage": "https://github.com/MadimetjaShika/vuetify-google-autocomplete",
   "repository": {
     "type": "git",
@@ -15,13 +15,19 @@
     "autocomplete"
   ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules",
+    "dev": "npm run build && cross-env NODE_ENV=development webpack --progress --hide-modules",
+    "build": "mkdir -p ./dist && babel ./src/ -d ./dist",
+    "minify": "minify ./dist/ -d ./dist",
     "watch": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules",
+    "lint": "eslint --ext .js,.vue src test/unit/specs",
     "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
     "production": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "deploy:example": "gh-pages -d example/dist",
     "test": "NODE_PATH=test ava --verbose"
   },
+  "files": [
+    "./dist"
+  ],
   "ava": {
     "require": [
       "babel-register",
@@ -30,20 +36,33 @@
   },
   "author": "Madi Shika <mmjshika@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "load-google-maps-api": "^1.0.1",
-    "vue": "^2.5.2",
-    "vuetify": "^0.17"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "ava": "^0.18.2",
-    "babel-register": "^6.24.0",
-    "browser-env": "^2.0.25",
-    "cross-env": "^3.2.4",
-    "gh-pages": "^0.12.0",
+    "ava": "^0.25.0",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-minify": "^0.3.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "browser-env": "^3.2.5",
+    "cross-env": "^5.1.3",
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-import-resolver-webpack": "^0.8.4",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^4.0.2",
+    "eslint-plugin-import": "^2.9.0",
+    "gh-pages": "^1.1.0",
     "laravel-mix": "^0.8.8",
-    "vue-clipboards": "^1.1.0",
-    "vue-node": "^1.0.2",
-    "webpack": "^2.3.2"
+    "vue-clipboards": "^1.2.1",
+    "vue-node": "^1.1.1",
+    "webpack": "^3.11.0",
+    "vue": "^2.5.13",
+    "vuetify": "^1.0"
   }
 }
