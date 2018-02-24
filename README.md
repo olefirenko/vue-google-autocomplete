@@ -6,7 +6,7 @@ A Vuetify ready Vue.js (2.x) autosuggest component for the Google Maps Places AP
 
 Latest Stable: 1.1.0
 
-Latest Dev Stable: 2.0.0-alpha.2
+Latest Dev Stable: 2.0.0-alpha.4
 
 See [releases](https://github.com/MadimetjaShika/vuetify-google-autocomplete/releases) for details.
 
