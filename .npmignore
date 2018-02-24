@@ -6,7 +6,7 @@ CODE_OF_CONDUCT.md
 mix-manifest.json
 webpack.config.js
 webpack.mix.js
-/test
+test/
 .github/
 example/
 node_modules/
