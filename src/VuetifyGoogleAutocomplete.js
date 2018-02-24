@@ -185,6 +185,7 @@ export default {
       required: true,
     },
   },
+  // eslint-disable-next-line
   data: () => {
     return {
       /**
@@ -193,29 +194,29 @@ export default {
        * @type {Autocomplete}
        * @link https://developers.google.com/maps/documentation/javascript/reference#Autocomplete
        */
-       autocomplete: null,
+      autocomplete: null,
 
       /**
        * Autocomplete input text
        * @type {String}
        */
-       autocompleteText: '',
+      autocompleteText: '',
 
       /**
        * Indicates if the Geolocate has already been set.
        */
-       geolocateSet: false,
+      geolocateSet: false,
 
-       /**
+      /**
        * Interval for loading Google Maps.
        */
-       loadInterval: null,
+      loadInterval: null,
 
       /**
        * Global Google Maps State Watcher.
        */
-       googeMapState: window.googeMapState,
-     };
+      googeMapState: window.googeMapState,
+    };
   },
   methods: {
     /**
@@ -311,7 +312,6 @@ export default {
         };
       }
 
-      console.log('WINDOW GOOGLE IN VUE: ', window.google);
       this.autocomplete = new window.google.maps.places.Autocomplete(
         document.getElementById(this.id),
         options,
@@ -445,14 +445,14 @@ export default {
     /**
     * Emit the new autocomplete text whenever it changes.
     */
-    autocompleteText: function (newVal) {
+    autocompleteText: function autocompleteText(newVal) {
       this.$emit('input', newVal || '');
     },
 
     /**
     * Update the SDK country option whenever it changes from the parent.
     */
-    country: function (newVal) {
+    country: function country(newVal) {
       if (newVal) {
         this.autocomplete.componentRestrictions.country = newVal;
       }
@@ -461,7 +461,7 @@ export default {
     /**
     * Watches for changes on the Geolocation option.
     */
-    enableGeolocation: function (newVal) {
+    enableGeolocation: function enableGeolocation(newVal) {
       if (!newVal) {
         this.geolocateSet = false;
       }
@@ -469,7 +469,7 @@ export default {
       this.enableGeolocation = newVal;
     },
 
-    'googeMapState.initMap': function (value) {
+    'googeMapState.initMap': function googeMapStateInitMap(value) {
       if (value) {
         this.setupGoogle();
       }
@@ -478,7 +478,7 @@ export default {
     /**
     * Update the SDK types option whenever it changes from the parent.
     */
-    types: function (newVal) {
+    types: function types(newVal) {
       if (newVal) {
         this.autocomplete.setTypes([this.types]);
       }
