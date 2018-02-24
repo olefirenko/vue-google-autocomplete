@@ -1,5 +1,13 @@
 .babelrc
+.eslintignore
+.eslintrc.js
+.travis.yml
+CODE_OF_CONDUCT.md
+mix-manifest.json
 webpack.config.js
 webpack.mix.js
 /test
-/.github
+.github/
+example/
+node_modules/
+src/
