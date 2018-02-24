@@ -1,7 +1,20 @@
-import VuetifyGoogleAutocomplete from './VuetifyGoogleAutocomplete.js'
+import loadGoogleMaps from './helper';
+import VuetifyGoogleAutocomplete from './VuetifyGoogleAutocomplete';
 
-VuetifyGoogleAutocomplete.install = function install (Vue) {
-  Vue.component(VuetifyGoogleAutocomplete.name, VuetifyGoogleAutocomplete)
-}
+window.googeMapState = {
+  initMap: false,
+};
 
-export default VuetifyGoogleAutocomplete
+window.initGoogleMaps = () => {
+  window.googeMapState.initMap = true;
+};
+
+VuetifyGoogleAutocomplete.install = (Vue, options) => {
+  if (options.apiKey) {
+    loadGoogleMaps(options.apiKey, options.version);
+  }
+
+  Vue.component(VuetifyGoogleAutocomplete.name, VuetifyGoogleAutocomplete);
+};
+
+export default VuetifyGoogleAutocomplete;

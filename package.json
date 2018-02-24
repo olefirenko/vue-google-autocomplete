@@ -1,6 +1,6 @@
 {
   "name": "vuetify-google-autocomplete",
-  "version": "1.1.0",
+  "version": "2.0.0-Alpha.2",
   "description": "A Vuetify ready Vue.jS component to Google Places Autocomplete",
   "main": "src/VuetifyGoogleAutocomplete.vue",
   "homepage": "https://github.com/MadimetjaShika/vuetify-google-autocomplete",
@@ -17,6 +17,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules",
     "watch": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules",
+    "lint": "eslint --ext .js,.vue src test/unit/specs",
     "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
     "production": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "deploy:example": "gh-pages -d example/dist",
@@ -37,9 +38,17 @@
   },
   "devDependencies": {
     "ava": "^0.18.2",
+    "babel-eslint": "^8.2.2",
     "babel-register": "^6.24.0",
     "browser-env": "^2.0.25",
     "cross-env": "^3.2.4",
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-import-resolver-webpack": "^0.8.4",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^4.0.2",
+    "eslint-plugin-import": "^2.9.0",
     "gh-pages": "^0.12.0",
     "laravel-mix": "^0.8.8",
     "vue-clipboards": "^1.1.0",

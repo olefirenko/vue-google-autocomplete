@@ -1,15 +1,23 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import VueClipboards from 'vue-clipboards';
-import VuetifyGoogleAutocomplete from './../../src/VuetifyGoogleAutocomplete.js';
+import VuetifyGoogleAutocomplete from './../../src/index';
 import countryCodeList from './countrycode.json';
+
+// import Vue from 'vue'
+// import * as VueGoogleMaps from 'vue2-google-maps'
+Vue.use(VuetifyGoogleAutocomplete, {
+  apiKey: 'AIzaSyDyJUwEpWPLTDZrX9TVeq5m8vGQScqyZCA',
+  // version: '3.26',
+  // libraries: 'places',
+});
 
 Vue.use(Vuetify);
 Vue.use(VueClipboards);
 
 const app = new Vue({
   el: '#app',
-  components: { VuetifyGoogleAutocomplete },
+  // components: { VuetifyGoogleAutocomplete },
   data: {
     googleApiKey: 'AIzaSyDyJUwEpWPLTDZrX9TVeq5m8vGQScqyZCA',
     autocompleteModel: 'Some Default Location...',
@@ -22,8 +30,8 @@ const app = new Vue({
       context: '',
     },
     errorAlert: {
-        message: '',
-        visible: false,
+      message: '',
+      visible: false,
     },
     address: {},
     appendIcon: 'search',
