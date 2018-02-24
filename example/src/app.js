@@ -4,12 +4,9 @@ import VueClipboards from 'vue-clipboards';
 import VuetifyGoogleAutocomplete from './../../dist/index';
 import countryCodeList from './countrycode.json';
 
-// import Vue from 'vue'
-// import * as VueGoogleMaps from 'vue2-google-maps'
 Vue.use(VuetifyGoogleAutocomplete, {
   apiKey: 'AIzaSyDyJUwEpWPLTDZrX9TVeq5m8vGQScqyZCA',
   // version: '3.26',
-  // libraries: 'places',
 });
 
 Vue.use(Vuetify);

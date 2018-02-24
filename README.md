@@ -2,15 +2,51 @@
 
 A Vuetify ready Vue.js (2.x) autosuggest component for the Google Maps Places API.
 
+## Versions
+
+Latest Stable: 1.1.0
+
+Latest Dev Stable: 2.0.0-alpha.2
+
+See [releases](https://github.com/MadimetjaShika/vuetify-google-autocomplete/releases) for details.
+
 ## Thanks
 
-Huge thanks and credit goes to [@olefirenko](https://github.com/olefirenko) and contributors for creating [Vue Google Autocomplete](https://github.com/olefirenko/vue-google-autocomplete) upon which this Vuetify ready version was built.
+Huge thanks and credit goes to [@olefirenko](https://github.com/olefirenko) and contributors for creating [Vue Google Autocomplete](https://github.com/olefirenko/vue-google-autocomplete) from which this Vuetify ready version was inspired.
 
 ## Demo
 
 Live Interactive demo: [madimetjashika.github.io/vuetify-google-autocomplete](https://madimetjashika.github.io/vuetify-google-autocomplete/)
 
 ## Installation
+
+The easiest way to use Vuetify Google Autocomplete is to install it from **npm** or **yarn**.
+
+```sh
+npm i vuetify-google-autocomplete
+```
+
+Or
+
+```sh
+yarn add vuetify-google-autocomplete
+```
+
+### For version >= 2.0.0-alpha.1
+
+Within your main.js or Vue entry point, import and initialise the component.
+
+```javascript
+import Vue from 'vue';
+import VuetifyGoogleAutocomplete from 'VuetifyGoogleAutocomplete';
+
+Vue.use(VuetifyGoogleAutocomplete, {
+  apiKey: '....',
+  version: '...', // Optional
+});
+```
+
+### For version <= 1.1.0
 
 This component uses Google Maps Places API to get geo suggests for autocompletion, so you have to include the Google Maps Places API in the `<head>` of your HTML:
 
@@ -29,19 +65,25 @@ This component uses Google Maps Places API to get geo suggests for autocompletio
 
 To obtain API key please visit the [Google Developer Console](https://console.developers.google.com). The API's that you have to enable in your Google API Manager Dashboard are [Google Maps Geocoding API](https://developers.google.com/maps/documentation/geocoding/start), [Google Places API Web Service](https://developers.google.com/places/web-service/) and [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/).
 
-The easiest way to use Vuetify Google Autocomplete is to install it from **npm** or **yarn**.
-
-```sh
-npm install vuetify-google-autocomplete --save
-```
-
-Or
-
-```sh
-yarn add vuetify-google-autocomplete
-```
-
 ## Usage
+
+### For version >= 2.0.0-alpha.1
+
+Simply start using the component in your HTML.
+
+```html
+<vuetify-google-autocomplete
+    id="map"
+    append-icon="search"
+    disabled="true"
+    classname="form-control"
+    placeholder="Start typing"
+    v-on:placechanged="getAddressData"
+>
+</vuetify-google-autocomplete>
+```
+
+### For version <= 1.1.0
 
 The Vuetify Google Autocomplete works out of the box by just including it.
 
@@ -66,7 +108,7 @@ In your template you can use this syntax:
 
 ### Properties
 
-> NB: This componenent implements the same props as those specified for [Vuetify Text Fields](https://vuetifyjs.com/components/text-fields) as at v0.16.9, **some** of which are listed below. Please see [Vuetify Text Fields](https://vuetifyjs.com/components/text-fields) for a complete list of props.
+> NB: This componenent implements the same props as those specified for [Vuetify Text Fields](https://vuetifyjs.com/components/text-fields) as at v1.0.3, **some** of which are listed below. Please see [Vuetify Text Fields](https://vuetifyjs.com/components/text-fields) for a complete list of available props.
 
 #### id
 Type: `String`
@@ -180,7 +222,6 @@ Please note that you need to provide what method will listen (`v-on:placechanged
 <template>
     <div>
         <h2>Your Address</h2>
-
         <vuetify-google-autocomplete
             ref="address"
             id="map"
@@ -194,23 +235,17 @@ Please note that you need to provide what method will listen (`v-on:placechanged
 </template>
 
 <script>
-    import VuetifyGoogleAutocomplete from 'vuetify-google-autocomplete'
-
     export default {
-        components: { VuetifyGoogleAutocomplete },
-
         data: function () {
             return {
               address: ''
             }
         },
-
         mounted() {
             // To demonstrate functionality of exposed component functions
             // Here we make focus on the user input
             this.$refs.address.focus();
         },
-
         methods: {
             /**
             * When the location found
