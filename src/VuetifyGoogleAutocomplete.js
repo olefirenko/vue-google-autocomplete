@@ -75,7 +75,7 @@ export default {
     },
     hideDetails: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     hint: {
       type: String,
@@ -389,76 +389,84 @@ export default {
     this.autocompleteText = this.value ? this.value : '';
   },
   render(createElement) {
+    const self = this;
     return createElement('v-text-field', {
       attrs: {
-        id: this.id,
-        name: this.id,
+        id: self.id,
+        name: self.id,
       },
       props: {
-        'append-icon': this.appendIcon,
-        'append-icon-cb': this.appendIconCb,
-        'auto-grow': this.autoGrow,
-        autofocus: this.autofocus,
-        box: this.box,
-        clearable: this.clearable,
-        color: this.color,
-        counter: this.counter,
-        class: this.classname,
-        dark: this.dark,
-        disabled: this.disabled,
-        'dont-fill-mask-blanks': this.dontFillMaskBlanks,
-        error: this.error,
-        'error-messages': this.errorMessages,
-        'full-width': this.fullWidth,
-        'hide-details': this.hideDetails,
-        hint: this.hint,
-        label: this.label,
-        light: this.light,
-        loading: this.loading,
-        mask: this.mask,
-        'multi-line': this.multiLine,
-        'no-resize': this.noResize,
-        'persistent-hint': this.persistentHint,
-        placeholder: this.placeholder,
-        prefix: this.prefix,
-        'prepend-icon': this.prependIcon,
-        'prepend-icon-cb': this.prependIconCb,
-        readonly: this.readonly,
-        required: this.required,
-        'return-masked-value': this.returnMaskedValue,
-        'row-height': this.rowHeight,
-        rows: this.rows,
-        rules: this.rules,
+        'append-icon': self.appendIcon,
+        'append-icon-cb': self.appendIconCb,
+        'auto-grow': self.autoGrow,
+        autofocus: self.autofocus,
+        box: self.box,
+        clearable: self.clearable,
+        color: self.color,
+        counter: self.counter,
+        class: self.classname,
+        dark: self.dark,
+        disabled: self.disabled,
+        'dont-fill-mask-blanks': self.dontFillMaskBlanks,
+        error: self.error,
+        'error-messages': self.errorMessages,
+        'full-width': self.fullWidth,
+        'hide-details': self.hideDetails,
+        hint: self.hint,
+        label: self.label,
+        light: self.light,
+        loading: self.loading,
+        mask: self.mask,
+        'multi-line': self.multiLine,
+        'no-resize': self.noResize,
+        'persistent-hint': self.persistentHint,
+        placeholder: self.placeholder,
+        prefix: self.prefix,
+        'prepend-icon': self.prependIcon,
+        'prepend-icon-cb': self.prependIconCb,
+        readonly: self.readonly,
+        required: self.required,
+        'return-masked-value': self.returnMaskedValue,
+        'row-height': self.rowHeight,
+        rows: self.rows,
+        rules: self.rules,
         ref: 'autocomplete',
-        'single-line': this.singleLine,
-        solo: this.solo,
-        'solo-inverted': this.soloInverted,
-        suffix: this.suffix,
-        tabindex: this.tabindex,
-        textarea: this.textarea,
-        'toggle-keys': this.toggleKeys,
-        type: this.type,
-        'validate-on-blur': this.validateOnBlur,
-        '@focus': this.onFocus(),
-        '@blur': this.onFocus(),
-        '@change': this.onChange(),
-        '@keypress': this.onKeyPress(),
+        'single-line': self.singleLine,
+        solo: self.solo,
+        'solo-inverted': self.soloInverted,
+        suffix: self.suffix,
+        tabindex: self.tabindex,
+        textarea: self.textarea,
+        'toggle-keys': self.toggleKeys,
+        type: self.type,
+        value: self.autocompleteText,
+        'validate-on-blur': self.validateOnBlur,
+        '@focus': self.onFocus(),
+        '@blur': self.onFocus(),
+        '@change': self.onChange(),
+        '@keypress': self.onKeyPress(),
       },
       domProps: {
-        value: this.autocompleteText,
+        // value: self.autocompleteText,
       },
       on: {
         focus: () => {
-          this.onFocus();
+          self.onFocus();
         },
         blur: () => {
-          this.onBlur();
+          self.onBlur();
         },
         change: () => {
-          this.onChange();
+          self.onChange();
         },
         keypress: (e) => {
-          this.onKeyPress(e.target.value);
+          self.onKeyPress(e.target.value);
+        },
+        input: (event) => {
+          if (event && event.target) {
+            self.value = event.target.value;
+            self.$emit('input', event.target.value);
+          }
         },
       },
     }, []);
