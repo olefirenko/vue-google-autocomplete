@@ -6,7 +6,6 @@ import countryCodeList from './countrycode.json';
 
 Vue.use(VuetifyGoogleAutocomplete, {
   apiKey: 'AIzaSyDyJUwEpWPLTDZrX9TVeq5m8vGQScqyZCA',
-  // version: '3.26',
 });
 
 Vue.use(Vuetify);
@@ -14,9 +13,7 @@ Vue.use(VueClipboards);
 
 const app = new Vue({
   el: '#app',
-  // components: { VuetifyGoogleAutocomplete },
   data: {
-    googleApiKey: 'AIzaSyDyJUwEpWPLTDZrX9TVeq5m8vGQScqyZCA',
     autocompleteModel: 'Some Default Location...',
     vueGoogleAutocompleteLink: 'https://github.com/olefirenko/vue-google-autocomplete',
     gitHubLink: 'https://github.com/MadimetjaShika/vuetify-google-autocomplete',
