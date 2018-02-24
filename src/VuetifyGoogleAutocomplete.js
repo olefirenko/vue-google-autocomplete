@@ -37,10 +37,6 @@ export default {
       type: [String, Array],
       default: null,
     },
-    classname: {
-      type: String,
-      default: '',
-    },
     dark: {
       type: Boolean,
       default: false,
@@ -198,8 +194,9 @@ export default {
       default: false,
     },
     value: {
+      type: String,
       default: undefined,
-      required: true,
+      required: false,
     },
   },
   // eslint-disable-next-line
@@ -404,7 +401,6 @@ export default {
         clearable: self.clearable,
         color: self.color,
         counter: self.counter,
-        class: self.classname,
         dark: self.dark,
         disabled: self.disabled,
         'dont-fill-mask-blanks': self.dontFillMaskBlanks,
