@@ -3,6 +3,10 @@ export default {
   props: {
     appendIcon: {
       type: String,
+      default: undefined,
+    },
+    appendIconCb: {
+      type: Function,
       default: null,
     },
     autoGrow: {
@@ -27,7 +31,7 @@ export default {
     },
     counter: {
       type: [Boolean, Number],
-      default: false,
+      default: undefined,
     },
     country: {
       type: [String, Array],
@@ -61,6 +65,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    flat: {
+      type: Boolean,
+      default: false,
+    },
     fullWidth: {
       type: Boolean,
       default: false,
@@ -71,28 +79,19 @@ export default {
     },
     hint: {
       type: String,
-      default: '',
+      default: undefined,
     },
     id: {
       type: String,
       required: true,
     },
-    googleApiKey: {
-      type: String,
-      required: true,
-    },
-    googleApiVersion: {
-      type: String,
-      default: '3',
-      required: false,
-    },
     label: {
       type: String,
-      default: '',
+      default: undefined,
     },
     light: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     loadGoogleApi: {
       type: Boolean,
@@ -105,9 +104,13 @@ export default {
     },
     mask: {
       type: String,
-      default: null,
+      default: undefined,
     },
     multiLine: {
+      type: Boolean,
+      default: false,
+    },
+    noResize: {
       type: Boolean,
       default: false,
     },
@@ -117,14 +120,18 @@ export default {
     },
     placeholder: {
       type: String,
-      default: '',
+      default: undefined,
     },
     prefix: {
       type: String,
-      default: '',
+      default: undefined,
     },
     prependIcon: {
       type: String,
+      default: undefined,
+    },
+    prependIconCb: {
+      type: Function,
       default: null,
     },
     readonly: {
@@ -139,8 +146,12 @@ export default {
       type: Boolean,
       default: false,
     },
+    rowHeight: {
+      type: [Number, String],
+      deffault: 24,
+    },
     rows: {
-      type: Number,
+      type: [Number, String],
       default: 5,
     },
     rules: {
@@ -155,12 +166,15 @@ export default {
       type: Boolean,
       default: false,
     },
+    soloInverted: {
+      type: Boolean,
+      default: false,
+    },
     suffix: {
       type: String,
-      default: '',
+      default: undefined,
     },
     tabindex: {
-      type: Number,
       default: 0,
     },
     textarea: {
@@ -171,6 +185,10 @@ export default {
       type: Array,
       default: () => [13, 32],
     },
+    type: {
+      type: String,
+      default: 'text',
+    },
     types: {
       type: String,
       default: 'address',
@@ -180,8 +198,7 @@ export default {
       default: false,
     },
     value: {
-      type: String,
-      default: '',
+      default: undefined,
       required: true,
     },
   },
@@ -379,6 +396,7 @@ export default {
       },
       props: {
         'append-icon': this.appendIcon,
+        'append-icon-cb': this.appendIconCb,
         'auto-grow': this.autoGrow,
         autofocus: this.autofocus,
         box: this.box,
@@ -399,23 +417,27 @@ export default {
         loading: this.loading,
         mask: this.mask,
         'multi-line': this.multiLine,
+        'no-resize': this.noResize,
         'persistent-hint': this.persistentHint,
         placeholder: this.placeholder,
         prefix: this.prefix,
-        prepend: this.prependIcon,
+        'prepend-icon': this.prependIcon,
+        'prepend-icon-cb': this.prependIconCb,
         readonly: this.readonly,
         required: this.required,
         'return-masked-value': this.returnMaskedValue,
+        'row-height': this.rowHeight,
         rows: this.rows,
         rules: this.rules,
         ref: 'autocomplete',
         'single-line': this.singleLine,
         solo: this.solo,
+        'solo-inverted': this.soloInverted,
         suffix: this.suffix,
         tabindex: this.tabindex,
         textarea: this.textarea,
         'toggle-keys': this.toggleKeys,
-        type: 'text',
+        type: this.type,
         'validate-on-blur': this.validateOnBlur,
         '@focus': this.onFocus(),
         '@blur': this.onFocus(),
