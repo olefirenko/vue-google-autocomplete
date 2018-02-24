@@ -15,7 +15,9 @@
     "autocomplete"
   ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules",
+    "dev": "npm run build && cross-env NODE_ENV=development webpack --progress --hide-modules",
+    "build": "mkdir -p ./dist && babel ./src/ -d ./dist",
+    "minify": "minify ./dist/ -d ./dist",
     "watch": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
     "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
@@ -38,7 +40,14 @@
   },
   "devDependencies": {
     "ava": "^0.18.2",
-    "babel-eslint": "^8.2.2",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-minify": "^0.3.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.24.0",
     "browser-env": "^2.0.25",
     "cross-env": "^3.2.4",

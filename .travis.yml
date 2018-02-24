@@ -1,0 +1,12 @@
+language: node_js
+
+install:
+  - npm i -d
+
+script:
+  - npm run lint
+  - npm run test
+
+after_script: greenkeeper-lockfile-upload
+
+after_success: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js

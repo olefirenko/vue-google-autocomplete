@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import VueClipboards from 'vue-clipboards';
-import VuetifyGoogleAutocomplete from './../../src/index';
+import VuetifyGoogleAutocomplete from './../../dist/index';
 import countryCodeList from './countrycode.json';
 
 // import Vue from 'vue'
