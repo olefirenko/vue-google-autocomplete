@@ -1,6 +1,3 @@
-// import Vue from 'vue';
-// import loadGoogleMapsAPI from 'load-google-maps-api';
-
 export default {
   name: 'vuetify-google-autocomplete',
   props: {
