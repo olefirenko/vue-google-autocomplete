@@ -1,12 +1,12 @@
 import loadGoogleMaps from './helper';
 import VuetifyGoogleAutocomplete from './VuetifyGoogleAutocomplete';
 
-window.googeMapState = {
+window.vgaMapState = {
   initMap: false,
 };
 
 window.initGoogleMaps = () => {
-  window.googeMapState.initMap = true;
+  window.vgaMapState.initMap = true;
 };
 
 VuetifyGoogleAutocomplete.install = (Vue, options) => {

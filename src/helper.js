@@ -11,7 +11,7 @@
  */
 const loadGoogleMaps = (apiKey, version) => {
   try {
-    if (!window.googeMapState.initMap) {
+    if (!window.vgaMapState.initMap) {
       const googleMapScript = document.createElement('SCRIPT');
 
       // Allow apiKey to be an object.

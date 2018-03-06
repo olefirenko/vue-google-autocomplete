@@ -232,7 +232,7 @@ export default {
       /**
        * Global Google Maps State Watcher.
        */
-      googeMapState: window.googeMapState,
+      vgaMapState: window.vgaMapState,
     };
   },
   methods: {
@@ -499,7 +499,7 @@ export default {
       this.enableGeolocation = newVal;
     },
 
-    'googeMapState.initMap': function googeMapStateInitMap(value) {
+    'vgaMapState.initMap': function vgaMapStateInitMap(value) {
       if (value) {
         this.setupGoogle();
       }
