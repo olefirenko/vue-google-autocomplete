@@ -388,6 +388,16 @@ export default {
     // Set the default model if provided.
     this.autocompleteText = this.value ? this.value : '';
   },
+  mounted: function mounted() {
+    if (window.hasOwnProperty('google') && window.google.hasOwnProperty('maps')) {
+      // we've been here before. set initMap to true to trigger watcher
+      this.vgaMapState.initMap = true
+    }
+  },
+  destroyed: function destroyed() {
+    // trip this on the way out so we can differentiate return trips in mounted()
+    window.vgaMapState.initMap = false
+  },
   render(createElement) {
     const self = this;
     return createElement('v-text-field', {
