@@ -5,7 +5,7 @@ window.vgaMapState = {
   initMap: false,
 };
 
-window.initGoogleMaps = () => {
+window.initVGAMaps = () => {
   window.vgaMapState.initMap = true;
 };
 

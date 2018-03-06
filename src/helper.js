@@ -30,7 +30,7 @@ const loadGoogleMaps = (apiKey, version) => {
       }
 
       options.libraries = 'places';
-      options.callback = 'initGoogleMaps';
+      options.callback = 'initVGAMaps';
 
       const parameters = Object.keys(options).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(options[key])}`)
         .join('&');
