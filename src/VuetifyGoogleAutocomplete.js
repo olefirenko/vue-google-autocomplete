@@ -387,8 +387,8 @@ export default {
   },
   mounted: function mounted() {
     if (window.hasOwnProperty('google') && window.google.hasOwnProperty('maps')) {
-      // we've been here before. set initMap to true to trigger watcher
-      this.vgaMapState.initMap = true
+      // we've been here before. just need to get Autocomplete loaded
+      this.setupGoogle();
     }
   },
   destroyed: function destroyed() {
