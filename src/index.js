@@ -1,13 +1,16 @@
 import loadGoogleMaps from './helper';
 import VuetifyGoogleAutocomplete from './VuetifyGoogleAutocomplete';
 
-window.vgaMapState = {
-  initMap: false,
-};
+// Prevent window from being accessed within non-browser context.
+if (typeof window !== 'undefined') {
+  window.vgaMapState = {
+    initMap: false,
+  };
 
-window.initVGAMaps = () => {
-  window.vgaMapState.initMap = true;
-};
+  window.initVGAMaps = () => {
+    window.vgaMapState.initMap = true;
+  };
+}
 
 VuetifyGoogleAutocomplete.install = (Vue, options) => {
   if (options.apiKey) {

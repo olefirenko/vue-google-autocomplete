@@ -11,6 +11,11 @@
  */
 const loadGoogleMaps = (apiKey, version) => {
   try {
+    // If not within browser context, do not continue processing.
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+      return;
+    }
+
     if (!window.vgaMapState.initMap) {
       const googleMapScript = document.createElement('SCRIPT');
 
