@@ -229,7 +229,7 @@ export default {
       /**
        * Global Google Maps State Watcher.
        */
-      vgaMapState: window.vgaMapState,
+      vgaMapState: null,
     };
   },
   methods: {
@@ -385,15 +385,16 @@ export default {
     // Set the default model if provided.
     this.autocompleteText = this.value ? this.value : '';
   },
-  mounted: function mounted() {
+  mounted() {
+    this.vgaMapState = window.vgaMapState;
     if (window.hasOwnProperty('google') && window.google.hasOwnProperty('maps')) {
       // we've been here before. just need to get Autocomplete loaded
       this.setupGoogle();
     }
   },
-  destroyed: function destroyed() {
+  destroyed() {
     // trip this on the way out so we can differentiate return trips in mounted()
-    window.vgaMapState.initMap = false
+    window.vgaMapState.initMap = false;
   },
   render(createElement) {
     const self = this;
