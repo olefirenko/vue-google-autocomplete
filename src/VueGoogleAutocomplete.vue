@@ -25,6 +25,10 @@
         postal_code: 'short_name'
     };
 
+    const CITIES_TYPE = ['locality', 'administrative_area_level_3'];
+    const REGIONS_TYPE = ['locality', 'sublocality', 'postal_code', 'country',
+        'administrative_area_level_1', 'administrative_area_level_2'];
+
     export default {
         name: 'VueGoogleAutocomplete',
 
@@ -54,6 +58,11 @@
           enableGeolocation: {
             type: Boolean,
             default: false
+          },
+
+          geolocationOptions: {
+            type: Object,
+            default: null
           }
         },
 
@@ -127,8 +136,14 @@
                 options
             );
 
-          this.autocomplete.addListener('place_changed', () => {
+          this.autocomplete.addListener('place_changed', this.onPlaceChanged);
+        },
 
+        methods: {
+            /**
+             * When a place changed
+             */
+            onPlaceChanged() {
                 let place = this.autocomplete.getPlace();
 
                 if (!place.geometry) {
@@ -138,33 +153,16 @@
                   return;
                 }
 
-                let returnData = {};
-
                 if (place.address_components !== undefined) {
-                    // Get each component of the address from the place details
-                    for (let i = 0; i < place.address_components.length; i++) {
-                      let addressType = place.address_components[i].types[0];
-
-                      if (ADDRESS_COMPONENTS[addressType]) {
-                        let val = place.address_components[i][ADDRESS_COMPONENTS[addressType]];
-                            returnData[addressType] = val;
-                      }
-                    }
-
-                    returnData['latitude'] = place.geometry.location.lat();
-                    returnData['longitude'] = place.geometry.location.lng();
-
                     // return returnData object and PlaceResult object
-                    this.$emit('placechanged', returnData, place, this.id);
+                    this.$emit('placechanged', this.formatResult(place), place, this.id);
 
                     // update autocompleteText then emit change event
                     this.autocompleteText = document.getElementById(this.id).value
                     this.onChange()
                 }
-           });
-        },
+            },
 
-        methods: {
             /**
              * When the input gets focus
              */
@@ -233,29 +231,44 @@
             },
 
             /**
+             * Update the coordinates of the input
+             * @param  {Coordinates} value
+             */
+            updateCoordinates (value) {
+                if (!value && !(value.lat || value.lng)) return;
+                if (!this.geolocation.geocoder) this.geolocation.geocoder = new google.maps.Geocoder();
+                this.geolocation.geocoder.geocode({'location': value}, (results, status) => {
+                    if (status === 'OK') {
+                        results = this.filterGeocodeResultTypes(results);
+                        if (results[0]) {
+                            this.$emit('placechanged', this.formatResult(results[0]), results[0], this.id);
+                            this.update(results[0].formatted_address);
+                        } else {
+                            this.$emit('error', 'no result for provided coordinates');
+                        }
+                    } else {
+                        this.$emit('error', 'error getting address from coords');
+                    }
+                })
+            },
+
+            /**
              * Update location based on navigator geolocation
-             * @param  {String} value
              */
             geolocate () {
-                updateGeolocation ((geolocation, position) => {
-                    if (!this.geolocation.geocoder) this.geolocation.geocoder = new google.maps.Geocoder;
-                    let input = Object.assign({'location': geolocation}, this.options)
-                    geocoder.geocode(input, function(results, status) {
-                        if (status === 'OK') {
-                            if (results[1]) {
-                                this.autocompleteText = results[1].formatted_address;
-                            }
-                        }
-                    })
+                this.updateGeolocation ((geolocation, position) => {
+                    this.updateCoordinates(geolocation)
                 })
             },
 
             /**
              * Update internal location from navigator geolocation
-             * @param  {String} value
+             * @param  {Function} (geolocation, position)
              */
             updateGeolocation (callback = null) {
                 if (navigator.geolocation) {
+                    let options = {};
+                    if(this.geolocationOptions) Object.assign(options, this.geolocationOptions);
                     navigator.geolocation.getCurrentPosition(position => {
                         let geolocation = {
                             lat: position.coords.latitude,
@@ -265,7 +278,9 @@
                         this.geolocation.position = position;
 
                         if (callback) callback(geolocation, position);
-                    });
+                    }, err => {
+                        this.$emit('error', 'Cannot get Coordinates from navigator', err);
+                    }, options);
                 }
             },
 
@@ -282,6 +297,52 @@
                         this.autocomplete.setBounds(circle.getBounds());
                     })
                 }
+            },
+
+            /**
+             * Format result from Geo google APIs
+             * @param place
+             * @returns {{formatted output}}
+             */
+            formatResult (place) {
+                let returnData = {};
+                for (let i = 0; i < place.address_components.length; i++) {
+                    let addressType = place.address_components[i].types[0];
+
+                    if (ADDRESS_COMPONENTS[addressType]) {
+                        let val = place.address_components[i][ADDRESS_COMPONENTS[addressType]];
+                        returnData[addressType] = val;
+                    }
+                }
+
+                returnData['latitude'] = place.geometry.location.lat();
+                returnData['longitude'] = place.geometry.location.lng();
+                return returnData
+            },
+
+            /**
+             * Extract configured types out of raw result as
+             * Geocode API does not allow to do it
+             * @param results
+             * @returns {GeocoderResult}
+             * @link https://developers.google.com/maps/documentation/javascript/reference#GeocoderResult
+             */
+            filterGeocodeResultTypes (results) {
+                if (!results) return results;
+                let output = [];
+                let types = [this.types];
+                if (types.includes('(cities)')) types = types.concat(CITIES_TYPE);
+                if (types.includes('(regions)')) types = types.concat(REGIONS_TYPE);
+
+                for (let r of results) {
+                    for (let t of r.types) {
+                        if (types.includes(t)) {
+                            output.push(r);
+                            break;
+                        }
+                    }
+                }
+                return output;
             }
         }
     }

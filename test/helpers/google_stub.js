@@ -6,6 +6,11 @@ export default function googleStub() {
             return {
               addListener: function () { }
             }
+          },
+          Geocoder: function () {
+            return {
+              geocode: function () { }
+            }
           }
         },
       }

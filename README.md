@@ -108,6 +108,12 @@ Default: `false`
 
 Bias the search towards user current location.
 
+#### geolocationOptions
+Type: [`Object`](https://developer.mozilla.org/fr/docs/Web/API/PositionOptions)
+Default: `{}`
+
+Allow to configure Options for [`navigator.getCurrentPosition`](https://developer.mozilla.org/fr/docs/Web/API/Geolocation/getCurrentPosition)
+
 ### Events
 The component emits next events, which you can listen in your application:
 
@@ -136,6 +142,10 @@ Gets triggered when the autocomplete results got changed
 #### keypress
 Gets triggered when a key gets pressed
 
+#### error
+Gets triggered when an error is encountered
+
+
 ### Exposed component functions
 
 These functions are accessible by setting "ref" on the component ([Refs documentation](https://vuejs.org/v2/guide/components.html#Child-Component-Refs)). See example below how to use these functions.
@@ -155,6 +165,14 @@ Call blur to blur (unfocus) the element
 #### update(value)
 
 Call to update the user input with a new value
+
+#### updateCoordinates([latlng](https://developers.google.com/maps/documentation/javascript/reference#LatLng))
+
+Call to force coordinates and update the input accordingly
+
+#### geolocate()
+
+Call to retrieve current position from `navigator` and update the input accordingly
 
 
 ### Example
