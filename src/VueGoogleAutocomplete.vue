@@ -328,7 +328,7 @@
              * @link https://developers.google.com/maps/documentation/javascript/reference#GeocoderResult
              */
             filterGeocodeResultTypes (results) {
-                if (!results) return results;
+                if (!results || !this.types) return results;
                 let output = [];
                 let types = [this.types];
                 if (types.includes('(cities)')) types = types.concat(CITIES_TYPE);
