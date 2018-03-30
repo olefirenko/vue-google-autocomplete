@@ -11,7 +11,7 @@ Live demo: [olefirenko.github.io/vue-google-autocomplete](https://olefirenko.git
 I have tried to use different Vue Google Autocomplete components, but did not find any that would solve my needs. So below I would like to mention what you can get from this exact component:
 
 * Load more than one autocompletion inputs (I could not achieve this with existing vue components)
-* Getting geolocation data (latitude, longitude) for found address object along with other address data (country, city, state, street, house number, zip code). So no need to do additional geocode request on backend side.
+* Getting geolocation data (latitude, longitude) for found address object along with other address data (country, city, state, county, street, house number, zip code). So no need to do additional geocode request on backend side.
 * No external dependencies
 * You can get access to underlying [PlaceResult object](https://developers.google.com/maps/documentation/javascript/reference#PlaceResult) to get more details about found location.
 * You can limit results to specific country or use users geolocation data
@@ -109,10 +109,10 @@ Default: `false`
 Bias the search towards user current location.
 
 #### geolocationOptions
-Type: [`Object`](https://developer.mozilla.org/fr/docs/Web/API/PositionOptions)
+Type: [`Object`](https://developer.mozilla.org/en/docs/Web/API/PositionOptions)
 Default: `{}`
 
-Allow to configure Options for [`navigator.getCurrentPosition`](https://developer.mozilla.org/fr/docs/Web/API/Geolocation/getCurrentPosition)
+Allow to configure Options for [`navigator.getCurrentPosition`](https://developer.mozilla.org/en/docs/Web/API/Geolocation/getCurrentPosition)
 
 ### Events
 The component emits next events, which you can listen in your application:

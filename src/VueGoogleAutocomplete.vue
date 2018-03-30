@@ -66,7 +66,7 @@
           }
         },
 
-        data: function () {
+        data() {
             return {
                 /**
                  * The Autocomplete object.

@@ -17,8 +17,12 @@ const app = new Vue({
         * @param {Object} placeResultData PlaceResult object
         * @param {String} id Input container ID
         */
-      getAddressData: function (addressData, placeResultData, id) {
+      getAddressData(addressData, placeResultData, id) {
             this.address = addressData;
-        }
+      },
+
+      handleError(error) {
+        alert(error)
+      }
     }
 });
