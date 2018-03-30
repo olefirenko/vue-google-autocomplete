@@ -91,6 +91,8 @@ Default: `address`
 
 Types supported in place autocomplete requests. [More info](https://developers.google.com/places/supported_types#table3)
 
+You may find [this example](#correct-usage-of-the-types-parameter) helpful.
+
 #### country
 Type: `String`|`Array`
 Default: null
@@ -227,4 +229,21 @@ Please note that you need to provide what method will listen (`v-on:placechanged
         }
     }
 </script>
+```
+
+#### Correct usage of the types parameter
+
+The example below shows the correct usage of the `types` parameter, when limiting the search to cities:
+
+```
+            <vue-google-autocomplete
+                id="map2"
+                ref="toAddress"
+                classname="form-control"
+                placeholder="Start typing"
+                v-on:placechanged="getToData"
+                types="(cities)"
+                country="us"
+            >
+            </vue-google-autocomplete>
 ```
