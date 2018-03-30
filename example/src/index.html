@@ -18,10 +18,13 @@
 <section class="hero">
     <div class="hero-body">
         <div class="container" id="app">
-            <h3 class="title is-4">Start typing an address and below you will see found result</h3>
+            <h3 class="title is-4">Start typing an address and below you will see found result,
+                <a v-on:click="$refs.address.geolocate()">or force current location</a>
+            </h3>
             <p class="control">
                 <vue-google-autocomplete
                     id="map"
+                    ref="address"
                     classname="input"
                     placeholder="Start typing"
                     v-on:placechanged="getAddressData"
