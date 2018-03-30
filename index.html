@@ -28,6 +28,7 @@
                     classname="input"
                     placeholder="Start typing"
                     v-on:placechanged="getAddressData"
+                    v-on:error="handleError"
                     country="sg"
                 >
                 </vue-google-autocomplete>

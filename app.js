@@ -318,6 +318,9 @@ var app = new _vue2.default({
         */
         getAddressData: function getAddressData(addressData, placeResultData, id) {
             this.address = addressData;
+        },
+        handleError: function handleError(error) {
+            alert(error);
         }
     }
 });
