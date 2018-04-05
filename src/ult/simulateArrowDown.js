@@ -17,7 +17,6 @@ export default (input) => {
             };
 
         _addEventListener.apply(input, [type, listener]);
-        console.log('hi from simulate');
     }
 
     input.addEventListener = addEventListenerWrapper;
