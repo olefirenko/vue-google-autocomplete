@@ -46,7 +46,7 @@
           },
 
           types: {
-            type: String,
+            type: [String, Array],
             default: 'address'
           },
 
@@ -120,10 +120,6 @@
 
         mounted: function() {
           const options = {};
-
-          if (this.types) {
-            options.types = [this.types];
-          }
 
           if (this.country) {
             options.componentRestrictions = {
