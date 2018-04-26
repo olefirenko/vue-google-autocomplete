@@ -473,10 +473,6 @@ export default {
           if (event && event.target) {
             self.value = event.target.value;
             self.$emit('input', event.target.value);
-          } else {
-            // clear was pressed, reset this
-            self.autocompleteText = '';
-            self.$emit('placechanged', null);
           }
         },
       },
