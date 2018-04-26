@@ -16,6 +16,14 @@ const loadGoogleMaps = (apiKey, version) => {
       return;
     }
 
+    if (typeof window.google === 'object' && typeof window.google.maps === 'object'){
+      if (typeof window.google.maps.places === 'object') {
+        return; // google is already loaded, don't try to load it again to prevent errors
+      }
+
+      throw new Error('Google is already loaded, but does not contain the places API.');
+    }
+
     if (!window.vgaMapState.initMap) {
       const googleMapScript = document.createElement('SCRIPT');
 
