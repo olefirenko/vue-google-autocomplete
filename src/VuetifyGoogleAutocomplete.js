@@ -446,7 +446,7 @@ export default {
         textarea: self.textarea,
         'toggle-keys': self.toggleKeys,
         type: self.type,
-        value: self.autocompleteText,
+        value: self.value || self.autocompleteText,
         'validate-on-blur': self.validateOnBlur,
         '@focus': self.onFocus(),
         '@blur': self.onFocus(),
