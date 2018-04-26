@@ -63,6 +63,11 @@
           geolocationOptions: {
             type: Object,
             default: null
+          },
+
+          value: {
+              type: Object,
+              default: null
           }
         },
 
@@ -156,6 +161,8 @@
                 if (place.address_components !== undefined) {
                     // return returnData object and PlaceResult object
                     this.$emit('placechanged', this.formatResult(place), place, this.id);
+
+                    this.$emit('input', this.formatResult(place));
 
                     // update autocompleteText then emit change event
                     this.autocompleteText = document.getElementById(this.id).value
