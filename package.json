@@ -59,10 +59,10 @@
     "eslint-plugin-import": "^2.9.0",
     "gh-pages": "^1.1.0",
     "laravel-mix": "^0.8.8",
-    "vue-clipboards": "^1.2.1",
+    "vue-clipboards": "^1.2.4",
     "vue-node": "^1.1.1",
     "webpack": "^3.11.0",
-    "vue": "^2.5.13",
-    "vuetify": "^1.0"
+    "vue": "^2.5.16",
+    "vuetify": "^1.0.18"
   }
 }
