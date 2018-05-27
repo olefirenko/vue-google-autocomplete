@@ -358,7 +358,7 @@ export default {
         const returnData = {};
 
         if (place.formatted_address !== undefined) {
-          document.getElementById(_this2.id).value = place.formatted_address;
+          document.getElementById(this.id).value = place.formatted_address;
         }
 
         if (place.address_components !== undefined) {
