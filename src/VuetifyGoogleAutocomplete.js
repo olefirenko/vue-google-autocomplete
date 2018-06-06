@@ -375,8 +375,10 @@ export default {
           returnData.latitude = place.geometry.location.lat();
           returnData.longitude = place.geometry.location.lng();
           
-          // get name for establishment type searches
+          // additional fields available in google places results
           returnData.name = place.name
+          returnData.photos = place.photos
+          returnData.place_id = place.place_id
 
           // return returnData object and PlaceResult object
           this.$emit('placechanged', returnData, place, this.id);
