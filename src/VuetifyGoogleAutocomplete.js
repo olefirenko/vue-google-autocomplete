@@ -374,6 +374,9 @@ export default {
 
           returnData.latitude = place.geometry.location.lat();
           returnData.longitude = place.geometry.location.lng();
+          
+          // get name for establishment type searches
+          returnData.name = place.name
 
           // return returnData object and PlaceResult object
           this.$emit('placechanged', returnData, place, this.id);
