@@ -121,8 +121,15 @@
         mounted: function() {
           const options = {};
 
+          /** 
+           * Take string provided for types and trim any whitespace,
+           * Use split() to return an array of strings
+           * */
           if (this.types) {
-            options.types = [this.types];
+            let trimStr = this.types.replace(/\s+/g, '')
+            let split = trimStr.split(',');            
+            options.types = split;
+            // options.types = [this.types];
           }
 
           if (this.country) {
@@ -330,7 +337,8 @@
             filterGeocodeResultTypes (results) {
                 if (!results || !this.types) return results;
                 let output = [];
-                let types = [this.types];
+                // let types = [this.types];
+                let types = this.types; // this.types is already an array now
                 if (types.includes('(cities)')) types = types.concat(CITIES_TYPE);
                 if (types.includes('(regions)')) types = types.concat(REGIONS_TYPE);
 
