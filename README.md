@@ -2,6 +2,8 @@
 
 A Vuetify ready Vue.js (2.x) autosuggest component for the Google Maps Places API.
 
+[![build status](github.com:MadimetjaShika/vuetify-google-autocomplete/badges/master/build.svg)](github.com:MadimetjaShika/vuetify-google-autocomplete/commits/master)
+
 ## Versions
 
 Latest Stable: 1.1.0
@@ -107,66 +109,9 @@ In your template you can use this syntax:
 
 ### Properties
 
-> See [Props API](https://madimetjashika.github.io/vuetify-google-autocomplete/docs/module-vuetify-google-autocomplete.props.html) or [JSDOCS.md](https://github.com/MadimetjaShika/vuetify-google-autocomplete/blob/dev/JSDOCS.md) file for a complete "living" definition of all props supported by this library.
+**Please refer to the [Props API](https://madimetjashika.github.io/vuetify-google-autocomplete/docs/module-vuetify-google-autocomplete.props.html) or [JSDOCS.md file](https://github.com/MadimetjaShika/vuetify-google-autocomplete/blob/dev/JSDOCS.md) for a complete "living" definition of all props supported by this library.**
 
-> NB: This componenent implements the same props as those specified for [Vuetify Text Fields](https://vuetifyjs.com/components/text-fields) as at v1.0.3, **some** of which are listed below. Please see [Vuetify Text Fields](https://vuetifyjs.com/components/text-fields) for a complete list of available props.
-
-#### id
-Type: `String`
-
-`required` ID for the input container.
-
-#### append-icon
-Type: `String`
-Default: `null`
-
-The icon to append to the end of the input field.
-
-#### prepend-icon
-Type: `String`
-Default: `null`
-
-The icon to prepend at the beginning of the input field.
-
-#### classname
-Type: `String`
-
-Class to the input container.
-
-#### placeholder
-Type: `String`
-Default: `Search Address`
-
-The input field will get this placeholder text. Note that the input field will also get a label  with the same text.
-
-#### disabled
-Type: `Boolean`
-Default: `false`
-
-Sets the input as either disabled or not.
-
-#### types
-Type: `String`
-Default: `address`
-
-Types supported in place autocomplete requests. [More info](https://developers.google.com/places/supported_types#table3)
-
-#### country
-Type: `String`|`Array`
-Default: null
-
-Option to restrict the autocomplete search to a particular country. Countries must be passed as a two-character, ISO 3166-1 Alpha-2 compatible country code (i.e. "br", "sg", "fr"). You can provide a single one, or an array of up to 5 country code strings.
-Note: this is a dynamic property. You must pass it as `:country=""` to your component, otherwise it won't work. For example:
-```html
-<vuetify-google-autocomplete :country="['au', 'nz']"></vuetify-google-autocomplete>
-```
-will restrict the countries to Australia and New Zealand.
-
-#### enable-geolocation
-Type: `Boolean`
-Default: `false`
-
-Bias the search towards user current location.
+> NB: This componenent implements the same props as those specified for [Vuetify Text Fields](https://vuetifyjs.com/components/text-fields) as at v1.0.3. Please see [Vuetify Text Fields](https://vuetifyjs.com/components/text-fields) for a complete list of available props.
 
 ### Events
 The component emits next events, which you can listen in your application:
@@ -285,9 +230,21 @@ Install dependencies with **npm**
     yarn
 
 
-Make your changes and ensure tests are written for your changes. Ensure that your changes pass all the tests:
+Make your changes, and observe them at dev-time by running
+
+    npm run dev
+
+and going to the displayed URL to see your changes.
+
+Then, ensure tests are written for your changes. Ensure that your changes pass all the tests:
 
     npm run test
+
+Ensure that your changes are documented via JSDocs standard, then run
+
+    npm run docs
+
+to update the JSDocs.
 
 If relevant, please ensure that you update the README and demo/example accordingly.
 
