@@ -6,7 +6,7 @@ A Vuetify ready Vue.js (2.x) autosuggest component for the Google Maps Places AP
 
 Latest Stable: 1.1.0
 
-Latest Dev Stable: 2.0.0-beta.3
+Latest Dev Stable: 2.0.0-beta.4
 
 See [releases](https://github.com/MadimetjaShika/vuetify-google-autocomplete/releases) for details.
 
@@ -65,7 +65,7 @@ This component uses Google Maps Places API to get geo suggests for autocompletio
 
 To obtain API key please visit the [Google Developer Console](https://console.developers.google.com). The API's that you have to enable in your Google API Manager Dashboard are [Google Maps Geocoding API](https://developers.google.com/maps/documentation/geocoding/start), [Google Places API Web Service](https://developers.google.com/places/web-service/) and [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/).
 
-## Usage
+## Usage and API
 
 ### For version >= 2.0.0-alpha.1
 
@@ -106,6 +106,8 @@ In your template you can use this syntax:
 ```
 
 ### Properties
+
+> See [Props API](https://madimetjashika.github.io/vuetify-google-autocomplete/docs/module-vuetify-google-autocomplete.props.html) or [JSDOCS.md](https://github.com/MadimetjaShika/vuetify-google-autocomplete/blob/dev/JSDOCS.md) file for a complete "living" definition of all props supported by this library.
 
 > NB: This componenent implements the same props as those specified for [Vuetify Text Fields](https://vuetifyjs.com/components/text-fields) as at v1.0.3, **some** of which are listed below. Please see [Vuetify Text Fields](https://vuetifyjs.com/components/text-fields) for a complete list of available props.
 
@@ -276,17 +278,17 @@ Fork, then clone the repo:
 
 Install dependencies with **npm**
 
-    npm install 
-    
+    npm install
+
    or **yarn**
-    
+
     yarn
 
 
 Make your changes and ensure tests are written for your changes. Ensure that your changes pass all the tests:
 
     npm run test
-    
+
 If relevant, please ensure that you update the README and demo/example accordingly.
 
 Push to your fork and [submit a pull request](https://github.com/MadimetjaShika/vuetify-google-autocomplete/compare/).

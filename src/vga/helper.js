@@ -1,13 +1,14 @@
 /**
  * Loads the Google Map API. Code adopted from {@link https://github.com/xkjyeah/vue-google-maps}
  *
- * @param apiKey    API Key, or object with the URL parameters. For example
- *                  to use Google Maps Premium API, pass
- *                    `{ client: <YOUR-CLIENT-ID> }`.
- *                  You may pass the version (as `v`) as a property on this parameter.
- * @param version   Google for Maps version
+ * @param {string|object} apiKey API Key, or object with the URL parameters. For example to use
+ * the Google Maps Premium API, pass { client: <YOUR-CLIENT-ID> }. You may pass the
+ * ersion (as 'v) as a property on this parameter.
+ * @param {string} version Google Maps SDK Version.
  *
  * Adapted from {@link https://github.com/xkjyeah/vue-google-maps}
+ * @see {@link https://github.com/xkjyeah/vue-google-maps}
+ * @access private
  */
 const loadGoogleMaps = (apiKey, version) => {
   try {
@@ -16,7 +17,7 @@ const loadGoogleMaps = (apiKey, version) => {
       return;
     }
 
-    if (typeof window.google === 'object' && typeof window.google.maps === 'object'){
+    if (typeof window.google === 'object' && typeof window.google.maps === 'object') {
       if (typeof window.google.maps.places === 'object') {
         return; // google is already loaded, don't try to load it again to prevent errors
       }
