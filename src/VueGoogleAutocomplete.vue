@@ -16,6 +16,7 @@
 
 <script>
     const ADDRESS_COMPONENTS = {
+        subpremise : 'short_name',
         street_number: 'short_name',
         route: 'long_name',
         locality: 'long_name',
