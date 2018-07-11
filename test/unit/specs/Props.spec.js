@@ -11,6 +11,40 @@ beforeEach(() => {
 });
 
 describe('Ensure component props behave as expected', () => {
+  describe('addressComponents', () => {
+    test('Should have default value if not provided', () => {
+      const defaultAddressCompoentValue = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name',
+      };
+      const wrapper = mount(Vga, {
+        localVue,
+        propsData: mandatoryProps,
+      });
+      expect(wrapper.vm.$props.addressComponents).toEqual(defaultAddressCompoentValue);
+    });
+
+    test('Should accept Object input', () => {
+      mandatoryProps.addressComponents = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'long_name',
+        country: 'long_name',
+        postal_code: 'short_name',
+      };
+      const wrapper = mount(Vga, {
+        localVue,
+        propsData: mandatoryProps,
+      });
+      expect(wrapper.vm.$props.addressComponents).toBe(mandatoryProps.addressComponents);
+    });
+  });
+
   describe('append-icon', () => {
     test('Should have "undefined" as default if not provided', () => {
       const wrapper = mount(Vga, {

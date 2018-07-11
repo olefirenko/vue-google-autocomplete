@@ -13,6 +13,21 @@ export default {
    */
   props: {
     /**
+     * Select Address Types and Address Component Types
+     * https://developers.google.com/maps/documentation/javascript/geocoding#GeocodingAddressTypes
+     */
+    addressComponents: {
+      type: Object,
+      default: () => ({
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name',
+      }),
+    },
+    /**
      * Maps to Vuetify 'append-icon' prop.
      *
      * @alias module:vuetify-google-autocomplete.props.append-icon
@@ -707,15 +722,6 @@ export default {
           return;
         }
 
-        const addressComponents = {
-          street_number: 'short_name',
-          route: 'long_name',
-          locality: 'long_name',
-          administrative_area_level_1: 'short_name',
-          country: 'long_name',
-          postal_code: 'short_name',
-        };
-
         const returnData = {};
 
         if (place.formatted_address !== undefined) {
@@ -727,8 +733,8 @@ export default {
           for (let i = 0; i < place.address_components.length; i += 1) {
             const addressType = place.address_components[i].types[0];
 
-            if (addressComponents[addressType]) {
-              const val = place.address_components[i][addressComponents[addressType]];
+            if (this.addressComponents[addressType]) {
+              const val = place.address_components[i][this.addressComponents[addressType]];
               returnData[addressType] = val;
             }
           }
