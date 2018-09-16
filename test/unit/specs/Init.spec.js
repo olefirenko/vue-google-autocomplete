@@ -72,21 +72,7 @@ describe('Ensure Lifecycle hooks behave as expected', () => {
         },
       });
 
-      expect(setupGoogleSpy.called).toBe(false);
-    });
-
-    test('Should not call setupGoogle() when window.google is not set but window.maps is set', () => {
-      window.maps = {};
-      const setupGoogleSpy = sinon.spy();
-      wrapper = mount(Vga, {
-        localVue,
-        propsData: propData,
-        methods: {
-          setupGoogle: setupGoogleSpy,
-        },
-      });
-
-      expect(setupGoogleSpy.called).toBe(false);
+      expect(setupGoogleSpy.called).toBe(true);
     });
 
     test('Should call setupGoogle() when window.google is set and window.maps is set', () => {

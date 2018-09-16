@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <div>
     <v-navigation-drawer v-model="drawerRight" width="550" fixed right clipped app>
       <v-card flat>
         <v-card-title><h3>Props</h3></v-card-title>
@@ -36,7 +36,8 @@
             item-text="Name"
             item-value="Code"
             v-model="country"
-            multiple max-height="400"
+            multiple
+            :menu-props="{maxHeight:'400'}"
             hint="Choose countries to limit search to"
             :rules="[countryValidationRules]"
             persistent-hint
@@ -46,7 +47,9 @@
       </v-card>
     </v-navigation-drawer>
     <v-toolbar color="blue-grey lighten-3" dark fixed app clipped-right>
-      <v-toolbar-title>Vuetify Google Autocomplete</v-toolbar-title>
+      <v-toolbar-title>Vuetify Google Autocomplete - Page 2</v-toolbar-title>
+      <v-btn @click="navigatePreviousPage()" icon><v-icon>navigate_before</v-icon></v-btn>
+      <v-btn @click="navigateNextPage()" icon><v-icon>navigate_next</v-icon></v-btn>
       <v-spacer></v-spacer>
       <v-tooltip left></v-tooltip>
       <v-btn :href="docsLink" icon><v-icon>chrome_reader_mode</v-icon></v-btn>
@@ -157,11 +160,11 @@
       <v-spacer></v-spacer>
       <span></span>
     </v-footer>
-  </v-app>
+  </div>
 </template>
 
 <script>
-import countryCodeList from './countrycode.json';
+import countryCodeList from '../countrycode.json';
 
 export default {
   name: 'App',

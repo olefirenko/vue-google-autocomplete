@@ -50,6 +50,28 @@ export default {
       default: null,
     },
     /**
+     * Maps to native HTML5 autocapitalize attribute.
+     *
+     * @alias module:vuetify-google-autocomplete.autocapitalize
+     * @see {@link https://vuetifyjs.com/en/components/text-fields}
+     * @type {Boolean}
+     */
+    autocapitalize: {
+      type: String,
+      default: 'off',
+    },
+    /**
+     * Maps to native HTML5 autocorrect attribute.
+     *
+     * @alias module:vuetify-google-autocomplete.autocorrect
+     * @see {@link https://vuetifyjs.com/en/components/text-fields}
+     * @type {Boolean}
+     */
+    autocorrect: {
+      type: String,
+      default: 'off',
+    },
+    /**
      * Maps to Vuetify 'auto-grow' prop.
      *
      * @alias module:vuetify-google-autocomplete.props.auto-grow
@@ -81,6 +103,18 @@ export default {
     box: {
       type: Boolean,
       default: false,
+    },
+    /**
+     * Maps to Vuetify 'browser-autocomplete' prop.
+     * @default 'off'
+     *
+     * @alias module:vuetify-google-autocomplete.props.browserAutocomplete
+     * @see {@link https://vuetifyjs.com/en/components/text-fields}
+     * @type {String}
+     */
+    browserAutocomplete: {
+      type: String,
+      default: 'off',
     },
     /**
      * Maps to Vuetify 'clearable' prop.
@@ -312,6 +346,17 @@ export default {
       default: false,
     },
     /**
+     * Maps to Vuetify 'outline' prop.
+     *
+     * @alias module:vuetify-google-autocomplete.props.outline
+     * @see {@link https://vuetifyjs.com/en/components/text-fields}
+     * @type {Boolean}
+     */
+    outline: {
+      type: Boolean,
+      default: false,
+    },
+    /**
      * Maps to Vuetify 'persistent-hint' prop.
      *
      * @alias module:vuetify-google-autocomplete.props.persistent-hint
@@ -400,6 +445,17 @@ export default {
       default: false,
     },
     /**
+     * Maps to Vuetify 'reverse' prop.
+     *
+     * @alias module:vuetify-google-autocomplete.props.reverse
+     * @see {@link https://vuetifyjs.com/en/components/text-fields}
+     * @type {Boolean}
+     */
+    reverse: {
+      type: Boolean,
+      default: false,
+    },
+    /**
      * Maps to Vuetify 'row-height' prop.
      *
      * @alias module:vuetify-google-autocomplete.props.row-height
@@ -464,6 +520,17 @@ export default {
     soloInverted: {
       type: Boolean,
       default: false,
+    },
+    /**
+     * Maps to native HTML5 spellcheck attribute.
+     *
+     * @alias module:vuetify-google-autocomplete.props.spellcheck
+     * @see {@link https://vuetifyjs.com/en/components/text-fields}
+     * @type {String}
+     */
+    spellcheck: {
+      type: String,
+      default: 'false',
     },
     /**
      * Maps to Vuetify 'suffix' prop.
@@ -770,7 +837,9 @@ export default {
    */
   mounted() {
     this.vgaMapState = window.vgaMapState;
-    if (Object.prototype.hasOwnProperty.call(window, 'google') && Object.prototype.hasOwnProperty.call(window, 'maps')) {
+    // if (Object.prototype.hasOwnProperty.call(window, 'google')
+    //   && Object.prototype.hasOwnProperty.call(window, 'maps')) {
+    if (Object.prototype.hasOwnProperty.call(window, 'google')) {
       // we've been here before. just need to get Autocomplete loaded
       this.setupGoogle();
     }
@@ -793,6 +862,9 @@ export default {
       attrs: {
         id: self.id,
         name: self.id,
+        autocapitalize: self.autocapitalize,
+        autocorrect: self.autocorrect,
+        spellcheck: self.spellcheck,
       },
       props: {
         'append-icon': self.appendIcon,
@@ -800,6 +872,7 @@ export default {
         'auto-grow': self.autoGrow,
         autofocus: self.autofocus,
         box: self.box,
+        'browser-autocomplete': self.browserAutocomplete,
         clearable: self.clearable,
         color: self.color,
         counter: self.counter,
@@ -817,6 +890,7 @@ export default {
         mask: self.mask,
         'multi-line': self.multiLine,
         'no-resize': self.noResize,
+        outline: self.outline,
         'persistent-hint': self.persistentHint,
         placeholder: self.placeholder,
         prefix: self.prefix,
@@ -825,6 +899,7 @@ export default {
         readonly: self.readonly,
         required: self.required,
         'return-masked-value': self.returnMaskedValue,
+        reverse: self.reverse,
         'row-height': self.rowHeight,
         rows: self.rows,
         rules: self.rules,
