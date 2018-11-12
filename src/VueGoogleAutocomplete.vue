@@ -30,6 +30,17 @@
     const REGIONS_TYPE = ['locality', 'sublocality', 'postal_code', 'country',
         'administrative_area_level_1', 'administrative_area_level_2'];
 
+    /*
+      By default, we're only including basic place data because requesting these 
+      fields place data is not additionally charged by Google. Please refer to:
+
+      https://developers.google.com/maps/billing/understanding-cost-of-use#basic-data
+    */
+    const BASIC_DATA_FIELDS = ['address_components', 'adr_address', 'alt_id', 
+        'formatted_address', 'geometry', 'icon', 'id', 'name', 
+        'permanently_closed', 'photo', 'place_id', 'scope', 'type', 'url', 
+        'utc_offset', 'vicinity'];
+
     export default {
         name: 'VueGoogleAutocomplete',
 
@@ -49,6 +60,13 @@
           types: {
             type: String,
             default: 'address'
+          },
+
+          fields: {
+            type: Array,
+            default: function() {
+              return BASIC_DATA_FIELDS;
+            },
           },
 
           country: {
@@ -136,6 +154,8 @@
                 document.getElementById(this.id),
                 options
             );
+
+          this.autocomplete.setFields(this.fields);
 
           this.autocomplete.addListener('place_changed', this.onPlaceChanged);
         },
