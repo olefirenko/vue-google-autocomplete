@@ -307,7 +307,6 @@
                         center: {lat: this.bounds['lat'], lng: this.bounds['lng']},
                         radius: this.bounds['radius']
                     });
-                    console.log(circle.getBounds())
                     this.autocomplete.setBounds(circle.getBounds());
 
                 }

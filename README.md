@@ -118,14 +118,15 @@ Allow to configure Options for [`navigator.getCurrentPosition`](https://develope
 
 #### bounds
 Type: [`Object`](https://developer.mozilla.org/en/docs/Web/API/PositionOptions)
-Default: `{}`
+Default: null
 
-Define a circle to which search results will be baised.  
+Define a circle within which search results will be baised.  
 
 ```html
-bounds={lat: 45.125, lng: -122.658, radius: 75000} // radius is in meters
+<vue-google-autocomplete :bounds="{lat: 45.125, lng: -122.658, radius: 75000}">  <vue-google-autocomplete>
 ```
 
+Will bound results to a circle 150km in diameter centered at 45.125, -122.658.  If no results are found in these bounds, google searches outside it.
 
 ### Events
 The component emits next events, which you can listen in your application:
