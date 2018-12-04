@@ -5,6 +5,8 @@
         :class="classname"
         :id="id"
         :placeholder="placeholder"
+        :required="required"
+        :disabled="disabled"
         v-model="autocompleteText"
         @focus="onFocus()"
         @blur="onBlur()"
@@ -64,6 +66,16 @@
           geolocationOptions: {
             type: Object,
             default: null
+          },
+
+          disabled: {
+            type: Boolean,
+            default: false
+          },
+
+          required: {
+            type: Boolean,
+            default: true
           }
         },
 

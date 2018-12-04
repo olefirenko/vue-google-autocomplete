@@ -116,6 +116,18 @@ Default: `{}`
 
 Allow to configure Options for [`navigator.getCurrentPosition`](https://developer.mozilla.org/en/docs/Web/API/Geolocation/getCurrentPosition)
 
+#### required
+Type: `Boolean`
+Default: `true`
+
+The input field will get the required boolean.
+
+#### disabled
+Type: `Boolean`
+Default: `false`
+
+The input field will get the disabled boolean.
+
 ### Events
 The component emits next events, which you can listen in your application:
 
