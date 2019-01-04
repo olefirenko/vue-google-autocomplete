@@ -15,6 +15,7 @@ I have tried to use different Vue Google Autocomplete components, but did not fi
 * No external dependencies
 * You can get access to underlying [PlaceResult object](https://developers.google.com/maps/documentation/javascript/reference#PlaceResult) to get more details about found location.
 * You can limit results to specific country or use users geolocation data
+* You can limit results to specific addresses in a radius around a city
 
 ## Installation
 
@@ -240,6 +241,29 @@ Please note that you need to provide what method will listen (`v-on:placechanged
     }
 </script>
 ```
+
+### Example (eg: restrict the search 8KM around Brussels (Belgium)
+
+```html
+<template>
+    <div>
+        <h2>Your Address</h2>
+
+        <vue-google-autocomplete
+            ref="address"
+            id="map"
+            classname="form-control"
+            placeholder="Please type your address"
+            v-on:placechanged="getAddressData"
+            country="be"
+            :boundaries="{lat: 50.848227,lng:4.352601,radius:8000 }"
+        >
+        </vue-google-autocomplete>
+    </div>
+</template>
+
+```
+
 
 #### Correct usage of the types parameter
 
