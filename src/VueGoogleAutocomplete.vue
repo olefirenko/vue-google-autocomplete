@@ -64,6 +64,11 @@
           geolocationOptions: {
             type: Object,
             default: null
+          },
+	  
+          boundaries: {
+            type: Object,
+            default: null
           }
         },
 
@@ -125,7 +130,9 @@
           if (this.types) {
             options.types = [this.types];
           }
-
+ 	  if(this.boundaries != null){
+            options.strictBounds = true;
+ 	  }
           if (this.country) {
             options.componentRestrictions = {
               country: this.country
@@ -136,6 +143,15 @@
                 document.getElementById(this.id),
                 options
             );
+	    
+	    if(this.boundaries != null ){
+                var LatLngCenter = new google.maps.LatLng(parseFloat(this.boundaries.lat),parseFloat(this.boundaries.lng));
+                var circleBounds =new google.maps.Circle({
+                    center:LatLngCenter,
+                    radius:this.boundaries.radius
+                });
+                this.autocomplete.setBounds(circleBounds.getBounds());
+            }
 
           this.autocomplete.addListener('place_changed', this.onPlaceChanged);
         },
