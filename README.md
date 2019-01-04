@@ -104,6 +104,16 @@ Note: this is a dynamic property. You must pass it as `:country=""` to your comp
 ```
 will restrict the countries to Australia and New Zealand.
 
+#### boundaries
+Type: `Object`
+Default: null
+
+Allow you to search addresses within a radius around a geopoint
+```html
+<vue-google-autocomplete :boundaries="{lat: 50.848227,lng:4.352601,radius:8000 }"></vue-google-autocomplete>
+```
+will restrict the search 8KM around Brussels in Belgium if the country prop is set to "be" for Belgium.
+
 #### enable-geolocation
 Type: `Boolean`
 Default: `false`
