@@ -32,4 +32,12 @@ test('that it renders proper props', t => {
     t.is(vm.$el.placeholder, "Start typing");
     t.is(vm.$el.className, 'form-control');
     t.is(vm.$el.id, 'map');
+    t.is(vm.$el.disabled, false);
+
+    let vm2 = new Constructor({ propsData: {
+        'id': 'map2',
+        'disabled': true
+    }}).$mount();
+
+    t.is(vm2.$el.disabled, true);
 });
