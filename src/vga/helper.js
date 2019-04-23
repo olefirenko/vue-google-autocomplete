@@ -10,7 +10,7 @@
  * @see {@link https://github.com/xkjyeah/vue-google-maps}
  * @access private
  */
-const loadGoogleMaps = (apiKey, version) => {
+const loadGoogleMaps = (apiKey, version, language) => {
   try {
     // If not within browser context, do not continue processing.
     if (typeof window === 'undefined' || typeof document === 'undefined') {
@@ -53,6 +53,10 @@ const loadGoogleMaps = (apiKey, version) => {
 
       if (version) {
         url = `${url}&v=${version}`;
+      }
+
+      if (language) {
+        url = `${url}&language=${language}`;
       }
 
       googleMapScript.setAttribute('src', url);

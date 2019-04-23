@@ -14,7 +14,7 @@ if (typeof window !== 'undefined') {
 
 VuetifyGoogleAutocomplete.install = (Vue, options) => {
   if (options.apiKey) {
-    loadGoogleMaps(options.apiKey, options.version);
+    loadGoogleMaps(options.apiKey, options.version, options.language);
   }
 
   Vue.component(VuetifyGoogleAutocomplete.name, VuetifyGoogleAutocomplete);
