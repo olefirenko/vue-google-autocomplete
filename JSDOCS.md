@@ -39,7 +39,7 @@ For more detailed HTML output of the JSDocs, refer to the ``./docs`` directory.
         * [.mask](#module_vuetify-google-autocomplete.props.mask) : <code>Object</code> \| <code>String</code>
         * [.multi-line](#module_vuetify-google-autocomplete.props.multi-line) : <code>Boolean</code>
         * [.no-resize](#module_vuetify-google-autocomplete.props.no-resize) : <code>Boolean</code>
-        * [.outline](#module_vuetify-google-autocomplete.props.outline) : <code>Boolean</code>
+        * [.outlined](#module_vuetify-google-autocomplete.props.outlined) : <code>Boolean</code>
         * [.persistent-hint](#module_vuetify-google-autocomplete.props.persistent-hint) : <code>Boolean</code>
         * [.placeholder](#module_vuetify-google-autocomplete.props.placeholder) : <code>String</code>
         * [.prefix](#module_vuetify-google-autocomplete.props.prefix) : <code>String</code>
@@ -115,7 +115,7 @@ Exposed component props.
     * [.mask](#module_vuetify-google-autocomplete.props.mask) : <code>Object</code> \| <code>String</code>
     * [.multi-line](#module_vuetify-google-autocomplete.props.multi-line) : <code>Boolean</code>
     * [.no-resize](#module_vuetify-google-autocomplete.props.no-resize) : <code>Boolean</code>
-    * [.outline](#module_vuetify-google-autocomplete.props.outline) : <code>Boolean</code>
+    * [.outlined](#module_vuetify-google-autocomplete.props.outlined) : <code>Boolean</code>
     * [.persistent-hint](#module_vuetify-google-autocomplete.props.persistent-hint) : <code>Boolean</code>
     * [.placeholder](#module_vuetify-google-autocomplete.props.placeholder) : <code>String</code>
     * [.prefix](#module_vuetify-google-autocomplete.props.prefix) : <code>String</code>
@@ -337,10 +337,10 @@ Maps to Vuetify 'no-resize' prop.
 
 **Kind**: static property of [<code>props</code>](#module_vuetify-google-autocomplete.props)  
 **See**: [https://vuetifyjs.com/en/components/text-fields](https://vuetifyjs.com/en/components/text-fields)  
-<a name="module_vuetify-google-autocomplete.props.outline"></a>
+<a name="module_vuetify-google-autocomplete.props.outlined"></a>
 
-#### props.outline : <code>Boolean</code>
-Maps to Vuetify 'outline' prop.
+#### props.outlined : <code>Boolean</code>
+Maps to Vuetify 'outlined' prop.
 
 **Kind**: static property of [<code>props</code>](#module_vuetify-google-autocomplete.props)  
 **See**: [https://vuetifyjs.com/en/components/text-fields](https://vuetifyjs.com/en/components/text-fields)  

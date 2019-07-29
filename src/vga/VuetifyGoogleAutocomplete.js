@@ -346,13 +346,13 @@ export default {
       default: false,
     },
     /**
-     * Maps to Vuetify 'outline' prop.
+     * Maps to Vuetify 'outlined' prop.
      *
-     * @alias module:vuetify-google-autocomplete.props.outline
+     * @alias module:vuetify-google-autocomplete.props.outlined
      * @see {@link https://vuetifyjs.com/en/components/text-fields}
      * @type {Boolean}
      */
-    outline: {
+    outlined: {
       type: Boolean,
       default: false,
     },
@@ -890,7 +890,7 @@ export default {
         mask: self.mask,
         'multi-line': self.multiLine,
         'no-resize': self.noResize,
-        outline: self.outline,
+        outlined: self.outlined,
         'persistent-hint': self.persistentHint,
         placeholder: self.placeholder,
         prefix: self.prefix,

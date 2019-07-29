@@ -141,6 +141,25 @@ describe('Ensure component props behave as expected', () => {
     });
   });
 
+  describe('outlined', () => {
+    test('Should have false as default if not provided', () => {
+      const wrapper = mount(Vga, {
+        localVue,
+        propsData: mandatoryProps,
+      });
+      expect(wrapper.vm.$props.outlined).toBe(false);
+    });
+
+    test('Should accept boolean input', () => {
+      mandatoryProps.outlined = true;
+      const wrapper = mount(Vga, {
+        localVue,
+        propsData: mandatoryProps,
+      });
+      expect(wrapper.vm.$props.outlined).toBe(true);
+    });
+  });
+
   describe('clearable', () => {
     test('Should have false as default if not provided', () => {
       const wrapper = mount(Vga, {
