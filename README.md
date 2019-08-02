@@ -87,11 +87,13 @@ The input field will get this placeholder text.
 
 #### types
 Type: `String`
-Default: `address`
+Default: `null`
 
 Types supported in place autocomplete requests. [More info](https://developers.google.com/places/supported_types#table3)
 
 You may find [this example](#correct-usage-of-the-types-parameter) helpful.
+
+If nothing is specified, all types are returned.
 
 #### country
 Type: `String`|`Array`
