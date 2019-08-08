@@ -1,6 +1,6 @@
 {
   "name": "vue-google-autocomplete",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Vue component to Google Places Autocomplete",
   "main": "src/VueGoogleAutocomplete.vue",
   "homepage": "https://github.com/olefirenko/vue-google-autocomplete",
