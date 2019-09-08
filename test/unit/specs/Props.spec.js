@@ -605,6 +605,25 @@ describe('Ensure component props behave as expected', () => {
     });
   });
 
+  describe('placeName', () => {
+    test('Should have "false" as default if not provided', () => {
+      const wrapper = mount(Vga, {
+        localVue,
+        propsData: mandatoryProps,
+      });
+      expect(wrapper.vm.$props.placeName).toBe(false);
+    });
+
+    test('Should accept boolean input', () => {
+      mandatoryProps.placeName = true;
+      const wrapper = mount(Vga, {
+        localVue,
+        propsData: mandatoryProps,
+      });
+      expect(wrapper.vm.$props.placeName).toBe(true);
+    });
+  });
+
   describe('prefix', () => {
     test('Should have "false" as default if not provided', () => {
       const wrapper = mount(Vga, {

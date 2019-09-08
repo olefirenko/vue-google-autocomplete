@@ -379,6 +379,17 @@ export default {
       default: undefined,
     },
     /**
+     * Display place name when selecting a result
+     *
+     * @alias module:vuetify-google-autocomplete.props.placeName
+     * @see {@link https://developers.google.com/places/web-service/autocomplete}
+     * @type {Boolean}
+     */
+    placeName: {
+      type: Boolean,
+      default: false,
+    },
+    /**
      * Maps to Vuetify 'prefix' prop.
      *
      * @alias module:vuetify-google-autocomplete.props.prefix
@@ -791,7 +802,9 @@ export default {
 
         const returnData = {};
 
-        if (place.formatted_address !== undefined) {
+        if (place.name !== undefined && this.placeName) {
+          document.getElementById(this.id).value = place.name;
+        } else if (place.formatted_address !== undefined) {
           document.getElementById(this.id).value = place.formatted_address;
         }
 

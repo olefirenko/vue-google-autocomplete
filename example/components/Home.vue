@@ -19,6 +19,12 @@
             hide-details
           ></v-switch>
           <v-switch
+            label="Use place name"
+            v-model="placeName"
+            color="secondary"
+            hide-details
+          ></v-switch>
+          <v-switch
             label="Required"
             v-model="required"
             color="secondary"
@@ -75,6 +81,7 @@
                   :enable-geolocation="enableGeolocation"
                   :label="labelText"
                   :placeholder="placeholderText"
+                  :placeName="placeName"
                   :prepend-icon="prependIcon"
                   :required="required"
                   :types="types"
@@ -196,6 +203,7 @@ export default {
     prependIcon: '',
     labelText: 'Search Address',
     placeholderText: '',
+    placeName: false,
     required: true,
     types: 'address',
     typesOptions: [
@@ -235,6 +243,7 @@ export default {
   :enable-geolocation="${this.enableGeolocation}"
   :label="${this.labelText}"
   :placeholder="${this.placeholderText}"
+  :placeName="${this.placeName}"
   :prepend-icon="${this.prependIcon}"
   :required="${this.required}"
   :types="['${this.types}']"
@@ -256,6 +265,7 @@ export default {
     labelText: '${this.labelText}',
     prependIcon: '${this.prependIcon}',
     placeholderText: '${this.placeholderText}',
+    placeName: ${this.placeName},
     required: '${this.required}',
     types: ['${this.types}'],
 
