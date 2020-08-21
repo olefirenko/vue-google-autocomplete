@@ -247,3 +247,35 @@ The example below shows the correct usage of the `types` parameter, when limitin
 >
 </vue-google-autocomplete>
 ```
+
+#### Manually setting short_name / long_name
+
+Sometimes you want to use the `short_name` instead of the `long_name` or vice-versa.
+For example in the case of `country` it is helpful to get the iso code (`short_name`) to store it in your database.
+
+You can do so by passing an object to the component.
+
+**Note:** At this moment it is only possible to pass a complete object to the component. So it's not possible to override just specific address-components.
+
+```html
+<vue-google-autocomplete
+    id="map"
+    ref="address"
+    classname="input"
+    placeholder="Start typing"
+    v-on:placechanged="getAddressData"
+    v-on:error="handleError"
+    country="sg"
+    v-bind:address-components="{
+        subpremise: 'short_name',
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        administrative_area_level_2: 'long_name',
+        country: 'short_name',
+        postal_code: 'short_name',
+    }"
+>
+</vue-google-autocomplete>
+```
