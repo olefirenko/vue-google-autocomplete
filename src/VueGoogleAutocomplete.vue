@@ -88,7 +88,6 @@
           classname: String,
 
           placeholder: {
-            value: "placeholder-default",
             type: String,
             default: 'Start typing'
           },
