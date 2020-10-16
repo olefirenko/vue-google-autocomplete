@@ -54,7 +54,7 @@
 
           types: {
             type: String,
-            default: 'address'
+            default: null
           },
 
           country: {
