@@ -16,17 +16,6 @@
 </template>
 
 <script>
-    const ADDRESS_COMPONENTS = {
-        subpremise : 'short_name',
-        street_number: 'short_name',
-        route: 'long_name',
-        locality: 'long_name',
-        administrative_area_level_1: 'short_name',
-        administrative_area_level_2: 'long_name',
-        country: 'long_name',
-        postal_code: 'short_name'
-    };
-
     const CITIES_TYPE = ['locality', 'administrative_area_level_3'];
     const REGIONS_TYPE = ['locality', 'sublocality', 'postal_code', 'country',
         'administrative_area_level_1', 'administrative_area_level_2'];
@@ -49,6 +38,63 @@
           id: {
             type: String,
             required: true
+          },
+
+          addressComponents: {
+            type: Object,
+            default: function () {
+              return  {
+                  subpremise: 'short_name',
+                  street_number: 'short_name',
+                  route: 'long_name',
+                  locality: 'long_name',
+                  administrative_area_level_1: 'short_name',
+                  administrative_area_level_2: 'long_name',
+                  country: 'long_name',
+                  postal_code: 'short_name',
+              };
+            },
+
+            subpremise: {
+              type: String,
+              requried: true
+            },
+
+            street_number: {
+              type: String,
+              requried: true
+            },
+
+            route: {
+              type: String,
+              requried: true
+            },
+
+            locality: {
+              type: String,
+              requried: true
+            },
+
+            administrative_area_level_1: {
+              type: String,
+              requried: true
+            },
+
+            administrative_area_level_2: {
+              type: String,
+              requried: true
+            },
+
+            country: {
+              type: String,
+              requried: true
+            },
+
+            postal_code: {
+              type: String,
+              requried: true
+            },
+
           },
 
           classname: String,
@@ -336,8 +382,8 @@
                 for (let i = 0; i < place.address_components.length; i++) {
                     let addressType = place.address_components[i].types[0];
 
-                    if (ADDRESS_COMPONENTS[addressType]) {
-                        let val = place.address_components[i][ADDRESS_COMPONENTS[addressType]];
+                    if (this.addressComponents[addressType]) {
+                        let val = place.address_components[i][this.addressComponents[addressType]];
                         returnData[addressType] = val;
                     }
                 }
