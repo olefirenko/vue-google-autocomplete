@@ -251,7 +251,7 @@ The example below shows the correct usage of the `types` parameter, when limitin
     classname="form-control"
     placeholder="Start typing"
     v-on:placechanged="getToData"
-    types="(cities)"
+    :types="['geocode', 'establishment']"
     country="us"
 >
 </vue-google-autocomplete>
