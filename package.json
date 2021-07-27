@@ -33,6 +33,7 @@
   "author": "Dmytro Olefyrenko <dmitriy.olefirenko@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "all-contributors-cli": "^6.20.0",
     "ava": "^0.18.2",
     "babel-register": "^6.24.0",
     "browser-env": "^2.0.25",

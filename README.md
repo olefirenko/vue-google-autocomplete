@@ -1,6 +1,6 @@
 # Vue Google Autocomplete
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-24-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A Vue.js (2.x) autosuggest component for the Google Maps Places API.
@@ -269,7 +269,36 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
+    <td align="center"><a href="https://olefyrenko.com/"><img src="https://avatars.githubusercontent.com/u/5434459?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dmytro Olefyrenko</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=olefirenko" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.daryledesilva.com/"><img src="https://avatars.githubusercontent.com/u/4393436?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daryle Dale De Silva</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=daryledesilva" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/DjilanoS"><img src="https://avatars.githubusercontent.com/u/84568557?v=4?s=100" width="100px;" alt=""/><br /><sub><b>DjilanoS</b></sub></a><br /><a href="#maintenance-DjilanoS" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/juanvillegas"><img src="https://avatars.githubusercontent.com/u/773149?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Juan Villegas</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=juanvillegas" title="Code">💻</a></td>
+    <td align="center"><a href="https://houmaan.dev/"><img src="https://avatars.githubusercontent.com/u/10440022?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Hugh Saffar</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=hughsaffar" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.lilium.dev/"><img src="https://avatars.githubusercontent.com/u/8971846?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ahmed</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=liliumdev" title="Code">💻</a></td>
+    <td align="center"><a href="https://ankurk91.github.io/"><img src="https://avatars.githubusercontent.com/u/6111524?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ankur Kumar</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=ankurk91" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/ArturGrigio"><img src="https://avatars.githubusercontent.com/u/6424589?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Artur Grigio</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=ArturGrigio" title="Code">💻</a></td>
+    <td align="center"><a href="https://bhrutledge.com/"><img src="https://avatars.githubusercontent.com/u/1326704?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Brian Rutledge</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=bhrutledge" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/bryanjamesmiller"><img src="https://avatars.githubusercontent.com/u/8781182?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bryan Miller</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=bryanjamesmiller" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/cgs"><img src="https://avatars.githubusercontent.com/u/16057?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Chris Sepic</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=cgs" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/mrgix"><img src="https://avatars.githubusercontent.com/u/6233470?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dennis van Breukelen</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=mrgix" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Eoksni"><img src="https://avatars.githubusercontent.com/u/2010503?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dmitry Mazurok</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=Eoksni" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/julianfox"><img src="https://avatars.githubusercontent.com/u/1648714?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Julian Renard</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=julianfox" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="http://leonardoarroyo.com/"><img src="https://avatars.githubusercontent.com/u/4290407?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Leonardo Arroyo</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=leonardoarroyo" title="Code">💻</a></td>
+    <td align="center"><a href="https://probil.github.io/"><img src="https://avatars.githubusercontent.com/u/6773202?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Max Lyashuk</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=probil" title="Code">💻</a></td>
+    <td align="center"><a href="https://mgibowski.dev/"><img src="https://avatars.githubusercontent.com/u/617315?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michał Gibowski</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=mgibowski" title="Code">💻</a></td>
+    <td align="center"><a href="https://mickeyschwab.com/"><img src="https://avatars.githubusercontent.com/u/2643491?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mickey Schwab</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=mickeyschwab" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.lelaboratoiredeco.fr/"><img src="https://avatars.githubusercontent.com/u/3156035?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Romain Léger</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=rleger" title="Code">💻</a></td>
+    <td align="center"><a href="https://skmbr.uk/"><img src="https://avatars.githubusercontent.com/u/1945312?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Simon Kimber</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=skmbr" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/syffs"><img src="https://avatars.githubusercontent.com/u/4192037?v=4?s=100" width="100px;" alt=""/><br /><sub><b>syffs</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=syffs" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="http://yann-bertrand.fr/"><img src="https://avatars.githubusercontent.com/u/5855339?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yann Bertrand</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=yannbertrand" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ciaasteczkowy"><img src="https://avatars.githubusercontent.com/u/509463?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ciaasteczkowy</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=ciaasteczkowy" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/cyril-rabaux-90141a82/"><img src="https://avatars.githubusercontent.com/u/7647886?v=4?s=100" width="100px;" alt=""/><br /><sub><b>crabaux</b></sub></a><br /><a href="https://github.com/olefirenko/vue-google-autocomplete/commits?author=crabaux" title="Code">💻</a></td>
   </tr>
 </table>
 
