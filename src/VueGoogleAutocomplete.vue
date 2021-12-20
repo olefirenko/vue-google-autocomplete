@@ -79,6 +79,10 @@
             type: Object,
             default: null
           },
+          /*
+          Example: 
+          :boundLimits="{sw:{lat:60.096670, lon:24.583181}, ne:{lat:60.391643, lon:25.214419}}"
+          */
 
           country: {
             type: [String, Array],
