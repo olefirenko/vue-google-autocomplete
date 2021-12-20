@@ -75,6 +75,11 @@
             },
           },
 
+          boundLimits: {
+            type: Object,
+            default: null
+          },
+
           country: {
             type: [String, Array],
             default: null
@@ -134,7 +139,7 @@
 
         watch: {
             autocompleteText: function (newVal, oldVal) {
-	            this.$emit('inputChange', { newVal, oldVal }, this.id);
+                this.$emit('inputChange', { newVal, oldVal }, this.id);
             },
             country: function(newVal, oldVal) {
               this.autocomplete.setComponentRestrictions({
@@ -152,8 +157,15 @@
 
           if (this.country) {
             options.componentRestrictions = {
-              country: this.country
+              country: this.country,
             };
+          }
+
+          if (this.boundLimits) {
+            var southWest = new google.maps.LatLng(this.boundLimits.sw.lat, this.boundLimits.sw.lon );
+            var northEast = new google.maps.LatLng( this.boundLimits.ne.lat, this.boundLimits.ne.lon);
+            var bounds = new google.maps.LatLngBounds( southWest, northEast );
+            options.bounds = bounds;  
           }
 
           this.autocomplete = new google.maps.places.Autocomplete(
