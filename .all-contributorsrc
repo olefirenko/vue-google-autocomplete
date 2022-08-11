@@ -1,0 +1,232 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "olefirenko",
+      "name": "Dmytro Olefyrenko",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5434459?v=4",
+      "profile": "https://olefyrenko.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "daryledesilva",
+      "name": "Daryle Dale De Silva",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4393436?v=4",
+      "profile": "http://www.daryledesilva.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "DjilanoS",
+      "name": "DjilanoS",
+      "avatar_url": "https://avatars.githubusercontent.com/u/84568557?v=4",
+      "profile": "https://github.com/DjilanoS",
+      "contributions": [
+        "maintenance"
+      ]
+    },
+    {
+      "login": "juanvillegas",
+      "name": "Juan Villegas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/773149?v=4",
+      "profile": "https://github.com/juanvillegas",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "hughsaffar",
+      "name": "Hugh Saffar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10440022?v=4",
+      "profile": "https://houmaan.dev/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "liliumdev",
+      "name": "Ahmed",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8971846?v=4",
+      "profile": "https://www.lilium.dev/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ankurk91",
+      "name": "Ankur Kumar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6111524?v=4",
+      "profile": "https://ankurk91.github.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ArturGrigio",
+      "name": "Artur Grigio",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6424589?v=4",
+      "profile": "https://github.com/ArturGrigio",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "bhrutledge",
+      "name": "Brian Rutledge",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1326704?v=4",
+      "profile": "https://bhrutledge.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "bryanjamesmiller",
+      "name": "Bryan Miller",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8781182?v=4",
+      "profile": "https://github.com/bryanjamesmiller",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "cgs",
+      "name": "Chris Sepic",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16057?v=4",
+      "profile": "https://github.com/cgs",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "mrgix",
+      "name": "Dennis van Breukelen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6233470?v=4",
+      "profile": "https://github.com/mrgix",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Eoksni",
+      "name": "Dmitry Mazurok",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2010503?v=4",
+      "profile": "https://github.com/Eoksni",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "julianfox",
+      "name": "Julian Renard",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1648714?v=4",
+      "profile": "https://github.com/julianfox",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "leonardoarroyo",
+      "name": "Leonardo Arroyo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4290407?v=4",
+      "profile": "http://leonardoarroyo.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "probil",
+      "name": "Max Lyashuk",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6773202?v=4",
+      "profile": "https://probil.github.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "mgibowski",
+      "name": "Michał Gibowski",
+      "avatar_url": "https://avatars.githubusercontent.com/u/617315?v=4",
+      "profile": "https://mgibowski.dev/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "mickeyschwab",
+      "name": "Mickey Schwab",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2643491?v=4",
+      "profile": "https://mickeyschwab.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "rleger",
+      "name": "Romain Léger",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3156035?v=4",
+      "profile": "http://www.lelaboratoiredeco.fr/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "skmbr",
+      "name": "Simon Kimber",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1945312?v=4",
+      "profile": "https://skmbr.uk/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "syffs",
+      "name": "syffs",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4192037?v=4",
+      "profile": "https://github.com/syffs",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "yannbertrand",
+      "name": "Yann Bertrand",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5855339?v=4",
+      "profile": "http://yann-bertrand.fr/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ciaasteczkowy",
+      "name": "ciaasteczkowy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/509463?v=4",
+      "profile": "https://github.com/ciaasteczkowy",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "crabaux",
+      "name": "crabaux",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7647886?v=4",
+      "profile": "https://www.linkedin.com/in/cyril-rabaux-90141a82/",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "vue-google-autocomplete",
+  "projectOwner": "olefirenko",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "commitConvention": "none"
+}
