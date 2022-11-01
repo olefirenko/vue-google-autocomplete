@@ -1,6 +1,6 @@
 # Vue Google Autocomplete
 
-[![npm version](https://badgen.net/npm/v/vue-google-autocomplete)](https://www.npmjs.com/package/vue-google-autocomplete) [![sponsored_by](https://badgen.net/badge/sponsored%20by/%F0%9F%A4%96kopiAI.com/f2a)](https://kopiai.com/?utm_source=github&utm_medium=badge&utm_campaign=vue_google_autocomplete)
+[![npm version](https://badgen.net/npm/v/vue-google-autocomplete)](https://www.npmjs.com/package/vue-google-autocomplete) [![sponsored_by](https://badgen.net/badge/sponsored%20by/%F0%9F%A4%96Easy-Peasy.AI/f2a)](https://Easy-Peasy.AI/?utm_source=npm&utm_medium=badge&utm_campaign=vue_google_autocomplete)
 
 A Vue.js (2.x) autosuggest component for the Google Maps Places API.
 
