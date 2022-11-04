@@ -140,6 +140,9 @@
               this.autocomplete.setComponentRestrictions({
                 country: this.country === null ? [] : this.country
               });
+            },
+            types: function(newVal, oldVal) {
+              this.autocomplete.setTypes([this.types]);
             }
         },
 
