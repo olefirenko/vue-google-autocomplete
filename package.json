@@ -38,8 +38,8 @@
     "babel-register": "^6.24.0",
     "browser-env": "^2.0.25",
     "cross-env": "^3.2.4",
-    "gh-pages": "^0.12.0",
-    "laravel-mix": "^0.8.8",
+    "gh-pages": "^4.0.0",
+    "laravel-mix": "^6.0.49",
     "vue": "^2.2.1",
     "vue-node": "^1.0.2",
     "webpack": "^2.3.2"
