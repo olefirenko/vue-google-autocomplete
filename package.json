@@ -34,7 +34,7 @@
   "license": "MIT",
   "devDependencies": {
     "all-contributors-cli": "^6.20.0",
-    "ava": "^0.18.2",
+    "ava": "^5.1.0",
     "babel-register": "^6.24.0",
     "browser-env": "^2.0.25",
     "cross-env": "^3.2.4",
