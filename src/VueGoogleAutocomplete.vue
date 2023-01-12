@@ -65,7 +65,7 @@
 
           types: {
             type: String,
-            default: 'address'
+            default: ''
           },
 
           fields: {
