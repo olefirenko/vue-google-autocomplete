@@ -79,7 +79,12 @@
             type: [String, Array],
             default: null
           },
-
+        
+          bounds: {
+            type: Object,
+            default: null
+          },
+          
           enableGeolocation: {
             type: Boolean,
             default: false
@@ -323,6 +328,13 @@
                         });
                         this.autocomplete.setBounds(circle.getBounds());
                     })
+                } else if (this.bounds != null){
+                    let circle = new google.maps.Circle({
+                        center: {lat: this.bounds['lat'], lng: this.bounds['lng']},
+                        radius: this.bounds['radius']
+                    });
+                    this.autocomplete.setBounds(circle.getBounds());
+
                 }
             },
 
