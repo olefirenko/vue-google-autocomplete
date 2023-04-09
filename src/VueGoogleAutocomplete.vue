@@ -16,6 +16,9 @@
 </template>
 
 <script>
+
+import downArrowSimulator from './ult/simulateArrowDown.js';
+
     const ADDRESS_COMPONENTS = {
         subpremise : 'short_name',
         street_number: 'short_name',
@@ -154,6 +157,7 @@
             options.componentRestrictions = {
               country: this.country
             };
+	    downArrowSimulator(this.$refs.autocomplete);
           }
 
           this.autocomplete = new google.maps.places.Autocomplete(
