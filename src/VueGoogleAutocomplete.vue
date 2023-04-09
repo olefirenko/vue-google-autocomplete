@@ -1,5 +1,6 @@
 <template>
     <input
+        v-bind="$attrs"
         ref="autocomplete"
         type="text"
         :class="classname"
@@ -44,6 +45,8 @@
 
     export default {
         name: 'VueGoogleAutocomplete',
+
+        inheritAttrs: false,
 
         props: {
           id: {
