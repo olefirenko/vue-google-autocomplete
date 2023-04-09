@@ -360,7 +360,8 @@
                 let types = [this.types];
                 if (types.includes('(cities)')) types = types.concat(CITIES_TYPE);
                 if (types.includes('(regions)')) types = types.concat(REGIONS_TYPE);
-
+                if (types.includes('address')) types = types.concat(REGIONS_TYPE);
+		
                 for (let r of results) {
                     for (let t of r.types) {
                         if (types.includes(t)) {
